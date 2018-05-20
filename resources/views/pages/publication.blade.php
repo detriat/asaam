@@ -11,6 +11,7 @@
     <meta property="og:image"              content="{{action('HomeController@index')}}/{{ $image }}" />
 @endsection
 
+
 @section('extra-fonts')
     <link rel="stylesheet" href="/fonts/DSIzmir/dsi.css">
 @endsection

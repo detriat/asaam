@@ -19,7 +19,7 @@ class ImageEditor extends Controller
         if (!$json){
 
             $img = $data['base64Image'];
-            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace('data:image/jpeg;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
             $fileData = base64_decode($img);
 

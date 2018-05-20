@@ -3,6 +3,7 @@ $(function() {
     $(document).ready(function () {
         pageComplete();
 
+
         $('.cancel-confirm').click(function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -66,19 +67,13 @@ $(function() {
         $('.work_zone').show();
 
         if ( action === 'start-stream' ){
-
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-            var constraints = { video: true };
-            navigator.mediaDevices.getUserMedia( constraints ).then( function( stream ) {
+            if (navigator.getUserMedia){
                 init();
-                animate();
-            } ).catch( function( error ) {
-
-                console.error( 'Unable to access the camera/webcam.', error );
+            }else{
                 showWarningNotice('Мы не получили доступ к вашей камере!');
-
-            } );
+            }
 
         }else if ( action === 'confirm-action' ){
             $('#results').empty();
@@ -95,6 +90,14 @@ $(function() {
 		$('#container').displayFlex();
 
     }
+
+
+
+
+    $(window).resize(function () {
+        resizeVideo();
+    });
+
 
 });
 $.fn.displayFlex = function () {

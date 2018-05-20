@@ -6,6 +6,8 @@
 
 #video, #canvas {
     position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .work_zone{
@@ -824,4 +826,8 @@ button:focus{
 
 .error-image{
     text-align: center;
+}
+
+.preload img{
+    max-width: 100%;
 }

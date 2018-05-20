@@ -29,16 +29,7 @@ class UloginController extends Controller
             if (!is_null($userData)) {
 
                 return Redirect::back()->withErrors(['Такой пользователь уже учаустует в розыграше.']);
-                /*// Check user status.
-                if ($userData->status) {
-                    // Make login user.
-                    Auth::loginUsingId($userData->id, true);
 
-                } else {
-                    return Redirect::back()->withErrors(['Такой пользователь уже учаустует в розыграше.']);
-                }
-
-                return Redirect::back();*/
             } else {
                 // Make registration new user.
 
@@ -48,10 +39,10 @@ class UloginController extends Controller
                     'last_name'       => $user['last_name'],
                     'city'            => (isset($user['original_city'])) ? $user['original_city']  : $user['country'],
                     'email'           => $user['email'],
-                    'photo'           => '', // Исправить
+                    'photo'           => $user['photo'],
                     'id_image'        => (int)$id_image,
                     'network'         => $user['network'],
-                    'network_profile' => $user['profile'],
+                    'network_profile' => $user['identity'],
                     'password'        => Hash::make(str_random(8)),
                     'status'          => true,
                     'ip'              => $request->ip()

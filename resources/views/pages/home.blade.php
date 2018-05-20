@@ -6,10 +6,11 @@
     <div class="work_zone bottom-box-effect">
         <div id="container">
             <div class="tracking">
-                <video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility:hidden;"></video>
+                <video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility:visible;"></video>
+                <canvas id="canvas"></canvas>
             </div>
             <div class="gif-position">
-                <img src="/img/red.gif" alt="">
+
             </div>
             <div class="elefant"></div>
             <div id="results"></div>
@@ -54,38 +55,9 @@
 @endsection
 
 @section('extra-scripts')
-
-    <script src="/js/elefant.js"></script>
+    <script src="/js/webcam.min.js"></script>
+    <script src="/js/main.js"></script>
     <script>
-
-        function clearResults() {
-            var modal = $('#confirmAction');
-
-            modal.find('.confirmation-confirm').attr('data-action', 'confirm-action');
-            modal.displayFlex();
-        }
-
-        function take_snapshot() {
-            // take snapshot and get image data
-            playShot();
-
-            var canvas = document.querySelector('#container canvas');
-            var context = canvas.getContext("experimental-webgl", {preserveDrawingBuffer: true});
-            var img    = canvas.toDataURL("image/png");
-            
-            $('#results')
-                .empty()
-                .append('<img class="position-model" src="'+img+'">');
-
-            $('.snapshot-btn').hide();
-            $('.snapshot-form').displayFlex();
-        }
-
-        function playShot() {
-            var audio = new Audio('/media/shutter.mp3');
-            audio.play();
-        }
-
         $(document).ready(function () {
             $('#uploadBase64Image').click(function (e) {
                 e.preventDefault();

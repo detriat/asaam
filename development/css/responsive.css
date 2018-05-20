@@ -247,6 +247,17 @@
     .error-image img{
         max-width: calc(100% - 30px);
     }
+
+    #container{
+        max-width: 640px;
+        width: 100%;
+    }
+
+    .work_zone{
+        height: auto;
+    }
+
+
 }
 
 @media (max-width: 639px) {
@@ -283,6 +294,7 @@
     .error-403 .error-image {
         margin-top: -55px;
     }
+
 }
 
 @media (max-width: 479px) {
@@ -338,7 +350,9 @@
         width: 290px;
         margin: 0 auto;
     }
+
 }
+
 
 @media (min-width: 1200px) {
     .menu, .top-uzor-small{

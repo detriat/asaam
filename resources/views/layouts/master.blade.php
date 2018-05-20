@@ -12,6 +12,10 @@
         @yield('extra-meta')
     @endif
 
+    <meta name="title" content="Заголовок" />
+    <meta name="description" content="Описание" />
+    <link rel="image_src" href="{{action('HomeController@index')}}/img/logo.png" />
+
     <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
@@ -136,7 +140,6 @@
 <script src="/development/libs/html5shiv/html5shiv-printshiv.min.js"></script>
 <script src="/development/libs/respond/respond.min.js"></script>
 <![endif]-->
-<script src="/js/dat.gui.min.js"></script>
 <script src="/js/libs.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -171,18 +174,7 @@
         </ul>
     </div>
 @endif
-@if (isset($success_messages))
-    <div class="alert alert-success" style="position:fixed;top:30px;right:30px;z-index:99999;">
-        <ul>
-            @foreach ($success_messages as $message)
-                <li>{!! $message !!}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<div class="alert" id="js-messages" style="position:fixed;top:30px;right:30px;display:none;z-index:99999;">
-    <ul></ul>
-</div>
+
 @yield('overlay')
 </body>
 </html>
