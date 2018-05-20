@@ -1,0 +1,166 @@
+.preload{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+html, body{
+    height: 100%;
+    font-family: 'Tahoma';
+    font-size: 14px;
+    line-height: normal;
+}
+
+.page-content{
+    display: flex;
+    flex-direction: column;
+    background: url("/img/bg.jpg") repeat-y;
+    min-height: 100%;
+}
+
+.header-content{
+    padding: 40px 0 0;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 24px;
+    font-weight: 400;
+    font-family: 'Tahoma';
+}
+
+
+.wrapper-content{
+    flex: 1;
+}
+
+footer, header{
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.header-links{
+    display: flex;
+}
+
+.header-links a{
+    border-bottom: 1px dashed transparent;
+}
+
+.header-links a.active{
+    color: #f5b63b;
+    border-bottom: 1px dashed #1c261c;
+}
+
+.header-links li{
+    margin-right: 35px;
+    position: relative;
+}
+
+.header-links li:last-child{
+    margin-right: 0;
+}
+
+.header-links li:after{
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f5b63b;
+    position: absolute;
+    right: -21px;
+    top: calc(50% - 3px);
+}
+
+.header-links li:last-child:after{
+    display: none;
+}
+
+.header-right .header-links li{
+    margin-right: 50px;
+}
+
+.header-right .header-links li:last-child{
+    margin-right: 0;
+}
+
+.header-right .header-links li:after{
+    display: none;
+}
+
+i{
+    margin-right: 10px;
+}
+
+.header-links li{
+    display: flex;
+    align-items: center;
+}
+
+.big-elefant{
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: url(../img/big_elefant.png) no-repeat;
+    width: 560px;
+    height: 830px;
+}
+
+.bottom-left-uzor{
+    background: url("../img/bottom-left-uzor.png") no-repeat;
+    width: 344px;
+    height: 404px;
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-left-uzor1{
+    background: url("../img/bottom-left-uzor2.png") no-repeat;
+    width: 645px;
+    height: 143px;
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 200px;
+}
+
+.bottom-right-uzor{
+    background: url("../img/bottom-right-uzor.png") no-repeat;
+    width: 720px;
+    height: 200px;
+    background-size: cover;
+    position: absolute;
+    right: 400px;
+    bottom: 0;
+    z-index: 10;
+}
+
+.bottom-right-uzor2{
+    background: url("../img/bottom-right-uzor2.png") no-repeat;
+    height: 593px;
+    width: 582px;
+    background-size: cover;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.header-center{
+    margin-left: 75px;
+}
+
+.header-right{
+    margin-left: 170px;
+}
