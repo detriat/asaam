@@ -19,12 +19,12 @@ $(function() {
         });
 
         $('.burger').click(function () {
-            $('.menu').fadeIn();
+            $('.menu').slideToggle();
         });
 
         $('.menu').click(function (e) {
             if ( !$(e.target).closest('ul').length ){
-                $('.menu').hide();
+                $('.menu').slideUp();
             }
         });
 
