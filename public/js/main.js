@@ -11,7 +11,7 @@ function init() {
         video.onloadedmetadata = function (e) {
             video.play();
             resizeVideo();
-            playGif('e');
+            playGif('red');
         };
 
     } ).catch( function( error ) {

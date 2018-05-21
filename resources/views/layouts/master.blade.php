@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" prefix="og: http://ogp.me/ns#">
 <head>
 
     <title>@yield('title')</title>
@@ -11,10 +11,6 @@
     @hasSection('extra-meta')
         @yield('extra-meta')
     @endif
-
-    <meta name="title" content="Заголовок" />
-    <meta name="description" content="Описание" />
-    <link rel="image_src" href="{{action('HomeController@index')}}/img/logo.png" />
 
     <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">

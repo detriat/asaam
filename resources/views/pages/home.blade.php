@@ -81,6 +81,11 @@
 
                 });
             });
+
+
+            $(window).resize(function () {
+                resizeVideo();
+            });
         });
 
     </script>

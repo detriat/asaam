@@ -4,11 +4,14 @@
 
 
 @section('extra-meta')
-    {{--<meta property="og:url"                content="{{action('HomeController@index')}}" />--}}
-    <meta property="og:type"               content="website" />
-    <meta property="og:title"              content="Asaam" />
-    <meta property="og:description"        content="#asaam" />
-    <meta property="og:image"              content="{{action('HomeController@index')}}/{{ $image }}" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Асаам дарит подарки за улыбки">
+    <meta property="og:description" content="Я сделал сэлфи со слоном что бы выиграть крутые призы! Попробуй и ты! #чайАССАМ  #селфизапризы">
+    {{--<meta property="og:url" content="http://example.com/page.html">--}}
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:image" content="{{action('HomeController@index')}}/{{$image}}">
+    <meta property="og:image:width" content="640">
+    <meta property="og:image:height" content="480">
 @endsection
 
 
@@ -22,38 +25,17 @@
             $(document).ready(function () {
                 setTimeout(function(){
                     var network = '{{session('network')}}';
-                    console.log(network);
+
                     if (network === 'facebook'){
-
                         $('.pluso-facebook').trigger('click');
-
-                        /*window.fbAsyncInit = function() {
-                            FB.init({
-                                appId            : '157954035054756',
-                                autoLogAppEvents : true,
-                                xfbml            : true,
-                                version          : 'v3.0'
-                            });
-                            FB.ui({
-                                method: 'share',
-                                href: '{{action('HomeController@index')}}'
-                            }, function(response){
-                                console.log(response);
-                            });
-                        };
-
-                        (function(d, s, id){
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) {return;}
-                            js = d.createElement(s); js.id = id;
-                            js.src = "https://connect.facebook.net/en_US/sdk.js";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));
-*/
                     }else if (network === 'vkontakte'){
                         $('.pluso-vkontakte').trigger('click');
                     }else if (network === 'instagram'){
-                        $('.instagram-download-link').trigger('click');
+                        $('.share-image').click(function () {
+                            $(this).find('a')[0].click();
+                        });
+
+                        $('.share-image').trigger('click');
                     }
                 }, 1000);
             });
@@ -74,14 +56,16 @@
 
         <div class="share-block">
             <div class="share-image">
-                <img src="/{{ $image }}" alt="share-photo">
+                <a href="{{action('HomeController@index')}}/{{ $image }}" class="instagram-download-link" {{( session('network') == 'instagram' ) ? 'download' : ''}}>
+                    <img src="/{{ $image }}" alt="share-photo">
+                </a>
             </div>
             <div class="share-socials">
                 
                 <ul class="list-social-network">
-                    <li><i class="social-icon social-fb"></i><a href="/socialite/facebook">Разместить на facebook </a></li>
-                    <li><i class="social-icon social-vk"></i><a href="/socialite/vkontakte">Разместить на vk.com</a></li>
-                    <li><i class="social-icon social-in"></i><a href="/socialite/instagram" class="instagram-download-link" {{( session('network') == 'instagram' ) ? 'download' : ''}}>Скачать для размещения в инстаграм</a></li>
+                    <li><i class="social-icon social-fb"></i><a href="#">Разместить на facebook </a></li>
+                    <li><i class="social-icon social-vk"></i><a href="#">Разместить на vk.com</a></li>
+                    <li><i class="social-icon social-in"></i><a href="#">Скачать для размещения в инстаграм</a></li>
                 </ul>
                 <a href="{{action('HomeController@index')}}" class="btn btn-back_prev">Вернуться назад</a>
             </div>

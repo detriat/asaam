@@ -91,14 +91,6 @@ $(function() {
 
     }
 
-
-
-
-    $(window).resize(function () {
-        resizeVideo();
-    });
-
-
 });
 $.fn.displayFlex = function () {
     $(this).css('display', 'flex');
