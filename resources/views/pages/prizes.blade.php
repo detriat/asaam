@@ -52,7 +52,19 @@
             <div class="prize-item">
                 <div class="prize-item__info">
                     <div class="prize-item__image">
-                        <img src="/img/prize-money.png" alt="">
+                        <img src="/img/prize-tea.png" alt="">
+                    </div>
+                    <div class="prize-item__info-text">
+                        <div class="prize-item__title">Переодические призы</div>
+                        <div class="prize-item__category">Подарочные наборы чая</div>
+                    </div>
+                </div>
+                <div class="prize-item__description"></div>
+            </div>
+            <div class="prize-item">
+                <div class="prize-item__info">
+                    <div class="prize-item__image">
+                        <img src="/img/umbrella-prize.png" alt="">
                     </div>
                     <div class="prize-item__info-text">
                         <div class="prize-item__title">Утешительные призы</div>
