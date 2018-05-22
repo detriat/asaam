@@ -756,3 +756,15 @@ button:focus{
 .preload img{
     max-width: 100%;
 }
+
+.terms p {
+	margin-bottom: 15px;
+}
+.child-page-content__text ul {
+	margin-bottom: 15px;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+.child-page-content__text ul ul {
+    list-style-type: square;
+}
