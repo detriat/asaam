@@ -761,6 +761,11 @@ button:focus{
 .terms p {
 	margin-bottom: 15px;
 }
+.terms .responsive-table {
+	width: 100%;
+	overflow-y: hidden;
+	overflow-x: auto;
+}
 .terms table {
 	width: 100%;
 	margin-bottom: 15px;
