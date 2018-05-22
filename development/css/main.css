@@ -550,7 +550,7 @@ button:focus{
 .grand-prize .grand-image{
     width: 225px;
     height: 225px;
-    background: url("../img/grand-prize-bg.png") no-repeat;
+    /*background: url("../img/grand-prize-bg.png") no-repeat;*/
     position: relative;
     margin: 0 auto;
 }
