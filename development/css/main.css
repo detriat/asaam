@@ -761,11 +761,23 @@ button:focus{
 .terms p {
 	margin-bottom: 15px;
 }
-.child-page-content__text ul {
+.terms table {
+	width: 100%;
+	margin-bottom: 15px;
+	font-size: 13px;
+}
+.terms th {
+	font-weight: bold;
+}
+.terms td, .terms th {
+	padding: 5px;
+	border: 1px solid #d1d1d1
+}
+.terms ul {
 	margin-bottom: 15px;
     padding-left: 20px;
     list-style-type: disc;
 }
-.child-page-content__text ul ul {
+.terms ul ul {
     list-style-type: square;
 }
