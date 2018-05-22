@@ -1,9 +1,12 @@
 var video = document.getElementById('video');
+var center_x = $('#container').width() / 2;
+var center_y = $('#container').height() / 2;
 
 function init() {
 
     Webcam.attach( '#video' );
 
+    //startTracking();
     var constraints = { video: true };
     navigator.mediaDevices.getUserMedia( constraints ).then( function( stream ) {
 
@@ -11,8 +14,11 @@ function init() {
         video.onloadedmetadata = function (e) {
             video.play();
             resizeVideo();
-            playGif('red');
+
         };
+        setTimeout(function () {
+            playGif('Hobot222');
+        }, 4000);
 
     } ).catch( function( error ) {
 
@@ -33,8 +39,8 @@ function startTracking() {
     tracking.track('#video', tracker, {camera: true});
 
     setTimeout(function(){
+        video.play();
         resizeVideo();
-        playGif();
     }, 1000);
 
     tracker.on('track', function (event) {
@@ -60,15 +66,17 @@ function startTracking() {
                 //console.log('Время для фото');
             } else if (square_center_x < center_x && square_center_y < center_y) {
                 //console.log('Левый верхний угол');
+                playGif('Hobot222');
 
             } else if (square_center_x > center_x && square_center_y < center_y) {
                 //console.log('Правый верхний угол');
-
+                playGif('Hobot-1');
             } else if (square_center_x < center_x && square_center_y > center_y) {
                 //console.log('Левый нижний угол')
+                playGif('Hobot222');
 
             } else if (square_center_x > center_x && square_center_y > center_y) {
-
+                playGif('Hobot-1');
             }
 
         });
@@ -106,9 +114,10 @@ function playShot() {
 }
 
 function playGif(name) {
+
     $('.gif-position')
         .empty()
-        .append('<img src="/img/'+name+'.gif" alt="">');
+        .append('<img src="/model/'+name+'.gif" alt="">');
 }
 
 function resizeVideo(){

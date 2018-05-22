@@ -9,10 +9,8 @@
                 <video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility:visible;"></video>
                 <canvas id="canvas"></canvas>
             </div>
-            <div class="gif-position">
-
-            </div>
-            <div class="elefant"></div>
+            <div class="gif-position"></div>
+            <div class="elefant"><img src="/model/e.gif" alt=""></div>
             <div id="results"></div>
         </div>
         <div class="btn snapshot-btn" onclick="take_snapshot()">Сделать снимок</div>

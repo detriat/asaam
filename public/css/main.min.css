@@ -42,6 +42,7 @@
     position: relative;
     z-index: 99;
     margin: 25px auto 25px;
+    overflow: hidden;
 }
 
 .elefant-child{
@@ -769,15 +770,16 @@ button:focus{
 
 .gif-position{
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: right;
+    width: 50%;
+    height: 50%;
+    text-align: center;
     z-index: 999;
+    left: 0;
+    bottom: 0;
 }
 .gif-position img{
     height: 100%;
+    width: 100%;
 }
 
 .page-error__content{
@@ -831,3 +833,20 @@ button:focus{
 .preload img{
     max-width: 100%;
 }
+
+.elefant{
+    display: block;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+.elefant img{
+    position: relative;
+    top: 185px;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+    width: 100%;
+    right: -190px;
+}
+

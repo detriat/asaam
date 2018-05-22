@@ -278,20 +278,183 @@
 }
 
 @media (max-width: 639px) {
+	header {
+		position: relative;
+		z-index: 9;
+	}
+	header:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 25%;
+		height: 155%;
+		background: url(../img/top-uzor-small.png) left top no-repeat;
+		background-size: 100% 100%;
+	}
+	.wrapper-content {
+		position: relative;
+		z-index: 1;
+	}
+	.wrapper-content:before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 155px;
+		background: url(../img/bottom-uzor-small.png) left top no-repeat;
+		background-size: 100% 100%;
+	}
+
+    .burger{
+		position: relative;
+		z-index: 9;
+        width: 55px;
+    }
+
+    .burger span{
+		width: 50%;
+		height: 3.5px;
+		margin: auto;
+		margin-bottom: 3.5px;
+    }
+	
+	.menu {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+		width: 100%;
+		height: 100%;
+		padding-top: 100px;
+		background: #fff;
+		z-index: 1;
+	}
+	.menu ul {
+		display: block;
+		max-width: 320px;
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+	}
+	.menu li {
+		position: relative;
+		display: inline-block;
+		margin-bottom: 15px;
+		padding-left: 30px;
+		background: url(../img/icons/dot.png) 7.5px center no-repeat;
+		background-size: 7.5px;
+	}
+	.menu li:first-child {
+		padding-left: 0;
+		background: none;
+	}
+	.menu li:nth-child(3) {
+		background: url(../img/icons/winners.png) 7.5px center no-repeat;
+		background-size: 15px;
+	}
+	.menu li:last-child {
+		background: url(../img/icons/prize.png) 7.5px center no-repeat;
+		background-size: 15px;
+	}
+	.menu a {
+		color: #0c221f;
+	}
+
     .top-uzor-small{
         display: none;
     }
 
-    .header-content{
-        padding: 15px;
+    .header-content {
+		padding: 30px 15px;
+		    font-size: 14px;
     }
 
     .header-center{
-        width: auto;
+		position: relative;
+		z-index: 9;
+        width: 50%;
+		margin-left: 25%;
     }
     .logo{
         margin: 0;
+		width: 100%;
     }
+	
+	#container, .work_zone, .publication-content {
+		max-width: 290px;
+		margin-top: 0;
+		padding-top: 30px;
+	}
+	
+	.publication-description {
+		line-height: 24px;
+		font-size: 14px;
+	}
+	
+	#video, #canvas {
+		height: auto;
+	}
+	
+	.list-social-network {
+		height: 100px;
+	}
+	.social-icon {
+		width: 24px;
+		height: 24px;
+	}
+	.social-vk {
+		background-position: -24px 0;
+	}
+	.social-in {
+		background-position: -49px 0;
+	}
+	
+	.list-social-network li {
+		font-size: 13px;
+	}
+	.dsi-title {
+		font-size: 28px;
+	}
+	.share-block {
+		margin-top: 15px;
+	}
+	
+	.child-page-content__text, .prizes-content, .before-winner-carousel {
+		padding-bottom: 95px;
+	}
+	.before-winner-carousel {
+		margin-top: -95px;
+	}
+	
+	.gif-position {
+		overflow: hidden;
+	}
+	.gif-position img {
+		position: relative;
+		top: 0%;
+		right: -25%;
+		height: 100%;
+	}
+	.share-image {
+		height: auto;
+	}
+	
+	.snapshot-btn {
+		bottom: -21px;
+	}
+	.snapshot-btn:before {
+		display: none;
+	}
+	
+	.window-confirm {
+		max-width: 260px;
+	}
+	.confirm-btn {
+		width: 110px;
+	}
 
     .prize-item__info-text{
         width: auto;
@@ -316,7 +479,7 @@
 
 @media (max-width: 479px) {
     .logo{
-        width: 200px;
+		width: 100%;
     }
 
     .logo img{
@@ -328,8 +491,10 @@
     }
 
     .burger span{
-        height: 7.5px;
-        margin-bottom: 7.5px;
+		width: 50%;
+		height: 3.5px;
+		margin: auto;
+		margin-bottom: 3.5px;
     }
 
     .prize-item__info{
