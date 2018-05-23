@@ -769,10 +769,10 @@ button:focus{
 }
 .elefant img{
     position: relative;
-    top: 185px;
-    transform: scale(2);
+    top: 265px;
+    transform: scale(2.25);
     width: 100%;
-    right: -190px;
+    right: -200px;
 }
 
 

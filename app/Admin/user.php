@@ -28,6 +28,9 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
                 return '<img src="/'.$url.'" class="thumb" alt="Фото, учавствующуе в конкурсе">';
             }),
             AdminColumn::link('ip')->setLabel('IP')->setWidth('200px'),
+            AdminColumn::custom('Роль', function(User $user){
+                return ($user->isWinner == 1) ? 'Побелитель' : 'Участник';
+            }),
             AdminColumn::custom('Статус', function(User $user){
                 return ($user->status == 1) ? 'Активен' : 'Забанен';
             })
@@ -52,7 +55,11 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
                 0 => 'Забанен',
                 1 => 'Активен'
             ])->required('Это поле не может быть пустым'),
-            AdminFormElement::number('id_image', 'Снимок'),
+            AdminFormElement::select('isWinner', 'Статус')->setOptions([
+                0 => 'Участник',
+                1 => 'Победитель'
+            ])->required('Это поле не может быть пустым'),
+            /*AdminFormElement::number('id_image', 'Снимок'),*/
             AdminFormElement::image('photo', 'Фото пользователя'),
             AdminFormElement::password('password', 'Пароль')->hashWithBcrypt()
         );

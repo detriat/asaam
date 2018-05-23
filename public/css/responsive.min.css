@@ -455,6 +455,9 @@
 	.confirm-btn {
 		width: 110px;
 	}
+	.scroll-line{
+		padding-bottom: 95px;
+	}
 
     .prize-item__info-text{
         width: auto;

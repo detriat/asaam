@@ -12,12 +12,15 @@ class HomeController extends Controller
 {
 
     protected $error = false;
+    protected $user;
+
 
     public function __construct(Request $request)
     {
-        $user_ip = $request->ip();
 
-        $banned_users = User::where('ip', $user_ip)->where('status', 0)->get();
+        $this->user   = new User();
+        $user_ip      = $request->ip();
+        $banned_users = $this->user->isBanned($user_ip);
 
         if (count($banned_users) > 0){
             abort(403);
@@ -57,10 +60,10 @@ class HomeController extends Controller
 
     public function winners(){
 
-        $data = array();
-
-        $data['title'] = 'Победители';
-        $data['winners'] = true;
+        $data             = array();
+        $data['title']    = 'Победители';
+        $data['winners']  = true;
+        $data['winners']  = $this->user->winners();
 
         return view('pages.winners', $data);
     }
@@ -78,9 +81,7 @@ class HomeController extends Controller
     public function publication($id_image){
 
         $data = array();
-        $user = Auth::user();
-
-        $data['title'] = 'Публикация в социальных сетях';
+        $data['title']  = 'Публикация в социальных сетях';
         $data['isHome'] = true;
 
         $image = UserImages::where('id', $id_image)->first();
@@ -89,7 +90,7 @@ class HomeController extends Controller
             abort(404);
         }
 
-        $data['image'] = $image->name;
+        $data['image']    = $image->name;
         $data['id_image'] = $id_image;
 
         return view('pages.publication', $data);
