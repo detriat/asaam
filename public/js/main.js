@@ -14,11 +14,8 @@ function init() {
         video.onloadedmetadata = function (e) {
             video.play();
             resizeVideo();
-
+            playGif();
         };
-        setTimeout(function () {
-            playGif('Hobot222');
-        }, 4000);
 
     } ).catch( function( error ) {
 
@@ -94,11 +91,21 @@ function take_snapshot() {
     // take snapshot and get image data
 
     Webcam.snap(function (img) {
+        playShot();
         $('#results')
             .empty()
             .append('<img class="position-model" src="'+img+'">');
 
-        playShot();
+        html2canvas(document.querySelector("#e_screen"), {
+            backgroundColor: null
+        }).then(function(canvas){
+
+            var canvas_img = canvas.toDataURL('image/png', 1.0);
+            $('#results')
+                .append('<img class="position-canvas__img" src="'+canvas_img+'">');
+
+            takeFinalPhoto();
+        });
     });
 
 
@@ -108,17 +115,43 @@ function take_snapshot() {
 
 }
 
+function takeFinalPhoto() {
+    html2canvas(document.querySelector("#results")).then(function(canvas){
+
+        var canvas_img = canvas.toDataURL('image/jpeg', 1.0);
+        $('#results')
+            .empty()
+            .append('<img src="'+canvas_img+'">');
+    });
+}
+
 function playShot() {
     var audio = new Audio('/media/shutter.mp3');
     audio.play();
 }
 
-function playGif(name) {
+function playGif() {
 
-    $('.gif-position')
-        .empty()
-        .append('<img src="/model/'+name+'.gif" alt="">');
+    var frame;
+    var img = $('#elefant');
+    var i = 1;
+    var fps = 24;
+
+    setInterval(function () {
+
+        if (i < 187){
+            i++;
+        }else{
+            i = 1;
+        }
+
+        frame = $('.frame'+i).attr('src');
+        img.attr('src', frame);
+
+    }, 1000 / fps);
+
 }
+
 
 function resizeVideo(){
     var video = $('#video');

@@ -384,7 +384,9 @@
     }
 	
 	#container, .work_zone, .publication-content {
-		max-width: 290px;
+		/*max-width: 290px;*/
+        max-width: -webkit-calc(100% - 30px);
+        max-width: calc(100% - 30px);
 		margin-top: 0;
 		padding-top: 30px;
 	}
@@ -477,6 +479,18 @@
     .error-403 .error-image {
         margin-top: -55px;
     }
+    #video, canvas{
+        width: 100% !important;
+        height: 300px !important;
+    }
+
+    .elefant img{
+        top: 150px;
+        right: 0;
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
+    }
 
 }
 
@@ -539,6 +553,7 @@
         width: 290px;
         margin: 0 auto;
     }
+
 
 }
 
