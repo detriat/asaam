@@ -1,4 +1,10 @@
 var video = document.getElementById('video');
+video.style.width = '640px';
+video.style.height = '480px';
+video.setAttribute('autoplay', '');
+video.setAttribute('muted', '');
+video.setAttribute('playsinline', '');
+
 var center_x = $('#container').width() / 2;
 var center_y = $('#container').height() / 2;
 
@@ -7,7 +13,9 @@ function init() {
     Webcam.attach( '#video' );
 
     //startTracking();
-    var constraints = { video: true };
+
+    //startTracking();
+    var constraints = { video: true, facingMode: 'user' };
     navigator.mediaDevices.getUserMedia( constraints ).then( function( stream ) {
 
         video.srcObject = stream;
@@ -38,18 +46,13 @@ function startTracking() {
     setTimeout(function(){
         video.play();
         resizeVideo();
+        playGif();
     }, 1000);
 
     tracker.on('track', function (event) {
 
-        $('.elefant').hide();
+        //$('.elefant').hide();
         event.data.forEach(function (rect) {
-            $('.elefant')
-                .css('display', 'block')
-                .css('left', rect.x)
-                .css('top', rect.y)
-                .css('width', rect.width)
-                .css('height', rect.height);
 
             var square_center_x = rect.x + rect.width / 2;
             var square_center_y = rect.y + rect.height / 2;
@@ -63,17 +66,17 @@ function startTracking() {
                 //console.log('Время для фото');
             } else if (square_center_x < center_x && square_center_y < center_y) {
                 //console.log('Левый верхний угол');
-                playGif('Hobot222');
+                //$('#elefant').css('right', '-200px');
 
             } else if (square_center_x > center_x && square_center_y < center_y) {
-                //console.log('Правый верхний угол');
-                playGif('Hobot-1');
+                ////console.log('Правый верхний угол');
+                $('#elefant').css('left', '-200px');
             } else if (square_center_x < center_x && square_center_y > center_y) {
                 //console.log('Левый нижний угол')
-                playGif('Hobot222');
+               // $('#elefant').css('right', '-200px');
 
             } else if (square_center_x > center_x && square_center_y > center_y) {
-                playGif('Hobot-1');
+                //$('#elefant').css('left', '-200px');
             }
 
         });
