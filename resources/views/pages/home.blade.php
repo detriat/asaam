@@ -6,10 +6,12 @@
     <div class="work_zone bottom-box-effect">
         <div id="container">
             <div class="tracking">
-                <video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility:visible;"></video>
+                <video id="video" width="640" height="480" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility:hidden;"></video>
+                <canvas id="canvas" width="640" height="480"></canvas>
             </div>
-            <div class="gif-position"></div>
-            <div class="elefant" id="e_screen"><img src="/img/elefant/1.png" alt="" id="elefant"></div>
+            <div class="elefant" id="e_screen">
+                <img src="/img/elefant/1.png" alt="" id="elefant" style="visibility: hidden;">
+            </div>
             <div id="results"></div>
         </div>
         <div class="btn snapshot-btn" onclick="take_snapshot()">Сделать снимок</div>
@@ -55,7 +57,6 @@
 
 @section('extra-scripts')
     <script src="/libs/html2canvas/html2canvas.min.js"></script>
-    <script src="/js/webcam.min.js"></script>
     <script src="/js/main.js"></script>
     <script>
         $(document).ready(function () {
@@ -82,10 +83,6 @@
                 });
             });
 
-
-            $(window).resize(function () {
-                resizeVideo();
-            });
         });
 
     </script>

@@ -1,28 +1,29 @@
-var video = document.getElementById('video');
+var video    = document.getElementById('video'),
+    canvas   = document.getElementById('canvas'),
+    context  = canvas.getContext('2d');
+
+var center_x = $('#container').width() / 2;
+var center_y = $('#container').height() / 2;
+
+
+
 video.style.width = '640px';
 video.style.height = '480px';
 video.setAttribute('autoplay', '');
 video.setAttribute('muted', '');
 video.setAttribute('playsinline', '');
 
-var center_x = $('#container').width() / 2;
-var center_y = $('#container').height() / 2;
-
 function init() {
 
-    Webcam.attach( '#video' );
-
     //startTracking();
-
-    //startTracking();
-    var constraints = { video: true, facingMode: 'user' };
+    var constraints = { video: true, audio: false, facingMode: 'user' };
     navigator.mediaDevices.getUserMedia( constraints ).then( function( stream ) {
 
         video.srcObject = stream;
-        video.onloadedmetadata = function (e) {
+        video.onloadedmetadata = function () {
             video.play();
-            resizeVideo();
             playGif();
+            draw(this, context, 640, 480);
         };
 
     } ).catch( function( error ) {
@@ -32,6 +33,11 @@ function init() {
 
     } );
 
+}
+
+function draw(video, context, width, height) {
+    context.drawImage(video, 0, 0, width, height);
+    setTimeout(draw, 10, video, context, width, height);
 }
 
 function startTracking() {
@@ -54,6 +60,9 @@ function startTracking() {
         //$('.elefant').hide();
         event.data.forEach(function (rect) {
 
+            $('#elefant')
+                .css('left', rect.x);
+
             var square_center_x = rect.x + rect.width / 2;
             var square_center_y = rect.y + rect.height / 2;
 
@@ -69,8 +78,8 @@ function startTracking() {
                 //$('#elefant').css('right', '-200px');
 
             } else if (square_center_x > center_x && square_center_y < center_y) {
-                ////console.log('Правый верхний угол');
-                $('#elefant').css('left', '-200px');
+                //console.log('Правый верхний угол');
+                //$('#elefant').css('left', '-200px');
             } else if (square_center_x < center_x && square_center_y > center_y) {
                 //console.log('Левый нижний угол')
                // $('#elefant').css('right', '-200px');
@@ -93,25 +102,24 @@ function clearResults() {
 function take_snapshot() {
     // take snapshot and get image data
 
-    Webcam.snap(function (img) {
-        playShot();
-        $('#results')
-            .empty()
-            .append('<img class="position-model" src="'+img+'">');
+    playShot();
 
-        html2canvas(document.querySelector("#e_screen"), {
-            backgroundColor: null
-        }).then(function(canvas){
+    var img = canvas.toDataURL('image/jpeg', 1.0);
 
-            var canvas_img = canvas.toDataURL('image/png', 1.0);
-            $('#results')
-                .append('<img class="position-canvas__img" src="'+canvas_img+'">');
+    $('#results')
+        .empty()
+        .append('<img class="position-model" src="'+img+'">');
 
-            takeFinalPhoto();
-        });
+    html2canvas(document.querySelector("#e_screen"), {
+        backgroundColor: null
+    }).then(function(canvas){
+
+    var canvas_img = canvas.toDataURL('image/png', 1.0);
+    $('#results')
+        .append('<img class="position-canvas__img" src="'+canvas_img+'">');
+
+    takeFinalPhoto();
     });
-
-
 
     $('.snapshot-btn').hide();
     $('.snapshot-form').displayFlex();
@@ -140,6 +148,8 @@ function playGif() {
     var i = 1;
     var fps = 24;
 
+    img.css('visibility', 'visible');
+
     setInterval(function () {
 
         if (i < 187){
@@ -155,12 +165,3 @@ function playGif() {
 
 }
 
-
-function resizeVideo(){
-    var video = $('#video');
-    var canvas = $('#canvas');
-    var container = $('#container');
-
-    container.css('height', video.height() + 'px');
-    canvas.css('height', video.height() + 'px');
-}

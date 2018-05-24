@@ -1,9 +1,8 @@
 {
-  "name": "gulp-project",
+  "name": "ASAAM",
   "version": "1.0.0",
-  "description": "First Gulp Project",
+  "description": "ASAAM Tea App",
   "devDependencies": {
-    "browser-sync": "^2.24.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
@@ -12,7 +11,6 @@
     "gulp-cssmin": "^0.2.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-rename": "^1.2.3",
-    "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.0",
     "html2canvas": "^1.0.0-alpha.12",
     "node-bourbon": "^4.2.8",
