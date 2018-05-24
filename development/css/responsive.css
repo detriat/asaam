@@ -471,6 +471,9 @@
         right: -30%;
         transform: scale(1.5);
     }
+	.big-elefant {
+		display: none;
+	}
 
 }
 

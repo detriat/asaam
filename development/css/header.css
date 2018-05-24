@@ -10,7 +10,7 @@ html, body{
 .page-content{
     display: flex;
     flex-direction: column;
-    background: url("/img/bg.jpg") repeat-y;
+    background: url("/img/bg.jpg");
     min-height: 100%;
 }
 
