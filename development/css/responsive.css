@@ -467,10 +467,13 @@
     }
 
     .elefant img{
-        top: 150px;
-        right: 0;
+        top: 100px;
+        right: -30%;
         transform: scale(1.5);
     }
+	.big-elefant {
+		display: none;
+	}
 
 }
 

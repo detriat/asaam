@@ -221,6 +221,7 @@ a:hover{
     width: 230px;
     margin: 0 auto;
     position: relative;
+	z-index: 99;
 }
 
 .snapshot-btn:before{
