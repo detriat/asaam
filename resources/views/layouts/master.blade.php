@@ -20,6 +20,10 @@
     <!-- Header CSS (First Sections of Website: paste after release from header.min.css here) -->
     <style>
         .preload img{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
             max-width: 100%;
         }
         .preload{
@@ -29,9 +33,9 @@
             background: #ffffff;
             left: 0;
             top: 0;
-            display: flex;
+            /*display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center;*/
             z-index: 999;
         }
         #animations{
