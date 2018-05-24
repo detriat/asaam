@@ -37,7 +37,7 @@
             <div class="prize-item">
                 <div class="prize-item__info">
                     <div class="prize-item__image">
-                        <img src="/img/periodic-prize.png" alt="">
+                        <img src="/img/prize-tea.png" alt="">
                     </div>
                     <div class="prize-item__info-text">
                         <div class="prize-item__title">Переодические призы</div>
@@ -52,7 +52,7 @@
             <div class="prize-item">
                 <div class="prize-item__info">
                     <div class="prize-item__image">
-                        <img src="/img/prize-tea.png" alt="">
+                        <img src="/img/periodic-prize.png" alt="">
                     </div>
                     <div class="prize-item__info-text">
                         <div class="prize-item__title">Переодические призы</div>
