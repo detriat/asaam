@@ -260,6 +260,104 @@
 
 }
 
+@media (min-width: 560px) and (max-width: 815px) {
+	header {
+		position: relative;
+		z-index: 999;
+	}
+	header:before {
+		width: 15%;
+		height: 105%;
+	}
+	
+	.header-center {
+		position: relative;
+		z-index: 9;
+	}
+	
+	.logo {
+		margin-right: 0;
+	}
+	.logo img {
+		max-width: 100%;
+		margin-left: 65px;
+	}
+	
+	.burger {
+		position: relative;
+		z-index: 9;
+		transform: translateX(-65px);
+		width: 40px;
+	}
+	.burger span {
+		height: 5px;
+		margin-bottom: 5px;
+	}
+	
+	.menu {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+		width: 100%;
+		height: 100%;
+		padding-top: 180px;
+		background: #fff;
+		z-index: 1;
+	}
+	.menu ul {
+		display: block;
+		max-width: 320px;
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+	}
+	.menu li {
+		position: relative;
+		display: inline-block;
+		margin-bottom: 15px;
+		padding-left: 30px;
+		background: url(../img/icons/dot.png) 7.5px center no-repeat;
+		background-size: 7.5px;
+	}
+	.menu li:first-child {
+		padding-left: 0;
+		background: none;
+	}
+	.menu li:nth-child(3) {
+		background: url(../img/icons/winners.png) 7.5px center no-repeat;
+		background-size: 15px;
+	}
+	.menu li:last-child {
+		background: url(../img/icons/prize.png) 7.5px center no-repeat;
+		background-size: 15px;
+	}
+	.menu a {
+		color: #0c221f;
+	}
+	.page-content {
+		position: relative;
+	}
+	.wrapper-content:before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 235px;
+		background: url(../img/bottom-uzor-small.png) left top no-repeat;
+		background-size: 100% auto;
+	}
+	.big-elefant {
+		display: none;
+	}
+	
+	.overlay {
+		z-index: 999;
+	}
+}
+
 @media (max-width: 639px) {
 	header {
 		position: relative;
@@ -463,7 +561,7 @@
     }
     #video, canvas{
         width: 100% !important;
-        height: 300px !important;
+        /*height: 300px !important;*/
     }
 
     .elefant img{
@@ -546,5 +644,24 @@
 @media (max-height: 600px) {
     .child-page-content__text {
         max-height: initial;
+    }
+}
+
+@media (max-width: 320px) {
+    #video, canvas{
+		width: 100% !important;
+        height: 250px !important;
+    }
+}
+@media (max-width: 375px) {
+    #video, canvas{
+		width: 100% !important;
+        height: 315px !important;
+    }
+}
+@media (max-width: 414px) {
+    #video, canvas{
+		width: 100% !important;
+        height: 354px !important;
     }
 }
