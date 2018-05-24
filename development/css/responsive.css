@@ -301,7 +301,7 @@
 		display: none;
 		width: 100%;
 		height: 100%;
-		padding-top: 150px;
+		padding-top: 180px;
 		background: #fff;
 		z-index: 1;
 	}
@@ -561,7 +561,7 @@
     }
     #video, canvas{
         width: 100% !important;
-        height: 300px !important;
+        /*height: 300px !important;*/
     }
 
     .elefant img{
@@ -644,5 +644,24 @@
 @media (max-height: 600px) {
     .child-page-content__text {
         max-height: initial;
+    }
+}
+
+@media (max-width: 320px) {
+    #video, canvas{
+		width: 100% !important;
+        height: 250px !important;
+    }
+}
+@media (max-width: 375px) {
+    #video, canvas{
+		width: 100% !important;
+        height: 315px !important;
+    }
+}
+@media (max-width: 414px) {
+    #video, canvas{
+		width: 100% !important;
+        height: 354px !important;
     }
 }
