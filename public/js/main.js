@@ -241,13 +241,13 @@ function playGif() {
             f = 0;
         }
 
-        frame = $('.frame'+f).attr('src');
-        img.attr('src', frame);
+        //frame = $('.frame'+f).attr('src');
+        //img.attr('src', frame);
 
-        /*frame_rgb = $('#animations .frame'+f).attr('src');
+        frame_rgb = $('#animations .frame'+f).attr('src');
         frame_a = $('#animations_a .frame'+f).attr('src');
 
-        loadRGBA(frame_rgb, frame_a);*/
+        loadRGBA(frame_rgb, frame_a);
 
     }, 1000 / fps);
 }
