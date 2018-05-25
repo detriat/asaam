@@ -10,7 +10,7 @@
                 <canvas id="canvas" width="640" height="640"></canvas>
             </div>
             <div class="elefant" id="e_screen">
-                <img src="/img/elefant/1.png" alt="" id="elefant" style="visibility: hidden;">
+                <img src="#" alt="" id="elefant" >
             </div>
             <div id="results"></div>
         </div>
