@@ -467,7 +467,9 @@
 	#container, .work_zone, .publication-content {
 		/*max-width: 290px;*/
         max-width: calc(100% - 30px);
+		height: auto;
 		margin-top: 0;
+		margin-bottom: 0;
 		padding-top: 30px;
 	}
 	
@@ -650,18 +652,18 @@
 @media (max-width: 320px) {
     #video, canvas{
 		width: 100% !important;
-        height: 250px !important;
+        height: auto !important;
     }
 }
 @media (max-width: 375px) {
     #video, canvas{
 		width: 100% !important;
-        height: 315px !important;
+        height: auto !important;
     }
 }
 @media (max-width: 414px) {
     #video, canvas{
 		width: 100% !important;
-        height: 354px !important;
+        height: auto !important;
     }
 }
