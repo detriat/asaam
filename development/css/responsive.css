@@ -479,7 +479,7 @@
 	}
 	
 	#video, #canvas {
-		height: auto;
+		height: auto!important;
 	}
 	
 	.list-social-network {

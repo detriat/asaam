@@ -38,7 +38,7 @@
 
 #container{
     width: 640px;
-    height: 640px;
+    height: auto;
     position: relative;
     z-index: 99;
     margin: 25px auto 25px;
