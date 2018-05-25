@@ -190,6 +190,64 @@
     <img src="/img/elefant/185.png" alt="" class="frame185">
     <img src="/img/elefant/186.png" alt="" class="frame186">
     <img src="/img/elefant/187.png" alt="" class="frame187">
+    <img src="/img/elefant/188.png" alt="" class="frame188">
+    <img src="/img/elefant/189.png" alt="" class="frame189">
+    <img src="/img/elefant/190.png" alt="" class="frame190">
 
+    <img src="/img/elefant/191.png" alt="" class="frame191">
+    <img src="/img/elefant/192.png" alt="" class="frame192">
+    <img src="/img/elefant/193.png" alt="" class="frame193">
+    <img src="/img/elefant/194.png" alt="" class="frame194">
+    <img src="/img/elefant/195.png" alt="" class="frame195">
+    <img src="/img/elefant/196.png" alt="" class="frame196">
+    <img src="/img/elefant/197.png" alt="" class="frame197">
+    <img src="/img/elefant/198.png" alt="" class="frame198">
+    <img src="/img/elefant/199.png" alt="" class="frame199">
+    <img src="/img/elefant/200.png" alt="" class="frame200">
 
+    <img src="/img/elefant/201.png" alt="" class="frame201">
+    <img src="/img/elefant/202.png" alt="" class="frame202">
+    <img src="/img/elefant/203.png" alt="" class="frame203">
+    <img src="/img/elefant/204.png" alt="" class="frame204">
+    <img src="/img/elefant/205.png" alt="" class="frame205">
+    <img src="/img/elefant/206.png" alt="" class="frame206">
+    <img src="/img/elefant/207.png" alt="" class="frame207">
+    <img src="/img/elefant/208.png" alt="" class="frame208">
+    <img src="/img/elefant/209.png" alt="" class="frame209">
+
+    <img src="/img/elefant/210.png" alt="" class="frame210">
+    <img src="/img/elefant/211.png" alt="" class="frame211">
+    <img src="/img/elefant/212.png" alt="" class="frame212">
+    <img src="/img/elefant/213.png" alt="" class="frame213">
+    <img src="/img/elefant/214.png" alt="" class="frame214">
+    <img src="/img/elefant/215.png" alt="" class="frame215">
+    <img src="/img/elefant/216.png" alt="" class="frame216">
+    <img src="/img/elefant/217.png" alt="" class="frame217">
+    <img src="/img/elefant/218.png" alt="" class="frame218">
+
+    <img src="/img/elefant/219.png" alt="" class="frame219">
+    <img src="/img/elefant/220.png" alt="" class="frame220">
+    <img src="/img/elefant/221.png" alt="" class="frame221">
+    <img src="/img/elefant/222.png" alt="" class="frame221">
+    <img src="/img/elefant/223.png" alt="" class="frame223">
+    <img src="/img/elefant/224.png" alt="" class="frame224">
+    <img src="/img/elefant/225.png" alt="" class="frame225">
+    <img src="/img/elefant/226.png" alt="" class="frame226">
+    <img src="/img/elefant/227.png" alt="" class="frame227">
+
+    <img src="/img/elefant/228.png" alt="" class="frame228">
+    <img src="/img/elefant/229.png" alt="" class="frame229">
+    <img src="/img/elefant/230.png" alt="" class="frame230">
+    <img src="/img/elefant/231.png" alt="" class="frame231">
+    <img src="/img/elefant/232.png" alt="" class="frame232">
+    <img src="/img/elefant/233.png" alt="" class="frame233">
+    <img src="/img/elefant/234.png" alt="" class="frame234">
+    <img src="/img/elefant/235.png" alt="" class="frame235">
+    <img src="/img/elefant/236.png" alt="" class="frame236">
+
+    <img src="/img/elefant/237.png" alt="" class="frame237">
+    <img src="/img/elefant/238.png" alt="" class="frame238">
+    <img src="/img/elefant/239.png" alt="" class="frame239">
+    <img src="/img/elefant/240.png" alt="" class="frame240">
+    <img src="/img/elefant/241.png" alt="" class="frame241">
 </div>

@@ -8,7 +8,7 @@ var center_y = $('#container').height() / 2;
 
 
 video.style.width = '640px';
-video.style.height = '480px';
+video.style.height = '640px';
 video.setAttribute('autoplay', '');
 video.setAttribute('muted', '');
 video.setAttribute('playsinline', '');
@@ -23,7 +23,7 @@ function init() {
         video.onloadedmetadata = function () {
             video.play();
             playGif();
-            draw(this, context, 640, 480);
+            draw(this, context, 640, 640);
         };
 
     } ).catch( function( error ) {
@@ -147,12 +147,13 @@ function playGif() {
     var img = $('#elefant');
     var i = 1;
     var fps = 24;
+    var length = $('#animations img').length;
 
     img.css('visibility', 'visible');
 
     setInterval(function () {
 
-        if (i < 187){
+        if (i < length){
             i++;
         }else{
             i = 1;
