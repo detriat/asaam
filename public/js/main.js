@@ -7,8 +7,8 @@ var center_y = $('#container').height() / 2;
 
 
 /*for Iphone*/
-video.style.width = '640px';
-video.style.height = '640px';
+/*video.style.width = '640px';
+video.style.height = '640px';*/
 video.setAttribute('autoplay', '');
 video.setAttribute('muted', '');
 video.setAttribute('playsinline', '');
@@ -51,7 +51,7 @@ function startTracking() {
 
     setTimeout(function(){
         video.play();
-        resizeVideo();
+        /*resizeVideo();*/
         playGif();
     }, 1000);
 
