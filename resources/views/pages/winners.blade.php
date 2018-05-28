@@ -11,31 +11,29 @@
 
     @if (count($winners) > 0)
         <div class="child-page-content">
-			<div class="container">
-				<h1 class="title-page">{{$title}}</h1>
+            <h1 class="title-page">{{$title}}</h1>
 
-				<div class="child-page-content__text scroll-line">
-					<p>
-						Значимость этих проблем настолько очевидна, что реализация намеченных плановых заданий требуют определения и уточнения направлений прогрессивного развития. Товарищи! консультация с широким активом способствует подготовки и реализации соответствующий условий активизации.
-					</p>
-				</div>
+            <div class="child-page-content__text scroll-line">
+                <p>
+                    Значимость этих проблем настолько очевидна, что реализация намеченных плановых заданий требуют определения и уточнения направлений прогрессивного развития. Товарищи! консультация с широким активом способствует подготовки и реализации соответствующий условий активизации.
+                </p>
+            </div>
 
-			</div>
-			<div class="before-winner-carousel">
-				<div class="winners-carousel">
-					<div class="owl-carousel">
-						@foreach($winners as $winner)
-							<div>
-								<a href="{{$winner['network_profile']}}" class="owl-winner">
-									<span class="owl-winner__avatar" style="background-image: url('{{$winner['photo']}}');"></span>
-									<span class="owl-winner__name">{{$winner->getFullName()}}</span>
-									<span class="owl-winner_city">{{$winner['city']}}</span>
-								</a>
-							</div>
-						@endforeach
-					</div>
-				</div>
-			</div>
+        </div>
+        <div class="before-winner-carousel">
+            <div class="winners-carousel">
+                <div class="owl-carousel">
+                    @foreach($winners as $winner)
+                        <div>
+                            <a href="{{$winner['network_profile']}}" class="owl-winner">
+                                <span class="owl-winner__avatar" style="background-image: url('{{$winner['photo']}}');"></span>
+                                <span class="owl-winner__name">{{$winner->getFullName()}}</span>
+                                <span class="owl-winner_city">{{$winner['city']}}</span>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     @else
         <div class="child-page-content">

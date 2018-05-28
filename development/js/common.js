@@ -67,12 +67,16 @@ $(function() {
         $('.work_zone').show();
 
         if ( action === 'start-stream' ){
-            navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+            navigator.getUserMedia = navigator.getUserMedia ||
+                                 navigator.webkitGetUserMedia ||
+                                 navigator.mozGetUserMedia ||
+                                 navigator.msGetUserMedia;
 
             if (navigator.getUserMedia){
                 init();
             }else{
-                showWarningNotice('Мы не получили доступ к вашей камере!');
+                showWarningNotice('Мы не получили доступ к вашей камере! Возможно Вам следует обновить Ваш браузер новой версии.');
             }
 
         }else if ( action === 'confirm-action' ){

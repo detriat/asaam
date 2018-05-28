@@ -1,28 +1,29 @@
-var video = document.getElementById('video');
-/*video.style.width = '680px';
-video.style.height = '680px';*/
-video.setAttribute('autoplay', '');
-video.setAttribute('muted', '');
-video.setAttribute('playsinline', '');
+var video    = document.getElementById('video'),
+    canvas   = document.getElementById('canvas'),
+    context  = canvas.getContext('2d');
 
 var center_x = $('#container').width() / 2;
 var center_y = $('#container').height() / 2;
 
+
+/*for Iphone*/
+video.style.width = '640px';
+video.style.height = '640px';
+video.setAttribute('autoplay', '');
+video.setAttribute('muted', '');
+video.setAttribute('playsinline', '');
+
 function init() {
 
-    Webcam.attach( '#video' );
-
     //startTracking();
-
-    //startTracking();
-    var constraints = { video: true, facingMode: 'user' };
+    var constraints = { video: true, audio: false, facingMode: 'user' };
     navigator.mediaDevices.getUserMedia( constraints ).then( function( stream ) {
 
         video.srcObject = stream;
-        video.onloadedmetadata = function (e) {
+        video.onloadedmetadata = function () {
             video.play();
-            /*resizeVideo();*/
             playGif();
+            draw(this, context, 640, 640);
         };
 
     } ).catch( function( error ) {
@@ -32,6 +33,11 @@ function init() {
 
     } );
 
+}
+
+function draw(video, context, width, height) {
+    context.drawImage(video, 0, 0, width, height);
+    setTimeout(draw, 10, video, context, width, height);
 }
 
 function startTracking() {
@@ -45,7 +51,7 @@ function startTracking() {
 
     setTimeout(function(){
         video.play();
-        /*resizeVideo();*/
+        resizeVideo();
         playGif();
     }, 1000);
 
@@ -53,6 +59,9 @@ function startTracking() {
 
         //$('.elefant').hide();
         event.data.forEach(function (rect) {
+
+            $('#elefant')
+                .css('left', rect.x);
 
             var square_center_x = rect.x + rect.width / 2;
             var square_center_y = rect.y + rect.height / 2;
@@ -69,8 +78,8 @@ function startTracking() {
                 //$('#elefant').css('right', '-200px');
 
             } else if (square_center_x > center_x && square_center_y < center_y) {
-                ////console.log('Правый верхний угол');
-                $('#elefant').css('left', '-200px');
+                //console.log('Правый верхний угол');
+                //$('#elefant').css('left', '-200px');
             } else if (square_center_x < center_x && square_center_y > center_y) {
                 //console.log('Левый нижний угол')
                // $('#elefant').css('right', '-200px');
@@ -93,28 +102,27 @@ function clearResults() {
 function take_snapshot() {
     // take snapshot and get image data
 
-    Webcam.snap(function (img) {
-        playShot();
-        $('#results')
-            .empty()
-            .append('<img class="position-model" src="'+img+'">');
+    playShot();
+    $('.preload').displayFlex();
+    var img = canvas.toDataURL('image/jpeg', 1.0);
 
-        html2canvas(document.querySelector("#e_screen"), {
-            backgroundColor: null
-        }).then(function(canvas){
+    $('#results')
+        .empty()
+        .append('<img class="position-model" src="'+img+'">');
 
-            var canvas_img = canvas.toDataURL('image/png', 1.0);
-            $('#results')
-                .append('<img class="position-canvas__img" src="'+canvas_img+'">');
+    html2canvas(document.querySelector("#e_screen"), {
+        backgroundColor: null
+    }).then(function(canvas){
 
-            takeFinalPhoto();
-        });
+    var canvas_img = canvas.toDataURL('image/png', 1.0);
+    $('#results')
+        .append('<img class="position-canvas__img" src="'+canvas_img+'">');
+
+    takeFinalPhoto();
     });
 
-
-
     $('.snapshot-btn').hide();
-    $('.snapshot-form').show();
+    $('.snapshot-form').displayFlex();
 
 }
 
@@ -125,6 +133,8 @@ function takeFinalPhoto() {
         $('#results')
             .empty()
             .append('<img src="'+canvas_img+'">');
+
+        $('.preload').hide();
     });
 }
 
@@ -133,34 +143,114 @@ function playShot() {
     audio.play();
 }
 
+function loadRGBA(url_rgb, url_alpha){
+
+    var img_rgb = new Image(),
+        img_alpha = new Image(),
+        img_count = 0;
+
+    img_rgb.src = url_rgb;
+    img_alpha.src = url_alpha;
+
+    img_rgb.onload = function(){
+        ++img_count;
+        if(img_count === 2){
+            compileRGBA(img_rgb, img_alpha);
+        }
+    };
+
+    img_alpha.onload = function(){
+        ++img_count;
+        if(img_count === 2){
+            compileRGBA(img_rgb, img_alpha);
+        }
+    };
+}
+function compileRGBA(raw_rgb, raw_alpha){
+
+    if (!raw_rgb.width || !raw_rgb.height || !raw_alpha.width || !raw_alpha.height){
+        return;
+    }
+
+    if (raw_rgb.width !== raw_alpha.width || raw_rgb.height !== raw_alpha.height){
+        alert('Размеры RGB и прозрачности не сходятся')
+        return;
+    }
+
+    var canvas_rgb = document.createElement("canvas");
+    var canvas_alpha = document.createElement("canvas");
+    var canvas_frame = document.createElement("canvas");
+
+    var context_rgb = canvas_rgb.getContext('2d');
+    var context_alpha = canvas_alpha.getContext('2d');
+    var context_frame = canvas_frame.getContext('2d');
+
+    if (  !canvas_rgb   || !context_rgb
+        || !canvas_alpha || !context_alpha
+        || !canvas_frame || !context_frame  ){
+        alert('Та-а-а-а-а, насяльника... та-а-а-а, канва, насяльника');
+        return;
+    }
+
+    canvas_rgb.width    = raw_rgb.width;
+    canvas_rgb.height   = raw_rgb.height;
+    canvas_alpha.width  = raw_alpha.width;
+    canvas_alpha.height = raw_alpha.height;
+    canvas_frame.width  = 640;
+    canvas_frame.height = 640;
+
+    context_rgb.drawImage(raw_rgb, 0, 0);
+    context_alpha.drawImage(raw_alpha, 0, 0);
+
+    var pix_rgb = context_rgb.getImageData(0, 0, raw_rgb.width, raw_rgb.height);
+    var pix_alpha = context_alpha.getImageData(0, 0, raw_alpha.width, raw_alpha.height);
+
+    for (var i = 3, n = pix_rgb.width * pix_rgb.height * 4; i < n; i += 4){
+        pix_rgb.data[i] = pix_alpha.data[i-3];
+    }
+
+    context_rgb.putImageData(pix_rgb, 0, 0);
+
+
+    var frame = context_rgb.getImageData(0, 0, canvas_rgb.width, canvas_rgb.height);
+
+    delete pix_rgb;
+    delete pix_alpha;
+    delete context_rgb;
+    delete canvas_rgb;
+    delete context_alpha;
+    delete canvas_alpha;
+
+    context_frame.putImageData(frame, 0, 0);
+    $('#elefant').attr('src', canvas_frame.toDataURL());
+}
+
 function playGif() {
 
-    var frame;
+    var frame_rgb, frame_a, frame;
     var img = $('#elefant');
-    var i = 1;
+    var f = 0;
     var fps = 24;
+    var length = $('#animations img').length - 2;
 
     setInterval(function () {
 
-        if (i < 187){
-            i++;
+        if (f < length){
+            f++;
         }else{
-            i = 1;
+            f = 0;
         }
 
-        frame = $('.frame'+i).attr('src');
-        img.attr('src', frame);
+        //frame = $('.frame'+f).attr('src');
+        //img.attr('src', frame);
+
+        frame_rgb = $('#animations .frame'+f).attr('src');
+        frame_a = $('#animations_a .frame'+f).attr('src');
+
+        loadRGBA(frame_rgb, frame_a);
 
     }, 1000 / fps);
-
 }
 
 
-/*function resizeVideo(){
-    var video = $('#video');
-    var canvas = $('#canvas');
-    var container = $('#container');
 
-    container.css('height', video.height() + 'px');
-    canvas.css('height', video.height() + 'px');
-}*/
