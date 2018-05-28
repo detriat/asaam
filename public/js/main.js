@@ -1,16 +1,21 @@
 var video    = document.getElementById('video');
 
-var center_x = $('#container').width() / 2;
-var center_y = $('#container').height() / 2;
+var container_width = $('#container').width();
+var container_height = $('#container').height();
+var center_x = container_width / 2;
+var center_y = container_height / 2;
 
+var video_w = 640,
+    video_h = 640;
 
 /*for Iphone*/
-video.style.width = '640px';
-video.style.height = '640px';
+video.style.width = video_w+'px';
+video.style.height = video_h+'px';
 video.setAttribute('autoplay', '');
 video.setAttribute('muted', '');
 video.setAttribute('playsinline', '');
 
+//запуска приложения
 function init() {
 
     //startTracking();
@@ -32,21 +37,24 @@ function init() {
 
 }
 
+//рисование на канвасе
 function draw(video, context, width, height) {
     context.drawImage(video, 0, 0, width, height);
     setTimeout(draw, 10, video, context, width, height);
 }
 
+//возвращает url снимка текущего кадра видео
 function getImageURL() {
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
-    c.width = 640;
-    c.height = 640;
+    c.width = video_w;
+    c.height = video_h;
     ctx.drawImage(video, 0, 0, c.width, c.height);
 
     return c.toDataURL('image/jpeg', 1.0);
 }
 
+//включает трекинг лица
 function startTracking() {
     var tracker = new tracking.ObjectTracker('face');
     tracker.setInitialScale(4);
@@ -95,6 +103,7 @@ function startTracking() {
     });
 }
 
+
 function clearResults() {
     var modal = $('#confirmAction');
 
@@ -102,12 +111,13 @@ function clearResults() {
     modal.displayFlex();
 }
 
+//делает снимок
 function take_snapshot() {
 
     playShot();
+
     $('.preloader').fadeIn();
 
-    //var img = canvas.toDataURL('image/jpeg', 1.0);
     var img = getImageURL();
 
     $('#results')
@@ -123,15 +133,21 @@ function take_snapshot() {
         $('#results')
             .append('<img class="position-canvas__img" src="'+canvas_img+'">');
 
-        $('.preloader').hide();
-       // takeFinalPhoto();
+        //$('.preloader').hide();
+        takeFinalPhoto();
     });
+<<<<<<< HEAD
 
     $('.snapshot-btn').hide();
     $('.snapshot-form').show();
 
+=======
+    $('.buttons .step-1').hide();
+    $('.buttons .step-2').show();
+>>>>>>> 89fb51fe6aab198c8009a1982d2f4edd42aff0e1
 }
 
+//делает финальное изображение
 function takeFinalPhoto() {
     html2canvas(document.querySelector("#results")).then(function(canvas){
 
@@ -144,11 +160,42 @@ function takeFinalPhoto() {
     });
 }
 
+
+//запускает звук камеры
 function playShot() {
     var audio = new Audio('/media/shutter.mp3');
     audio.play();
 }
 
+//Начинает анимировать слона
+function playGif() {
+
+    var frame_rgb, frame_a, frame;
+    var img = $('#elefant');
+    var f = 0;
+    var fps = 24;
+    var length = $('#animations img').length - 2;
+
+    setInterval(function () {
+
+        if (f < length){
+            f++;
+        }else{
+            f = 0;
+        }
+
+        //frame = $('.frame'+f).attr('src');
+        //img.attr('src', frame);
+
+        frame_rgb = $('#animations .frame'+f).attr('src');
+        frame_a = $('#animations_a .frame'+f).attr('src');
+
+        loadRGBA(frame_rgb, frame_a);
+
+    }, 1000 / fps);
+}
+
+//магия
 function loadRGBA(url_rgb, url_alpha){
 
     var img_rgb = new Image(),
@@ -231,32 +278,6 @@ function compileRGBA(raw_rgb, raw_alpha){
     $('#elefant').attr('src', canvas_frame.toDataURL());
 }
 
-function playGif() {
-
-    var frame_rgb, frame_a, frame;
-    var img = $('#elefant');
-    var f = 0;
-    var fps = 24;
-    var length = $('#animations img').length - 2;
-
-    setInterval(function () {
-
-        if (f < length){
-            f++;
-        }else{
-            f = 0;
-        }
-
-        //frame = $('.frame'+f).attr('src');
-        //img.attr('src', frame);
-
-        frame_rgb = $('#animations .frame'+f).attr('src');
-        frame_a = $('#animations_a .frame'+f).attr('src');
-
-        loadRGBA(frame_rgb, frame_a);
-
-    }, 1000 / fps);
-}
 
 
 
