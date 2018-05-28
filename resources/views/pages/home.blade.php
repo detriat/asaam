@@ -6,8 +6,7 @@
     <div class="work_zone bottom-box-effect">
         <div id="container">
             <div class="tracking">
-                <video id="video" width="640" height="640" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility:hidden;"></video>
-                <canvas id="canvas" width="640" height="640"></canvas>
+                <video id="video" width="640" height="640" autoplay muted crossOrigin="anonymous" webkit-playsinline></video>
             </div>
             <div class="elefant" id="e_screen">
                 <img src="#" alt="" id="elefant" >

@@ -1,6 +1,4 @@
-var video    = document.getElementById('video'),
-    canvas   = document.getElementById('canvas'),
-    context  = canvas.getContext('2d');
+var video    = document.getElementById('video');
 
 var center_x = $('#container').width() / 2;
 var center_y = $('#container').height() / 2;
@@ -23,7 +21,6 @@ function init() {
         video.onloadedmetadata = function () {
             video.play();
             playGif();
-            draw(this, context, 640, 640);
         };
 
     } ).catch( function( error ) {
@@ -40,6 +37,16 @@ function draw(video, context, width, height) {
     setTimeout(draw, 10, video, context, width, height);
 }
 
+function getImageURL() {
+    var c = document.createElement("canvas");
+    var ctx = c.getContext("2d");
+    c.width = 640;
+    c.height = 640;
+    ctx.drawImage(video, 0, 0, c.width, c.height);
+
+    return c.toDataURL('image/jpeg', 1.0);
+}
+
 function startTracking() {
     var tracker = new tracking.ObjectTracker('face');
     tracker.setInitialScale(4);
@@ -50,18 +57,15 @@ function startTracking() {
     tracking.track('#video', tracker, {camera: true});
 
     setTimeout(function(){
-        video.play();
-        resizeVideo();
+        draw(video, context, 640, 640);
         playGif();
     }, 1000);
 
     tracker.on('track', function (event) {
 
+
         //$('.elefant').hide();
         event.data.forEach(function (rect) {
-
-            $('#elefant')
-                .css('left', rect.x);
 
             var square_center_x = rect.x + rect.width / 2;
             var square_center_y = rect.y + rect.height / 2;
@@ -75,17 +79,17 @@ function startTracking() {
                 //console.log('Время для фото');
             } else if (square_center_x < center_x && square_center_y < center_y) {
                 //console.log('Левый верхний угол');
-                //$('#elefant').css('right', '-200px');
+                $('#elefant').css('right', 0);
 
             } else if (square_center_x > center_x && square_center_y < center_y) {
                 //console.log('Правый верхний угол');
-                //$('#elefant').css('left', '-200px');
+                $('#elefant').css('left', '-200px');
             } else if (square_center_x < center_x && square_center_y > center_y) {
                 //console.log('Левый нижний угол')
-               // $('#elefant').css('right', '-200px');
+                $('#elefant').css('right', 0);
 
             } else if (square_center_x > center_x && square_center_y > center_y) {
-                //$('#elefant').css('left', '-200px');
+                $('#elefant').css('left', '-200px');
             }
 
         });
@@ -100,11 +104,12 @@ function clearResults() {
 }
 
 function take_snapshot() {
-    // take snapshot and get image data
 
     playShot();
     $('.preload').displayFlex();
-    var img = canvas.toDataURL('image/jpeg', 1.0);
+
+    //var img = canvas.toDataURL('image/jpeg', 1.0);
+    var img = getImageURL();
 
     $('#results')
         .empty()
@@ -112,13 +117,15 @@ function take_snapshot() {
 
     html2canvas(document.querySelector("#e_screen"), {
         backgroundColor: null
-    }).then(function(canvas){
+    })
+    .then(function(canvas){
 
-    var canvas_img = canvas.toDataURL('image/png', 1.0);
-    $('#results')
-        .append('<img class="position-canvas__img" src="'+canvas_img+'">');
+        var canvas_img = canvas.toDataURL('image/png', 1.0);
+        $('#results')
+            .append('<img class="position-canvas__img" src="'+canvas_img+'">');
 
-    takeFinalPhoto();
+        $('.preload').hide();
+       // takeFinalPhoto();
     });
 
     $('.snapshot-btn').hide();
