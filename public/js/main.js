@@ -57,7 +57,6 @@ function startTracking() {
     tracking.track('#video', tracker, {camera: true});
 
     setTimeout(function(){
-        draw(video, context, 640, 640);
         playGif();
     }, 1000);
 
@@ -106,7 +105,7 @@ function clearResults() {
 function take_snapshot() {
 
     playShot();
-    $('.preload').displayFlex();
+    $('.preloader').fadeIn();
 
     //var img = canvas.toDataURL('image/jpeg', 1.0);
     var img = getImageURL();
@@ -124,7 +123,7 @@ function take_snapshot() {
         $('#results')
             .append('<img class="position-canvas__img" src="'+canvas_img+'">');
 
-        $('.preload').hide();
+        $('.preloader').hide();
        // takeFinalPhoto();
     });
 
@@ -141,7 +140,7 @@ function takeFinalPhoto() {
             .empty()
             .append('<img src="'+canvas_img+'">');
 
-        $('.preload').hide();
+        $('.preloader').hide();
     });
 }
 
