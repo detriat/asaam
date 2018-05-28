@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Animation;
 use App\User;
 use App\Model\UserImages;
 use Illuminate\Http\Request;

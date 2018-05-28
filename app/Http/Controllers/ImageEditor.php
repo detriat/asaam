@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Animation;
 use App\Model\UserImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -42,5 +43,22 @@ class ImageEditor extends Controller
         }
 
         return response()->json($json);
+    }
+    
+    public function createBase64Image(Request $request){
+
+        $json = [];
+        $json['url'] = $request->input('url');
+        $json['id'] = Animation::create([
+            'url' => $request->input('url')
+        ]);
+
+        return response()->json($json);
+    }
+
+    public function getImages(){
+        $animations = Animation::all();
+
+        return response()->json($animations);
     }
 }

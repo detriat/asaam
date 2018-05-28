@@ -559,11 +559,7 @@ a:hover{
     display: none;
     position: absolute;
 	top: 0;
-    -webkit-transition: 0.25s all linear;
-    transition: 0.25s all linear;
     z-index: 99;
-    border: 2px solid red;
-    background: none;
 }
 
 .tracking{
@@ -1035,18 +1031,6 @@ button:focus{
     background-size: cover;
 }
 
-.social-fb{
-    background-position: 0 0;
-}
-
-.social-vk{
-    background-position: -35px 0;
-}
-
-.social-in{
-    background-position: -70px 0;
-}
-
 .share-image img{
     max-height: 100%;
     max-width: 100%;
@@ -1197,8 +1181,8 @@ button:focus{
 }
 
 #elefant{
-    -webkit-transition: all 0.25s linear;
-    transition: all 0.25s linear;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
 }
 
 #video{

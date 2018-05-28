@@ -28,11 +28,11 @@ $(function() {
             }
         });
 
-        $('.share-socials li').click(function(e){
+        $('.share-socials a').click(function(e){
             e.preventDefault();
             e.stopPropagation();
 
-            var str = $(this).find('i').attr('class');
+            var str = $(this).attr('class');
             str = str.split(' ');
 
             switch (str[1]){

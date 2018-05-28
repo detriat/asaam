@@ -20,6 +20,8 @@ Route::get('/publication/{id}', 'HomeController@publication')->where('id', '[0-9
 
 /*images*/
 Route::post('/images/uploadBase64Image', 'ImageEditor@uploadBase64Image');
+Route::post('/createImage', 'ImageEditor@createBase64Image');
+Route::post('/getImages', 'ImageEditor@getImages');
 
 /*Socialite*/
 Route::get('/socialite/{provider}', 'Auth\LoginController@socialite');
