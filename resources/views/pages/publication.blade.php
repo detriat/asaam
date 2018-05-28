@@ -23,6 +23,7 @@
     @section('extra-scripts')
         <script>
             $(document).ready(function () {
+				$("body").attr("class", "index-2");
                 setTimeout(function(){
                     var network = '{{session('network')}}';
 
@@ -47,29 +48,27 @@
 
     @include('auth.social')
     @include('auth.share_images')
-
-    <div class="publication-content bottom-box-effect">
-        <div class="dsi-title">Отличный снимок!</div>
-        <div class="publication-description">
-            Теперь выберите способ публикации вашего селфи
-        </div>
-
-        <div class="share-block">
-            <div class="share-image">
-                <a href="{{action('HomeController@index')}}/{{ $image }}" class="instagram-download-link" {{( session('network') == 'instagram' ) ? 'download' : ''}}>
-                    <img src="/{{ $image }}" alt="share-photo">
-                </a>
-            </div>
-            <div class="share-socials">
-                
-                <ul class="list-social-network">
-                    <li><i class="social-icon social-fb"></i><a href="#">Разместить на facebook </a></li>
-                    <li><i class="social-icon social-vk"></i><a href="#">Разместить на vk.com</a></li>
-                    <li><i class="social-icon social-in"></i><a href="#">Скачать для размещения в инстаграм</a></li>
-                </ul>
-                <a href="{{action('HomeController@index')}}" class="btn btn-back_prev">Вернуться назад</a>
-            </div>
-        </div>
-    </div>
+		<div class="publication publication-content">
+			<div class="container">
+				<h1>отличный снимок!</h1>
+				<p>Теперь выберите способ публикации вашего селфи</p>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="image share-image">
+							<a href="{{action('HomeController@index')}}/{{ $image }}" class="instagram-download-link" {{( session('network') == 'instagram' ) ? 'download' : ''}}>
+								<img src="/{{ $image }}" alt="" />
+							</a>
+						</div>
+					</div>
+					<div class="col-md-5 col-md-offset-1">
+						<a href="" title="" class="social fb">Разместить на facebook</a>
+						<a href="" title="" class="social vk">Разместить на vk.com</a>
+						<a href="" title="" class="social in">Скачать для размещения в instagram<span>Чтобы разметстить фото в инстаграм, скачайте фото на устройство. Не забудьте разместить хэштег #попробуйсам </span></a>
+						<a href="{{action('HomeController@index')}}" title="" class="btn btn-1">Вернуться назад</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 @endsection
 
