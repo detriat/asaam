@@ -1,6 +1,6 @@
 var video = document.getElementById('video');
-video.style.width = '640px';
-video.style.height = '480px';
+/*video.style.width = '680px';
+video.style.height = '680px';*/
 video.setAttribute('autoplay', '');
 video.setAttribute('muted', '');
 video.setAttribute('playsinline', '');
@@ -21,7 +21,7 @@ function init() {
         video.srcObject = stream;
         video.onloadedmetadata = function (e) {
             video.play();
-            resizeVideo();
+            /*resizeVideo();*/
             playGif();
         };
 
@@ -45,7 +45,7 @@ function startTracking() {
 
     setTimeout(function(){
         video.play();
-        resizeVideo();
+        /*resizeVideo();*/
         playGif();
     }, 1000);
 
@@ -114,7 +114,7 @@ function take_snapshot() {
 
 
     $('.snapshot-btn').hide();
-    $('.snapshot-form').displayFlex();
+    $('.snapshot-form').show();
 
 }
 
@@ -156,11 +156,11 @@ function playGif() {
 }
 
 
-function resizeVideo(){
+/*function resizeVideo(){
     var video = $('#video');
     var canvas = $('#canvas');
     var container = $('#container');
 
     container.css('height', video.height() + 'px');
     canvas.css('height', video.height() + 'px');
-}
+}*/

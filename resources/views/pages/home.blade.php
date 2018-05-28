@@ -3,52 +3,71 @@
 @section('title', $title)
 
 @section('content')
-    <div class="work_zone bottom-box-effect">
-        <div id="container">
-            <div class="tracking">
-                <video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility:visible;"></video>
-            </div>
-            <div class="gif-position"></div>
-            <div class="elefant" id="e_screen"><img src="/img/elefant/1.png" alt="" id="elefant"></div>
-            <div id="results"></div>
-        </div>
-        <div class="btn snapshot-btn" onclick="take_snapshot()">Сделать снимок</div>
-        <div class="snapshot-form">
-            <div class="btn continue-stream" onclick="clearResults()">Сделать ещё раз</div>
-            <a href="#" class="btn" id="uploadBase64Image">Далее</a>
-        </div>
-    </div>
+		<div class="main work_zone">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 pull-xs-none">
+						<div id="container">
+							<div class="tracking">
+								<video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline style="visibility: visible; object-fit: cover;"></video>
+							</div>
+							<!--div class="gif-position"></div-->
+							<div class="elefant" id="e_screen"><img src="/img/elefant/1.png" alt="" id="elefant"></div>
+							<div id="results"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="buttons">
+			<div class="step-1">
+				<button class="btn btn-1 snapshot-btn" onclick="take_snapshot()">Сделать снимок</button>
+				<button class="btn btn-2 snapshot-btn">Что еще умеет слон?</button>
+			</div>
+			<div class="step-2 snapshot-form">
+				<button class="btn btn-1 continue-stream" onclick="clearResults()">Сделать ещё раз</button>
+				<a href="#" class="btn btn-2" id="uploadBase64Image">Далее</a>
+			</div>
+		</div>
+		<div class="pr pr-left"></div>
+		<div class="pr pr-right"></div>
 
     @include('sequences.elefant')
 @endsection
 
 @section('overlay')
     <div class="overlay" id="startStream">
-        <div class="window-confirm">
-            <div class="confirm-title">Подключить web-камеру устройства?</div>
-            <div class="confirm-btns">
-                <a href="#startStream" class="btn confirm-btn confirmation-confirm" data-action="start-stream">Да</a>
-                <a href="#startStream" class="btn confirm-btn cancel-confirm">Нет</a>
-            </div>
+        <div class="window">
+			<div class="window-confirm">
+				<div class="confirm-title">Подключить web-камеру устройства?</div>
+				<div class="buttons confirm-btns">
+					<a href="#startStream" class="btn btn-1 confirm-btn confirmation-confirm" data-action="start-stream">Да</a>
+					<a href="#startStream" class="btn btn-1 confirm-btn cancel-confirm">Нет</a>
+				</div>
+			</div>
         </div>
     </div>
 
     <div class="overlay" id="warningNotice">
-        <div class="window-confirm">
-            <div class="confirm-title"></div>
-            <div class="confirm-btns">
-                <a href="#warningNotice" class="btn confirm-btn confirmation-confirm" data-action="read-notice">Хорошо</a>
-            </div>
+        <div class="window">
+			<div class="window-confirm">
+				<div class="confirm-title"></div>
+				<div class="buttons confirm-btns">
+					<a href="#warningNotice" class="btn btn-1 confirm-btn confirmation-confirm" data-action="read-notice">Хорошо</a>
+				</div>
+			</div>
         </div>
     </div>
 
     <div class="overlay" id="confirmAction">
-        <div class="window-confirm">
-            <div class="confirm-title">Вы уверены?</div>
-            <div class="confirm-btns">
-                <a href="#confirmAction" class="btn confirm-btn confirmation-confirm" data-action="confirm-action">Да</a>
-                <a href="#confirmAction" class="btn confirm-btn cancel-confirm">Нет</a>
-            </div>
+        <div class="window">
+			<div class="window-confirm">
+				<div class="confirm-title">Вы уверены?</div>
+				<div class="buttons confirm-btns">
+					<a href="#confirmAction" class="btn btn-1 confirm-btn confirmation-confirm" data-action="confirm-action">Да</a>
+					<a href="#confirmAction" class="btn btn-1 confirm-btn cancel-confirm">Нет</a>
+				</div>
+			</div>
         </div>
     </div>
 @endsection
@@ -83,9 +102,9 @@
             });
 
 
-            $(window).resize(function () {
+            /*$(window).resize(function () {
                 resizeVideo();
-            });
+            });*/
         });
 
     </script>
