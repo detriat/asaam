@@ -67,6 +67,9 @@
 	.help {
     	z-index: 99;
     }
+	.btn {
+		font-size: 1.125rem;
+	}
 }
 @media screen and (max-width: 900px) {
 	.hd {
@@ -116,11 +119,6 @@
 	.publication .btn {
 		display: block;
 		margin: 15px auto;
-	}
-	
-	.elefant img {
-		bottom: -100px;
-		right: -100px;
 	}
 	
 	.child-page-content {

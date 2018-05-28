@@ -161,6 +161,10 @@ section {
 }
 #container {
 	background: #cfdae1;
+	width: 640px;
+	max-width: 100%;
+	height: 640px;
+	margin: auto;
 }
 
 .buttons {
@@ -1127,11 +1131,13 @@ button:focus{
 .elefant img{
     position: relative;
     width: 100%;
-    -webkit-transform: scale(2);
+	max-width: 100%;
+	max-height: 100%;
+    /*-webkit-transform: scale(2);
     -ms-transform: scale(2);
     transform: scale(2);
     bottom: -260px;
-    right: -200px;
+    right: -200px;*/
 }
 
 

@@ -128,7 +128,7 @@ function take_snapshot() {
     });
 
     $('.snapshot-btn').hide();
-    $('.snapshot-form').displayFlex();
+    $('.snapshot-form').show();
 
 }
 
