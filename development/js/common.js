@@ -81,13 +81,13 @@ $(function() {
 
         }else if ( action === 'confirm-action' ){
             $('#results').empty();
-            $('.snapshot-form').hide();
-            $('.snapshot-btn').show();
+            $('.buttons .step-2').hide();
+            $('.buttons .step-1').show();
         }
     }
 
 	function pageComplete() {
-		$('.preload').hide();
+		$('.preloader').hide();
 		$('.page-content').fadeIn();
 
 		$('#startStream').displayFlex();
