@@ -154,8 +154,15 @@ function take_snapshot() {
         //$('.preloader').hide();
         takeFinalPhoto();
     });
+<<<<<<< HEAD
+
+    $('.snapshot-btn').hide();
+    $('.snapshot-form').show();
+
+=======
     $('.buttons .step-1').hide();
     $('.buttons .step-2').show();
+>>>>>>> 89fb51fe6aab198c8009a1982d2f4edd42aff0e1
 }
 
 //делает финальное изображение
