@@ -18,9 +18,6 @@
 	}
 }
 @media screen and (max-width: 1000px) {
-	html {
-		font-size: 12px;
-	}
 	.hd {
 		width: 100%;
 		background-size: 200px!important;
@@ -67,8 +64,16 @@
 	.help {
     	z-index: 99;
     }
+	
 	.btn {
 		font-size: 1.125rem;
+	}
+	.window-confirm {
+		max-width: 320px;
+		margin: auto;
+	}
+	.confirm-btns .btn {
+		width: 100px;
 	}
 }
 @media screen and (max-width: 900px) {
@@ -126,6 +131,12 @@
 	}
 	.child-page-content .container {
 		padding: 30px;
+	}
+
+	.child-page-content__text{
+		overflow-x: visible;
+		overflow-y: visible;
+		max-height: 9999px;
 	}
 
 	.prize-item {
