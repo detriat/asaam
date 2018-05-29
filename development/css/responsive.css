@@ -125,15 +125,8 @@
 		display: block;
 		margin: 15px auto;
 	}
-	
-<<<<<<< HEAD
-=======
-	/*.elefant img {
-		bottom: -100px;
-		right: -100px;
-	}*/
-	
->>>>>>> 89fb51fe6aab198c8009a1982d2f4edd42aff0e1
+
+
 	.child-page-content {
 		z-index: 99;
 	}

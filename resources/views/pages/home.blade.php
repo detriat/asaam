@@ -34,7 +34,7 @@
     <div class="pr pr-left"></div>
     <div class="pr pr-right"></div>
 
-    {{--@include('sequences.elefant')--}}
+    @include('sequences.elefant')
 @endsection
 
 @section('overlay')
@@ -79,13 +79,15 @@
     <script src="/js/main.js"></script>
     <script>
         $(document).ready(function () {
-            $.post('/getImages', {}, function(animations){
+
+            /*$.post('/getImages', {}, function(animations){
 
                 playAnimation(animations);
 
             }).error(function(xhr){
                 console.log(xhr);
-            });
+            });*/
+
             $('#uploadBase64Image').click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();

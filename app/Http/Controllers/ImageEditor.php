@@ -57,7 +57,7 @@ class ImageEditor extends Controller
     }
 
     public function getImages(){
-        $animations = Animation::all();
+        $animations = Animation::all()->take(25);
 
         return response()->json($animations);
     }

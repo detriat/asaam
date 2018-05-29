@@ -25,9 +25,8 @@ video.setAttribute('playsinline', '');
 
 //запуска приложения
 function init() {
-
-    /*startTracking();*/
-    var constraints = { video: true, audio: false, facingMode: 'user' };
+    startTracking();
+    /*var constraints = { video: true, audio: false, facingMode: 'user' };
     navigator.mediaDevices.getUserMedia( constraints ).then( function( stream ) {
 
         video.srcObject = stream;
@@ -40,8 +39,7 @@ function init() {
         console.error( 'Unable to access the camera/webcam.', error );
         showWarningNotice('Мы не получили доступ к вашей камере!');
 
-    } );
-
+    } );*/
 }
 
 //рисование на канвасе
@@ -64,17 +62,34 @@ function getImageURL() {
 //включает трекинг лица
 function startTracking() {
 
+    playAnimation(buffer);
+
     var tracker = new tracking.ObjectTracker('face');
     tracker.setInitialScale(4);
     tracker.setStepSize(2);
-    tracker.setEdgesDensity(0.15);
-    tracker.setScaleFactor(1.1);
+    tracker.setEdgesDensity(0.1);
 
-    tracking.track('#video', tracker, {camera: true});
+    tracker.on('track', function(event){
+        console.log('Я запустился');
+        if (event.data.length > 0){
 
+            var rect = event.data[0];
 
+            setTimeout(function(){
+                trackerTask.stop();
+                console.log('Трекинг остановлен');
+            }, 100);
+        }
+    });
 
-    tracker.on('track', function (event) {
+    var trackerTask = tracking.track('#video', tracker);
+
+    setInterval(function () {
+        //alert('Запускаю трекинг');
+        trackerTask.run();
+    }, 5000);
+
+    /*tracker.on('track', function (event) {
 
         event.data.forEach(function (rect) {
 
@@ -83,11 +98,11 @@ function startTracking() {
 
             scaleAndPositionElefant(rect.width);
 
-            /*var lucky_square = (square_center_x > center_x - 50)
+            /!*var lucky_square = (square_center_x > center_x - 50)
                 && (square_center_x < center_x + 50)
                 && (square_center_y > center_y - 50)
-                && (square_center_y < center_y + 50);*/
-            /*if (lucky_square) {
+                && (square_center_y < center_y + 50);*!/
+            /!*if (lucky_square) {
                 //console.log('Время для фото');
             } else if (square_center_x < center_x && square_center_y < center_y) {
                 //console.log('Левый верхний угол');
@@ -102,10 +117,10 @@ function startTracking() {
 
             } else if (square_center_x > center_x && square_center_y > center_y) {
                 $('#elefant').css('right', '200px');
-            }*/
+            }*!/
 
         });
-    });
+    });*/
 }
 
 
@@ -212,8 +227,8 @@ function compileRGBA(raw_rgb, raw_alpha){
     canvas_rgb.height   = raw_rgb.height;
     canvas_alpha.width  = raw_alpha.width;
     canvas_alpha.height = raw_alpha.height;
-    canvas_frame.width  = 640;
-    canvas_frame.height = 640;
+    canvas_frame.width  = video_w;
+    canvas_frame.height = video_h;
 
     context_rgb.drawImage(raw_rgb, 0, 0);
     context_alpha.drawImage(raw_alpha, 0, 0);
@@ -274,12 +289,12 @@ function playAnimation(animations){
 
     setInterval(function () {
         if (i < animations.length){
-            img.attr('src', animations[i]['url']);
+            img.attr('src', animations[i]);
             i++
         }else{
             i = 0;
         }
-    }, 1000/24);
+    }, 1000 / fps);
 
 }
 
@@ -290,17 +305,19 @@ function createAnimationBuffer() {
     var img = $('#elefant');
     var f = 0;
     var fps = 24;
-    var length = $('#animations img').length - 2;
+    var length = $('#animations img').length;
 
     var frameId = setInterval(function () {
 
         if (f < length){
+            console.log(f);
             frame_rgb = $('#animations .frame'+f).attr('src');
             frame_a = $('#animations_a .frame'+f).attr('src');
             loadRGBA(frame_rgb, frame_a);
             f++;
         }else{
-            playAnimation();
+            $('.preloader').hide();
+            $('.page-content').fadeIn();
             clearInterval(frameId);
         }
     }, 1000 / fps);
