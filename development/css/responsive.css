@@ -1,3 +1,8 @@
+@media screen and (max-width: 1600px) {
+	#container {
+		height: 560px;
+	}
+}
 @media screen and (max-width: 1200px) {
 	html {
 		font-size: 16px;
@@ -75,6 +80,10 @@
 	.confirm-btns .btn {
 		width: 100px;
 	}
+	
+	#container {
+		height: 390px;
+	}
 }
 @media screen and (max-width: 900px) {
 	.hd {
@@ -126,7 +135,6 @@
 		margin: 15px auto;
 	}
 
-
 	.child-page-content {
 		z-index: 99;
 	}
@@ -152,4 +160,25 @@
         height: auto;
         min-height: 100vh;
     }
+	#container {
+		height: 350px;
+	}
+	.window-confirm {
+		max-width: 300px;
+	}
+}
+@media screen and (max-width: 600px) {
+	#container {
+		height: 320px;
+	}
+}
+@media screen and (max-width: 500px) {
+	#container {
+		height: 290px;
+	}
+}
+@media screen and (max-width: 400px) {
+	#container {
+		height: 260px;
+	}
 }

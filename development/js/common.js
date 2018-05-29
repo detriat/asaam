@@ -100,24 +100,20 @@ function showWarningNotice(message) {
 $(window).load(function() {
 	var bh = $("body").height();
 	var hh = $(".header img").height();
-	var ch = $("#container").width();
 	
 	$(".header li a, .burger").css({height: hh, lineHeight: hh+"px"});
 	if ($(window).width() > 800) {
 		$("section").css({height: bh});
 	}
-	$("#container").css({height: ch});
 });
 $(window).resize(function() {
 	var bh = $("body").height();
 	var hh = $(".header img").height();
-	var ch = $("#container").width();
 	
 	$("header li a, .burger").css({height: hh, lineHeight: hh+"px"});
 	if ($(window).width() > 800) {
 		$("section").css({height: bh});
 	}
-	$("#container").css({height: ch});
 });
 
 $(".help .x").click(function() {

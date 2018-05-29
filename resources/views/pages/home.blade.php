@@ -7,7 +7,7 @@
     <div class="main work_zone">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 pull-xs-none">
+                <div class="col-md-9 pull-xs-none">
                     <div id="container">
                         <div class="tracking">
                             <video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline></video>
