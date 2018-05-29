@@ -5,8 +5,8 @@ var container_height = $('#container').height();
 var center_x = container_width / 2;
 var center_y = container_height / 2;
 
-var video_w = $('#container').width(),
-    video_h = $('#container').height();
+var video_w = 640,
+    video_h = 640;
 
 var distance = {
     small: 300,
@@ -82,7 +82,7 @@ function startTracking() {
         }
     });
 
-    var trackerTask = tracking.track('#video', tracker);
+    var trackerTask = tracking.track('#video', tracker, {camera: true});
 
     setInterval(function () {
         //alert('Запускаю трекинг');
@@ -227,8 +227,8 @@ function compileRGBA(raw_rgb, raw_alpha){
     canvas_rgb.height   = raw_rgb.height;
     canvas_alpha.width  = raw_alpha.width;
     canvas_alpha.height = raw_alpha.height;
-    canvas_frame.width  = video_w;
-    canvas_frame.height = video_h;
+    canvas_frame.width  = 640;
+    canvas_frame.height = 640;
 
     context_rgb.drawImage(raw_rgb, 0, 0);
     context_alpha.drawImage(raw_alpha, 0, 0);
