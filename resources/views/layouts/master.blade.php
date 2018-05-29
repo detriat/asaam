@@ -19,7 +19,7 @@
 
     <!-- Header CSS (First Sections of Website: paste after release from header.min.css here) -->
 	<style>
-		@media screen and (min-width: 1000px) and (max-width: 1500px) {
+		@media screen and (min-width: 1000px) and (max-width: 1600px) {
 			html {
 				zoom: .67;
 			}

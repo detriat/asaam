@@ -161,9 +161,9 @@ section {
 }
 #container {
 	background: #cfdae1;
-	width: 640px;
-	max-width: 100%;
+	width: 800px;
 	height: 640px;
+	max-width: 100%;
 	margin: auto;
 }
 
@@ -333,6 +333,7 @@ section {
     /*position: absolute;*/
     width: 100%;
     height: 100%;
+	max-width: 100%;
 }
 
 .work_zone{
@@ -386,6 +387,7 @@ section {
 }*/
 
 #results img{
+	width: 100%;
     max-width: 100%;
 }
 
@@ -1113,7 +1115,6 @@ button:focus{
 .elefant img{
     position: absolute;
     width: 100%;
-<<<<<<< HEAD
 	max-width: 100%;
 	max-height: 100%;
     /*-webkit-transform: scale(2);
@@ -1121,10 +1122,7 @@ button:focus{
     transform: scale(2);
     bottom: -260px;
     right: -200px;*/
-=======
-	max-height: 100%;
 	bottom: 0;
->>>>>>> 89fb51fe6aab198c8009a1982d2f4edd42aff0e1
 }
 
 

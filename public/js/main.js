@@ -5,8 +5,8 @@ var container_height = $('#container').height();
 var center_x = container_width / 2;
 var center_y = container_height / 2;
 
-var video_w = 640,
-    video_h = 640;
+var video_w = $('#container').width(),
+    video_h = $('#container').height();
 
 var distance = {
     small: 300,

@@ -1,3 +1,8 @@
+@media screen and (max-width: 1600px) {
+	#container {
+		height: 560px;
+	}
+}
 @media screen and (max-width: 1200px) {
 	html {
 		font-size: 16px;
@@ -18,9 +23,6 @@
 	}
 }
 @media screen and (max-width: 1000px) {
-	html {
-		font-size: 12px;
-	}
 	.hd {
 		width: 100%;
 		background-size: 200px!important;
@@ -69,6 +71,21 @@
 	.help {
     	z-index: 99;
     }
+	
+	.btn {
+		font-size: 1.125rem;
+	}
+	.window-confirm {
+		max-width: 320px;
+		margin: auto;
+	}
+	.confirm-btns .btn {
+		width: 100px;
+	}
+	
+	#container {
+		height: 390px;
+	}
 }
 @media screen and (max-width: 900px) {
 	.hd {
@@ -120,16 +137,17 @@
 		margin: 15px auto;
 	}
 	
-	/*.elefant img {
-		bottom: -100px;
-		right: -100px;
-	}*/
-	
 	.child-page-content {
 		z-index: 99;
 	}
 	.child-page-content .container {
 		padding: 30px;
+	}
+
+	.child-page-content__text{
+		overflow-x: visible;
+		overflow-y: visible;
+		max-height: 9999px;
 	}
 
 	.prize-item {
@@ -144,4 +162,22 @@
         height: auto;
         min-height: 100vh;
     }
+	#container {
+		height: 350px;
+	}
+}
+@media screen and (max-width: 600px) {
+	#container {
+		height: 320px;
+	}
+}
+@media screen and (max-width: 500px) {
+	#container {
+		height: 290px;
+	}
+}
+@media screen and (max-width: 400px) {
+	#container {
+		height: 260px;
+	}
 }

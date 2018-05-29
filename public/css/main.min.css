@@ -123,11 +123,11 @@ section {
 	background: url(../img/hd-left.png) left top no-repeat;
 }
 .index-1 .hd-right {
-	background: url(../img/hd-right.png) right top no-repeat;
+	background: url(../img/hd-right.png) 95% top no-repeat;
 }
 .index-2 .hd-right {
 	top: 180px;
-	background: url(../img/slogan.png) right top no-repeat;
+	background: url(../img/slogan.png) 95% top no-repeat;
 }
 
 .burger, .menu {
@@ -170,6 +170,10 @@ section {
 }
 #container {
 	background: #cfdae1;
+	width: 800px;
+	height: 640px;
+	max-width: 100%;
+	margin: auto;
 }
 
 .buttons {
@@ -351,6 +355,7 @@ section {
     /*position: absolute;*/
     width: 100%;
     height: 100%;
+	max-width: 100%;
 }
 
 .work_zone{
@@ -406,6 +411,7 @@ section {
 }*/
 
 #results img{
+	width: 100%;
     max-width: 100%;
 }
 
@@ -624,8 +630,9 @@ a:hover{
 }
 
 .child-page-content p{
-    margin-bottom: 40px;
-    line-height: 30px;
+    margin-bottom: 30px;
+    line-height: 1;
+	text-align: justify;
 }
 
 .title-page{
@@ -1136,7 +1143,13 @@ button:focus{
 .elefant img{
     position: absolute;
     width: 100%;
+	max-width: 100%;
 	max-height: 100%;
+    /*-webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+    bottom: -260px;
+    right: -200px;*/
 	bottom: 0;
 }
 
