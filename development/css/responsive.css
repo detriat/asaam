@@ -163,6 +163,9 @@
 	#container {
 		height: 350px;
 	}
+	.window-confirm {
+		max-width: 300px;
+	}
 }
 @media screen and (max-width: 600px) {
 	#container {
