@@ -1164,7 +1164,40 @@ button:focus{
 }
 
 #video{
-    transform: scale(-1,1);
+    /*transform: scale(-1,1);*/
 	object-fit: cover;
 }
 
+.game-objects{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	/*transform: scale(-1,1);*/
+}
+
+.swag{
+	position: absolute;
+	top: 100%;
+	transition: all 0.25s linear;
+}
+
+.wheel {
+	animation-name: spin;
+	animation-duration: 600ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	z-index: 100;
+}
+
+@keyframes spin {
+	from {
+		transform:rotate(0deg);
+	}
+	to {
+		transform:rotate(360deg);
+	}
+}

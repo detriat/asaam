@@ -15,6 +15,9 @@
                         <div class="elefant" id="e_screen">
                             <img src="#" alt="" id="elefant">
                         </div>
+                        <div class="game-objects">
+                            <img src="/img/pixel.png" alt="swag" class="swag">
+                        </div>
                         <div id="results"></div>
                     </div>
                 </div>
@@ -79,15 +82,6 @@
     <script src="/js/main.js"></script>
     <script>
         $(document).ready(function () {
-
-            /*$.post('/getImages', {}, function(animations){
-
-                playAnimation(animations);
-
-            }).error(function(xhr){
-                console.log(xhr);
-            });*/
-
             $('#uploadBase64Image').click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();
