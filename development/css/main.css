@@ -159,12 +159,43 @@ section {
 .main {
 	background: url(../img/container.png) center no-repeat;
 }
+
 #container {
+    position: relative;
+    z-index: 99;
+    overflow: hidden;
 	background: #cfdae1;
 	width: 800px;
-	height: 640px;
+	height: 607px;
 	max-width: 100%;
 	margin: auto;
+}
+#video, #canvas {
+    width: 100%;
+    height: 100%;
+	min-width: 100%;
+    min-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+}
+#container canvas{
+    max-width: 100%!important;
+    max-height: 100%!important;
+    position: relative;
+    z-index: 9;
+    transform: scale(-1, 1);
+}
+#results{
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#results img{
+	width: 100%;
+    max-width: 100%;
 }
 
 .buttons {
@@ -329,69 +360,10 @@ section {
     overflow: hidden;
 }
 
-#video, #canvas {
-    /*position: absolute;*/
-    width: 100%;
-    height: 100%;
-	min-width: 100%;
-    min-height: 100%;
-	max-width: 100%;
-	max-height: 100%;
-}
-
-.work_zone{
-    /*max-width: 640px;
-    width: 100%;
-    height: 640px;
-    background: #292929;
-    margin: 30px auto 125px;*/
-}
-
-
-.container{
-    /*width: 1170px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;*/
-}
-
-#results{
-    position: absolute;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#container{
-    position: relative;
-    z-index: 99;
-    overflow: hidden;
-}
-
 .elefant-child{
     position: absolute;
     top: 0;
     left: 0;
-}
-
-#container canvas{
-    max-width: 100%!important;
-    max-height: 100% !important;
-    position: relative;
-    z-index: 9;
-    transform: scale(-1, 1);
-}
-
-/*#container canvas + div{
-    display: none !important;
-}*/
-
-#results img{
-	width: 100%;
-    max-width: 100%;
 }
 
 
@@ -450,15 +422,6 @@ section {
 }
 
 .confirm-btns{
-    /*max-width: 325px;
-    margin: 25px auto 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;*/
 	margin-top: 25px;
 }
 .confirm-btns .btn {
@@ -504,12 +467,10 @@ a:hover{
     z-index: 1;
 }
 
-.bottom-box-effect
-{
+.bottom-box-effect{
     position: relative;
 }
-.bottom-box-effect:before, .bottom-box-effect:after
-{
+.bottom-box-effect:before, .bottom-box-effect:after{
     z-index: -1;
     position: absolute;
     content: "";
@@ -525,8 +486,7 @@ a:hover{
     -ms-transform: rotate(-3deg);
     transform: rotate(-3deg);
 }
-.bottom-box-effect:after
-{
+.bottom-box-effect:after{
     -webkit-transform: rotate(3deg);
     -ms-transform: rotate(3deg);
     transform: rotate(3deg);
@@ -582,8 +542,6 @@ a:hover{
 
 .child-page-content{
 	position: relative;
-    /*max-width: 800px;
-    padding: 130px 0 0;*/
     height: 100%;
     color: #0c221f;
     font-size: 16px;
@@ -615,7 +573,6 @@ a:hover{
     display: table;
     margin: 0 auto 45px;
     line-height: 1;
-    /*font-size: 24px;*/
     font-family: 'Tahoma';
 }
 
@@ -796,11 +753,6 @@ button:focus{
     opacity: 1;
 }
 
-.prizes-content{
-    /*margin: 100px auto;
-    max-width: 970px;*/
-}
-
 .prize-items{
     max-height: 500px;
     overflow-y: auto;
@@ -887,7 +839,6 @@ button:focus{
 .grand-prize .grand-image{
     width: 225px;
     height: 225px;
-    /*background: url("../img/grand-prize-bg.png") no-repeat;*/
     position: relative;
     margin: 0 auto;
 }
@@ -921,14 +872,6 @@ button:focus{
 	padding-top: 65px;
 }
 
-.publication-content{
-    /*background: #292929;
-    position: relative;
-    max-width: 970px;
-    margin: 40px auto 0;
-    padding: 60px 0;*/
-}
-
 .dsi-title{
     font-family: 'DSIzmir';
     font-size: 48px;
@@ -950,12 +893,6 @@ button:focus{
     display: -ms-flexbox;
     display: flex;
     margin-top: 60px;
-}
-
-.share-image{
-    /*position: relative;
-    left: -90px;
-    height: 360px;*/
 }
 
 .btn-back_prev{
@@ -1105,9 +1042,6 @@ button:focus{
     text-align: center;
 }
 
-
-
-
 .elefant{
     display: block;
     width: 100%;
@@ -1120,7 +1054,6 @@ button:focus{
 	bottom: 0;
 	right: 0;
 }
-
 
 .terms p {
 	margin-bottom: 15px;
@@ -1154,7 +1087,6 @@ button:focus{
 .position-canvas__img{
     position: absolute;
     bottom: 0;
-    /*right: -200px;*/
 }
 
 #animations{
