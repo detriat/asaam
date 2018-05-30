@@ -1127,8 +1127,9 @@ button:focus{
 }
 
 #video{
-    /*transform: scale(-1,1);*/
-	object-fit: cover;
+    -webkit-transform: scale(-1,1);
+    -ms-transform: scale(-1,1);
+    transform: scale(-1,1);
 }
 
 .game-objects{
@@ -1138,7 +1139,9 @@ button:focus{
 	width: 100%;
 	height: 100%;
 	z-index: 99;
-	/*transform: scale(-1,1);*/
+	-webkit-transform: scale(-1,1);
+	-ms-transform: scale(-1,1);
+	transform: scale(-1,1);
 }
 
 .swag{
@@ -1180,5 +1183,71 @@ button:focus{
 	to {
 		-webkit-transform:rotate(360deg);
 		transform:rotate(360deg);
+	}
+}
+
+.rotate {
+	-webkit-animation-name: rotate;
+	animation-name: rotate;
+	-webkit-animation-duration: 3000ms;
+	animation-duration: 3000ms;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+	z-index: 100;
+}
+
+@-webkit-keyframes rotate {
+	0% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg);
+	}
+
+	25%{
+		-webkit-transform:rotate(-1deg);
+		transform:rotate(-1deg);
+	}
+
+	50% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg);
+	}
+
+	75% {
+		-webkit-transform:rotate(1deg);
+		transform:rotate(1deg);
+	}
+
+	100% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg);
+	}
+}
+
+@keyframes rotate {
+	0% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg);
+	}
+
+	25%{
+		-webkit-transform:rotate(-1deg);
+		transform:rotate(-1deg);
+	}
+
+	50% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg);
+	}
+
+	75% {
+		-webkit-transform:rotate(1deg);
+		transform:rotate(1deg);
+	}
+
+	100% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg);
 	}
 }

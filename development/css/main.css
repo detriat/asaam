@@ -1098,8 +1098,7 @@ button:focus{
 }
 
 #video{
-    /*transform: scale(-1,1);*/
-	object-fit: cover;
+    transform: scale(-1,1);
 }
 
 .game-objects{
@@ -1109,7 +1108,7 @@ button:focus{
 	width: 100%;
 	height: 100%;
 	z-index: 99;
-	/*transform: scale(-1,1);*/
+	transform: scale(-1,1);
 }
 
 .swag{
@@ -1133,5 +1132,35 @@ button:focus{
 	}
 	to {
 		transform:rotate(360deg);
+	}
+}
+
+.rotate {
+	animation-name: rotate;
+	animation-duration: 3000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	z-index: 100;
+}
+
+@keyframes rotate {
+	0% {
+		transform:rotate(0deg);
+	}
+
+	25%{
+		transform:rotate(-1deg);
+	}
+
+	50% {
+		transform:rotate(0deg);
+	}
+
+	75% {
+		transform:rotate(1deg);
+	}
+
+	100% {
+		transform:rotate(0deg);
 	}
 }
