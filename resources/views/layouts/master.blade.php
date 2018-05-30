@@ -30,7 +30,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: #1c552d url(img/bg.png);
+			background: #1c552d url(/img/bg.png);
 			background-size: cover;
 			z-index: 99999;
 		}

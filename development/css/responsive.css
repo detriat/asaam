@@ -1,4 +1,4 @@
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1300px) {
 	#container {
 		height: 560px;
 	}
@@ -20,6 +20,9 @@
 	}
 	.main {
 		background-size: 55%!important;
+	}
+	#container {
+		height: 514px;
 	}
 }
 @media screen and (max-width: 1000px) {
@@ -80,9 +83,8 @@
 	.confirm-btns .btn {
 		width: 100px;
 	}
-	
 	#container {
-		height: 390px;
+		height: 389px;
 	}
 }
 @media screen and (max-width: 900px) {
@@ -95,12 +97,10 @@
 	}
 	.nav-mobile li {
 		margin: 35px 0;
-	}
-	
+	}	
 	section {
 		height: auto;
-	}
-	
+	}	
 	.buttons .btn {
 		margin-bottom: 15px;
 	}
@@ -111,8 +111,7 @@
 		width: 100%;
 		height: 25%;
 		background-position-y: bottom!important;
-	}
-	
+	}	
 	.index-2 .hd-right {
 	    top: 70px;
         background-size: 170px!important;
@@ -134,20 +133,17 @@
 		display: block;
 		margin: 15px auto;
 	}
-
 	.child-page-content {
 		z-index: 99;
 	}
 	.child-page-content .container {
 		padding: 30px;
 	}
-
 	.child-page-content__text{
 		overflow-x: visible;
 		overflow-y: visible;
 		max-height: 9999px;
 	}
-
 	.prize-item {
 		text-align: center;
 	}
@@ -161,7 +157,7 @@
         min-height: 100vh;
     }
 	#container {
-		height: 350px;
+		height: 417px;
 	}
 	.window-confirm {
 		max-width: 300px;
@@ -169,16 +165,21 @@
 }
 @media screen and (max-width: 600px) {
 	#container {
-		height: 320px;
+		height: 410px;
 	}
 }
 @media screen and (max-width: 500px) {
 	#container {
-		height: 290px;
+		height: 289px;
 	}
 }
 @media screen and (max-width: 400px) {
 	#container {
-		height: 260px;
+		height: 264px;
+	}
+}
+@media screen and (max-width: 350px) {
+	#container {
+		height: 222px;
 	}
 }
