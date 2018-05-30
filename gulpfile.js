@@ -17,9 +17,7 @@ gulp.task('styles', function () {
 
 gulp.task('libs-scripts', function() {
     return gulp.src([
-        './development/libs/jquery/jquery-1.11.2.min.js',
-        './development/libs/tracking/build/tracking.js',
-        './development/libs/tracking/build/data/face.js'
+        './development/libs/jquery/jquery-1.11.2.min.js'
     ])
         .pipe(concat('libs.js'))
         .pipe(uglify())
@@ -29,7 +27,7 @@ gulp.task('libs-scripts', function() {
 
 gulp.task('common-scripts', function () {
 	return gulp.src('./development/js/common.js')
-        .pipe(uglify())
+        /*.pipe(uglify())*/
         .pipe(rename({suffix: '.min', prefix : ''}))
         .pipe(gulp.dest('./public/js/'));
 });

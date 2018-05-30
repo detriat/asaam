@@ -27,19 +27,19 @@ let trackerTask;
 let buffer = [];
 
 /*for Iphone*/
-const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+/*const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
 if (iOS) {
     $video[0].style.width = video_w + 'px';
     $video[0].style.height = video_h + 'px';
-    /*$video.setAttribute('autoplay', '');
+    $video[0].setAttribute('autoplay', '');
      $video[0].setAttribute('muted', '');
-     $video[0].setAttribute('playsinline', '');*/
-}
+     $video[0].setAttribute('playsinline', '');
+}*/
 
 
 function init() {
-    const constraints = {
+    /*const constraints = {
         video: true,
         audio: false,
         facingMode: 'user'
@@ -52,7 +52,9 @@ function init() {
         .catch(error => {
             console.error('Unable to access the camera/webcam.', error);
             showWarningNotice('Мы не получили доступ к вашей камере!');
-        });
+        });*/
+    startTracking();
+    playAnimation()
 }
 
 //возвращает url снимка текущего кадра видео
@@ -76,8 +78,9 @@ function startTracking() {
     const $swag = $('.swag');
     let rect;
 
-    tracker.on('track', (event) => {
+    tracking.track('#video', tracker, {camera: true});
 
+    tracker.on('track', (event) => {
         if (event.data.length) {
 
             rect = event.data[0];
@@ -90,15 +93,7 @@ function startTracking() {
             });
 
         }
-
-        /*setTimeout(() => {
-            trackerTask.stop();
-            playAnimation();
-        }, 5000);*/
-
     });
-
-    trackerTask = tracking.track('#video', tracker);
 }
 
 function playAnimation() {
@@ -109,17 +104,6 @@ function playAnimation() {
         if (count_frame < buffer.length) {
             $elefant.attr('src', buffer[count_frame]);
             count_frame++;
-
-            if (count_frame == 95) {
-                clearInterval(count_frameId);
-                $elefant.addClass('rotate');
-
-                if (!trackerTask) {
-                    startTracking();
-                } else {
-                    trackerTask.run();
-                }
-            }
 
         } else {
             count_frame = 0;
@@ -150,17 +134,17 @@ function take_snapshot() {
     html2canvas($e_screen, {
         backgroundColor: null
     })
-        .then(function (canvas) {
+    .then(function (canvas) {
 
-            let canvas_img = canvas.toDataURL('image/png', 1.0);
-            $results
-                .append('<img class="position-canvas__img" src="' + canvas_img + '">');
+        let canvas_img = canvas.toDataURL('image/png', 1.0);
+        $results
+            .append('<img class="position-canvas__img" src="' + canvas_img + '">');
 
-            takeFinalPhoto();
-            $step1.hide();
-            $step2.show();
-            $preloader.hide();
-        });
+        takeFinalPhoto();
+        $step1.hide();
+        $step2.show();
+        $preloader.hide();
+    });
 }
 
 //делает финальное изображение

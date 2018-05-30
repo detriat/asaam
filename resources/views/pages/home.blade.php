@@ -10,7 +10,8 @@
                 <div class="col-md-9 pull-xs-none">
                     <div id="container">
                         <div class="tracking">
-                            <video id="video" width="800" height="600" preload autoplay loop muted></video>
+                            <video id="video" width="320" height="240" preload autoplay loop muted></video>
+                            <canvas id="canvas" width="320" height="240"></canvas>
                         </div>
                         <div class="elefant" id="e_screen">
                             <img src="#" alt="" id="elefant">
@@ -81,7 +82,10 @@
 @endsection
 
 @section('extra-scripts')
-    <script src="/libs/html2canvas/html2canvas.min.js"></script>
+    {{--<script src="/libs/html2canvas/html2canvas.min.js"></script>--}}
+    <script src="/libs/tracking/tracking-min.js"></script>
+    <script src="/libs/tracking/face-min.js"></script>
+    <script src="/libs/stats.min.js"></script>
     <script src="/js/main.js"></script>
     <script>
         $(document).ready(function () {
@@ -89,9 +93,9 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                var $this = $(this);
-                var href = $this.attr('href');
-                var base64Image = $('#results').find('img').attr('src');
+                const $this = $(this);
+                const href = $this.attr('href');
+                const base64Image = $('#results').find('img').attr('src');
 
                 $.post('{{action('ImageEditor@uploadBase64Image')}}', {
                     base64Image: base64Image

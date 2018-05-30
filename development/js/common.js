@@ -3,7 +3,6 @@ const hh = $(".header img").height();
 
 $(window).load(function () {
     pageComplete();
-
     createAnimationBuffer();
 });
 
