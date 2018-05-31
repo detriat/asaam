@@ -1,10 +1,19 @@
 const bh = $("body").height();
 const hh = $(".header img").height();
 
-$(window).load(function () {
-    pageComplete();
-    createAnimationBuffer();
-});
+if ( typeof createAnimationBuffer != 'undefined'){
+    $(window).load(() => {
+        pageComplete();
+        createAnimationBuffer();
+    });
+}else{
+    $(window).ready(() => {
+
+        pageComplete();
+        $('.preloader').hide();
+        $('.page-content').fadeIn();
+    });
+}
 
 $(document).ready(function(){
     $(".help .x").click(function () {
@@ -98,6 +107,7 @@ function confirmationConfirm(e) {
 }
 
 function pageComplete() {
+
     /*$('.preloader').hide();
     $('.page-content').fadeIn();*/
 

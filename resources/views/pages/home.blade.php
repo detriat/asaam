@@ -10,14 +10,14 @@
                 <div class="col-md-9 pull-xs-none">
                     <div id="container">
                         <div class="tracking">
-                            <video id="video" width="320" height="240" preload autoplay loop muted></video>
-                            <canvas id="canvas" width="320" height="240"></canvas>
+                            <video id="video" width="320" height="240" autoplay controls playsinline></video>
+                            <canvas id="canvas" width="640" height="480"></canvas>
                         </div>
                         <div class="elefant" id="e_screen">
-                            <img src="#" alt="" id="elefant">
-                        </div>
-                        <div class="game-objects">
-                            <img src="/img/pixel.png" alt="swag" class="swag">
+                            <img src="#" alt="" id="elefant" class="rotate">
+                            <div class="game-objects">
+                                <img src="/img/pixel.png" alt="swag" class="swag">
+                            </div>
                         </div>
                         <div id="results"></div>
                     </div>
@@ -82,10 +82,9 @@
 @endsection
 
 @section('extra-scripts')
-    {{--<script src="/libs/html2canvas/html2canvas.min.js"></script>--}}
+    <script src="/libs/html2canvas/html2canvas.min.js"></script>
     <script src="/libs/tracking/tracking-min.js"></script>
     <script src="/libs/tracking/face-min.js"></script>
-    <script src="/libs/stats.min.js"></script>
     <script src="/js/main.js"></script>
     <script>
         $(document).ready(function () {

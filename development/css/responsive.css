@@ -157,10 +157,15 @@
         min-height: 100vh;
     }
 	#container {
-		height: 417px;
+		width: 320px !important;
+		height: 240px !important;
 	}
 	.window-confirm {
 		max-width: 300px;
+	}
+	.game-objects{
+		width: 320px;
+		height: 240px;
 	}
 }
 @media screen and (max-width: 600px) {

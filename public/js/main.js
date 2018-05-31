@@ -11,8 +11,21 @@ const $e_screen = $("#e_screen")[0];
 const $step1 = $('.buttons .step-1');
 const $step2 = $('.buttons .step-2');
 
-let video_w = 640;
-let video_h = 640;
+const $canvas = $('#canvas');
+const $context = $canvas[0].getContext('2d');
+
+let x = 2; //множитель для трекинга
+
+let video_w = 320;
+let video_h = 240;
+
+if ($(window).width() <= 768){
+    $canvas.attr({
+        width: video_w,
+        height: video_h
+    });
+    x = 1;
+}
 
 const distance = {
     small: 300,
@@ -27,39 +40,42 @@ let trackerTask;
 let buffer = [];
 
 /*for Iphone*/
-/*const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
-if (iOS) {
-    $video[0].style.width = video_w + 'px';
-    $video[0].style.height = video_h + 'px';
-    $video[0].setAttribute('autoplay', '');
-     $video[0].setAttribute('muted', '');
-     $video[0].setAttribute('playsinline', '');
-}*/
+$video.attr({
+    width: video_w,
+    height: video_h,
+    autoplay: true,
+    muted: true,
+    preload: true,
+    controls: true
+});
 
 
 function init() {
-    /*const constraints = {
+    const constraints = {
         video: true,
         audio: false,
         facingMode: 'user'
     };
 
-    $video.on('loadedmetadata', () => playAnimation());
+    $video.on('loadedmetadata', () => {
+        drawVideoToCanvas();
+        playAnimation();
+    });
 
     navigator.mediaDevices.getUserMedia(constraints)
         .then(stream => $video[0].srcObject = stream)
         .catch(error => {
             console.error('Unable to access the camera/webcam.', error);
             showWarningNotice('Мы не получили доступ к вашей камере!');
-        });*/
-    startTracking();
-    playAnimation()
+        });
 }
 
 //возвращает url снимка текущего кадра видео
 const c = document.createElement("canvas");
 const ctx = c.getContext("2d");
+
 function getImageURL() {
     c.width = video_w;
     c.height = video_h;
@@ -70,6 +86,7 @@ function getImageURL() {
 
 //включает трекинг лица
 function startTracking() {
+
     const tracker = new tracking.ObjectTracker('face');
     tracker.setInitialScale(4);
     tracker.setStepSize(2);
@@ -78,7 +95,7 @@ function startTracking() {
     const $swag = $('.swag');
     let rect;
 
-    tracking.track('#video', tracker, {camera: true});
+    trackerTask = tracking.track('#video', tracker);
 
     tracker.on('track', (event) => {
         if (event.data.length) {
@@ -86,20 +103,23 @@ function startTracking() {
             rect = event.data[0];
 
             $swag.css({
-                top: rect.y - 20 + 'px',
-                left: rect.x + 'px',
-                width: rect.width + 'px',
-                height: rect.height + 'px'
+                top: rect.y * x - 20 * x + 'px',
+                left: rect.x * x + 'px',
+                width: rect.width * x + 'px',
+                height: rect.height * x + 'px'
             });
 
         }
     });
+
+    /*setTimeout(() => {
+     trackerTask.stop();
+     playAnimation();
+     }, 5000);*/
+
 }
 
 function playAnimation() {
-
-    $elefant.removeClass('rotate');
-
     count_frameId = setInterval(() => {
         if (count_frame < buffer.length) {
             $elefant.attr('src', buffer[count_frame]);
@@ -110,6 +130,27 @@ function playAnimation() {
         }
     }, 1000 / fps);
 
+    setTimeout(() => {
+        clearInterval(count_frameId);
+        console.log(count_frame);
+        $elefant.addClass('rotate');
+        if (trackerTask){
+            trackerTask.run();
+        }else{
+            startTracking();
+        }
+    }, 5000);
+}
+
+function draw(video, context, width, height) {
+    context.clearRect(0, 0, width, height);
+    context.drawImage(video, 0, 0, width, height);
+}
+
+function drawVideoToCanvas() {
+    setInterval(() => {
+        draw($video[0], $context, $canvas.width(), $canvas.height());
+    }, 0);
 }
 
 function clearResults() {
@@ -134,17 +175,17 @@ function take_snapshot() {
     html2canvas($e_screen, {
         backgroundColor: null
     })
-    .then(function (canvas) {
+        .then(function (canvas) {
 
-        let canvas_img = canvas.toDataURL('image/png', 1.0);
-        $results
-            .append('<img class="position-canvas__img" src="' + canvas_img + '">');
+            let canvas_img = canvas.toDataURL('image/png', 1.0);
+            $results
+                .append('<img class="position-canvas__img" src="' + canvas_img + '">');
 
-        takeFinalPhoto();
-        $step1.hide();
-        $step2.show();
-        $preloader.hide();
-    });
+            takeFinalPhoto();
+            $step1.hide();
+            $step2.show();
+            $preloader.hide();
+        });
 }
 
 //делает финальное изображение
@@ -175,12 +216,12 @@ const context_rgb = canvas_rgb.getContext('2d');
 const context_alpha = canvas_alpha.getContext('2d');
 const context_frame = canvas_frame.getContext('2d');
 
-canvas_rgb.width = 640;
-canvas_rgb.height = 640;
-canvas_alpha.width = 640;
-canvas_alpha.height = 640;
-canvas_frame.width = 640;
-canvas_frame.height = 640;
+canvas_rgb.width = 600;
+canvas_rgb.height = 600;
+canvas_alpha.width = 600;
+canvas_alpha.height = 600;
+canvas_frame.width = 600;
+canvas_frame.height = 600;
 
 function compileRGBA(raw_rgb, raw_alpha) {
 
@@ -250,17 +291,4 @@ function createAnimationBuffer() {
         }
     }, 1000 / fps);
 }
-
-/*function scaleAndPositionElefant(size){
- let scale = 1;
-
- //Учитываем +- 5% от нормального расстояния.
- // Если больше или меньше 5 то делаем scale
- if (size < distance.normal * 95 / 100 || size > distance.normal * 105 / 100) {
- scale = (size * 100 / 250).toFixed(0);
- scale /= 100;
- }
-
- $elefant.css('transform', 'scale('+scale+')');
- };*/
 
