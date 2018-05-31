@@ -5,6 +5,7 @@
 @section('content')
     <div class="child-page-content">
 		<div class="container">
+			<h2 class="slogan">Делай селфи - получай призы!</h2>
 			<h1 class="title-page">{{$title}}</h1>
 
 			<div class="child-page-content__text scroll-line terms">
@@ -46,49 +47,45 @@
 				<div class="responsive-table">
 					<table>	
 						<tr>
-							<th style="width: 7%;">Кол-во</th>
-							<th style="width: 30%;">Призы</th>
+							<th style="width: 20%;">Этапы</th>
 							<th style="width: 10%;">Дата</th>
 							<th style="width: 30%;">Кол-во на розыгрыш</th>
-							<th style="width: 13%;">Кол-во победителей</th>
-							<th style="width: 25%;">Условие</th>
+							<th style="width: 10%;">Кол-во победителей</th>
+							<th style="width: 30%;">Условие</th>
 						</tr>
 						<tr>
-							<td>1</td>
-							<td>1 место - IPhone X, 1 шт.</td>
+							<td>Приз 1</td>
 							<td>13 июля</td>
-							<td>1 айфон</td>	<td>1</td>	<td>более 40 лайков</td>
+							<td>IPhone X x 1</td>
+							<td>1</td>
+							<td>более 40 лайков</td>
 						</tr>
 						<tr>
-							<td>1</td>
-							<td>2 место - 100 000 тг., 1 шт.</td>
+							<td>Приз 2</td>
 							<td>6 июля</td>
-							<td>10 зонтов, 10 год запас, 100 тыс</td>
-							<td>21</td>
+							<td>100 000 тг. x 1</td>
+							<td>1</td>
 							<td>более 30 лайков</td>
 						</tr>
 						<tr>
-							<td>30</td>
-							<td>3 место - Годовой запас чая, 30 шт.</td>
+							<td>Приз 3</td>
 							<td>29 июня</td>
-							<td>15 штук чая, 20 зонтов, 20 годовой запас</td>
-							<td>55</td>
+							<td>Годовой запас чая x 30</td>
+							<td>30</td>
 							<td>более 20 лайков</td>
 						</tr>
 						<tr>
-							<td>50</td>
-							<td>Утешительные призы - зонтики (50 призов),</td>
+							<td>Приз 4</td>
 							<td>22 июня</td>
-							<td>10 штук чая, 20 зонтов</td>
-							<td>30</td>
+							<td>Брэндированый зонт x 50</td>
+							<td>50</td>
 							<td>более 10ти лайков</td>
 						</tr>
 						<tr>
-							<td>45</td>
-							<td>подарочные наборы чая Ассам (45 штук)</td>
+							<td>Приз 5</td>
 							<td>15 июня</td>
-							<td>20 штук чая</td>
-							<td>20</td>
+							<td>Подарочный набор чая Ассам x 45</td>
+							<td>45</td>
 							<td>более 5 ти лайков</td>
 						</tr>
 					</table>
