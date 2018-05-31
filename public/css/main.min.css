@@ -1120,7 +1120,7 @@ button:focus{
 }
 .title {
 	position: absolute;
-	top: 50px;
+	top: 65px;
 	left: 0;
 	opacity: 0;
 	z-index: -1;
