@@ -1,4 +1,4 @@
-onst bh = $("body").height();
+const bh = $("body").height();
 const hh = $(".header img").height();
 
 $(window).load(function () {
