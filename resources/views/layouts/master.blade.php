@@ -119,28 +119,7 @@
 		<div class="ft"></div>
 	</section>
 
-	<!--[if lt IE 9]>
-	<script src="/development/libs/html5shiv/es5-shim.min.js"></script>
-	<script src="/development/libs/html5shiv/html5shiv.min.js"></script>
-	<script src="/development/libs/html5shiv/html5shiv-printshiv.min.js"></script>
-	<script src="/development/libs/respond/respond.min.js"></script>
-	<![endif]-->
-	<script src="/js/libs.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			$.ajaxSetup({
-				headers: {
-					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-				}
-			});
-		});
-	</script>
 
-	@hasSection ('extra-scripts')
-		@yield('extra-scripts')
-	@endif
-
-	<script src="/js/common.min.js"></script>
 	@if ($errors->any())
 		<div class="alert alert-danger" style="position:fixed;top:30px;right:30px;z-index:99999;">
 			<ul>
@@ -162,4 +141,28 @@
 
 	@yield('overlay')
 </body>
+
+<!--[if lt IE 9]>
+<script src="/development/libs/html5shiv/es5-shim.min.js"></script>
+<script src="/development/libs/html5shiv/html5shiv.min.js"></script>
+<script src="/development/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="/development/libs/respond/respond.min.js"></script>
+<![endif]-->
+<script src="/js/libs.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+</script>
+
+@hasSection ('extra-scripts')
+	@yield('extra-scripts')
+@endif
+
+<script src="/js/common.min.js"></script>
+
 </html>

@@ -10,7 +10,8 @@
                 <div class="col-md-9 pull-xs-none">
                     <div id="container">
                         <div class="tracking">
-                            <video id="video" autoplay muted crossOrigin="anonymous" webkit-playsinline></video>
+                            <video id="video" width="320" height="240" preload autoplay loop muted></video>
+                            <canvas id="canvas" width="320" height="240"></canvas>
                         </div>
                         <div class="elefant" id="e_screen">
                             <img src="#" alt="" id="elefant">
@@ -43,42 +44,48 @@
 @section('overlay')
     <div class="overlay" id="startStream">
         <div class="window">
-			<div class="window-confirm">
-				<div class="confirm-title">Подключить web-камеру устройства?</div>
-				<div class="buttons confirm-btns">
-					<a href="#startStream" class="btn btn-1 confirm-btn confirmation-confirm" data-action="start-stream">Да</a>
-					<a href="#startStream" class="btn btn-1 confirm-btn cancel-confirm">Нет</a>
-				</div>
-			</div>
+            <div class="window-confirm">
+                <div class="confirm-title">Подключить web-камеру устройства?</div>
+                <div class="buttons confirm-btns">
+                    <a href="#startStream" class="btn btn-1 confirm-btn confirmation-confirm"
+                       data-action="start-stream">Да</a>
+                    <a href="#startStream" class="btn btn-1 confirm-btn cancel-confirm">Нет</a>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="overlay" id="warningNotice">
         <div class="window">
-			<div class="window-confirm">
-				<div class="confirm-title"></div>
-				<div class="buttons confirm-btns">
-					<a href="#warningNotice" class="btn btn-1 confirm-btn confirmation-confirm" data-action="read-notice">Хорошо</a>
-				</div>
-			</div>
+            <div class="window-confirm">
+                <div class="confirm-title"></div>
+                <div class="buttons confirm-btns">
+                    <a href="#warningNotice" class="btn btn-1 confirm-btn confirmation-confirm"
+                       data-action="read-notice">Хорошо</a>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="overlay" id="confirmAction">
         <div class="window">
-			<div class="window-confirm">
-				<div class="confirm-title">Вы уверены?</div>
-				<div class="buttons confirm-btns">
-					<a href="#confirmAction" class="btn btn-1 confirm-btn confirmation-confirm" data-action="confirm-action">Да</a>
-					<a href="#confirmAction" class="btn btn-1 confirm-btn cancel-confirm">Нет</a>
-				</div>
-			</div>
+            <div class="window-confirm">
+                <div class="confirm-title">Вы уверены?</div>
+                <div class="buttons confirm-btns">
+                    <a href="#confirmAction" class="btn btn-1 confirm-btn confirmation-confirm"
+                       data-action="confirm-action">Да</a>
+                    <a href="#confirmAction" class="btn btn-1 confirm-btn cancel-confirm">Нет</a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
 
 @section('extra-scripts')
-    <script src="/libs/html2canvas/html2canvas.min.js"></script>
+    {{--<script src="/libs/html2canvas/html2canvas.min.js"></script>--}}
+    <script src="/libs/tracking/tracking-min.js"></script>
+    <script src="/libs/tracking/face-min.js"></script>
+    <script src="/libs/stats.min.js"></script>
     <script src="/js/main.js"></script>
     <script>
         $(document).ready(function () {
@@ -86,19 +93,19 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                var $this = $(this);
-                var href  = $this.attr('href');
-                var base64Image = $('#results').find('img').attr('src');
+                const $this = $(this);
+                const href = $this.attr('href');
+                const base64Image = $('#results').find('img').attr('src');
 
                 $.post('{{action('ImageEditor@uploadBase64Image')}}', {
                     base64Image: base64Image
                 }, function (res) {
 
-                    if (res['redirect']){
+                    if (res['redirect']) {
                         window.location = res['redirect'];
                     }
 
-                    if (res['error']){
+                    if (res['error']) {
                         showWarningNotice(res['error']);
                     }
 
