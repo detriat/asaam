@@ -59,6 +59,7 @@ function init() {
         facingMode: 'user'
     };
 
+
     $video.on('loadedmetadata', () => {
         drawVideoToCanvas();
         playAnimation();

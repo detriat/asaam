@@ -12,7 +12,7 @@ if ( typeof createAnimationBuffer != 'undefined'){
         pageComplete();
         $('.preloader').hide();
         $('.page-content').fadeIn();
-    });
+    }); 
 }
 
 $(document).ready(function(){
@@ -126,4 +126,3 @@ function showWarningNotice(message) {
     $('#warningNotice').displayFlex();
 
 } 
-

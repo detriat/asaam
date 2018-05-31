@@ -559,8 +559,8 @@ a:hover{
     font-size: 16px;
     font-family: 'Tahoma';
     font-weight: 400;
-    margin: 0 auto;
-	z-index: 999;
+    margin: 50px auto;
+	z-index: 99;
 }
 .child-page-content .container{
     padding: 65px;
@@ -1094,6 +1094,42 @@ button:focus{
 }
 .terms ul ul {
     list-style-type: square;
+}
+
+.slogan {
+	margin: 1rem 0;
+	text-align: center;
+}
+
+.nav-1 li:first-child {
+	position: relative;
+}
+.title {
+	position: absolute;
+	top: 65px;
+	left: 0;
+	opacity: 0;
+	z-index: -1;
+	width: 320px;
+	padding: 15px 30px;
+	background: #fff;
+	color: #000;
+	-webkit-transition: all .12s ease-in;
+	transition: all .12s ease-in;
+}
+.title ol {
+    display: inline-block;
+	width: 100%;
+    margin: 15px 0;
+    padding-left: 20px;
+}
+.title i {
+    display: inline-block;
+	width: 100%;
+}
+.nav-1 li:first-child:hover .title {
+	opacity: 1;
+	z-index: 1;
 }
 
 .position-canvas__img{

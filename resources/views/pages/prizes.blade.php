@@ -17,8 +17,8 @@
 								</div>
 							</div>
 							<div class="prize-item__info-text">
-								<div class="prize-item__title">Главный приз</div>
-								<div class="prize-item__category">Iphone X, 1 шт</div>
+								<div class="prize-item__title">Приз №1</div>
+								<div class="prize-item__category">Iphone X - 1 шт.</div>
 							</div>
 						</div>
 						<div class="prize-item__description"></div>
@@ -30,8 +30,8 @@
 								<img src="/img/prize-money.png" alt="">
 							</div>
 							<div class="prize-item__info-text">
-								<div class="prize-item__title">Приз в 100 000 тенге</div>
-								<div class="prize-item__category">Денежный приз</div>
+								<div class="prize-item__title">Приз №2</div>
+								<div class="prize-item__category">100 000 тенге - 1 шт.</div>
 							</div>
 						</div>
 						<div class="prize-item__description"></div>
@@ -42,8 +42,8 @@
 								<img src="/img/prize-tea.png" alt="">
 							</div>
 							<div class="prize-item__info-text">
-								<div class="prize-item__title">Переодические призы</div>
-								<div class="prize-item__category">Годовой запас чая АССАМ, 30 шт</div>
+								<div class="prize-item__title">Приз №3</div>
+								<div class="prize-item__category">Годовой запас чая АССАМ - 30 шт</div>
 							</div>
 						</div>
 						<div class="prize-item__description">
@@ -57,8 +57,8 @@
 								<img src="/img/periodic-prize.png" alt="">
 							</div>
 							<div class="prize-item__info-text">
-								<div class="prize-item__title">Переодические призы</div>
-								<div class="prize-item__category">Подарочные наборы чая</div>
+								<div class="prize-item__title">Приз №4</div>
+								<div class="prize-item__category">Подарочные наборы чая - 45 шт.</div>
 							</div>
 						</div>
 						<div class="prize-item__description"></div>
@@ -69,8 +69,8 @@
 								<img src="/img/umbrella-prize.png" alt="">
 							</div>
 							<div class="prize-item__info-text">
-								<div class="prize-item__title">Утешительные призы</div>
-								<div class="prize-item__category">Брендированный зонт АСААМ - 50шт.</div>
+								<div class="prize-item__title">Приз №5</div>
+								<div class="prize-item__category">Брендированный зонт АСААМ - 50 шт.</div>
 							</div>
 						</div>
 						<div class="prize-item__description"></div>
