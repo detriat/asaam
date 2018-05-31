@@ -350,7 +350,7 @@ function init() {
         facingMode: 'user'
     };
 
-    $video.on('loadedmetadata', () => /*playAnimation(buffer)*/ startTracking());
+    $video.on('loadedmetadata', () => playAnimation(buffer) /*startTracking()*/);
 
     navigator.mediaDevices.getUserMedia(constraints)
         .then(stream => $video[0].srcObject = stream)
