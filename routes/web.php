@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/second', 'HomeController@second');
 Route::get('/terms-of-action', 'HomeController@termsOfAction');
 Route::get('/user-agreement', 'HomeController@userAgreement');
 Route::get('/winners', 'HomeController@winners');

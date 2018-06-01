@@ -12,7 +12,7 @@ if ( typeof createAnimationBuffer != 'undefined'){
         pageComplete();
         $('.preloader').hide();
         $('.page-content').fadeIn();
-    }); 
+    });
 }
 
 $(document).ready(function(){
@@ -38,9 +38,9 @@ $(document).ready(function(){
         confirmationConfirm($(this));
     });
 
-    $('.share-socials a').click(function (e) {
+    $('.social').on('click', function(e){
+
         e.preventDefault();
-        e.stopPropagation();
 
         let str = $(this).attr('class');
         str = str.split(' ');

@@ -61,9 +61,9 @@
 						</div>
 					</div>
 					<div class="col-md-5 col-md-offset-1 share-socials">
-						<a href="#" title="" class="social social-fb fb">Разместить на facebook</a>
-						<a href="#" title="" class="social social-vk vk">Разместить на vk.com</a>
-						<a href="#" title="" class="social social-in in">Скачать для размещения в instagram<span>Чтобы разметстить фото в инстаграм, скачайте фото на устройство. Не забудьте разместить хэштег #попробуйсам </span></a>
+						<a href="#" title="Разместить на facebook" class="social social-fb fb">Разместить на facebook</a>
+						<a href="#" title="Разместить на vk.com" class="social social-vk vk">Разместить на vk.com</a>
+						<a href="#" title="Скачать для размещения в instagram" class="social social-in in">Скачать для размещения в instagram<span>Чтобы разметстить фото в инстаграм, скачайте фото на устройство. Не забудьте разместить хэштег #попробуйсам </span></a>
 						<a href="{{action('HomeController@index')}}" title="" class="btn btn-1">Вернуться назад</a>
 					</div>
 				</div>

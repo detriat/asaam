@@ -62,7 +62,7 @@ function init() {
 
     $video.on('loadedmetadata', () => {
         drawVideoToCanvas();
-        playAnimation();
+        setTimeout(() => playAnimation());
     });
 
     navigator.mediaDevices.getUserMedia(constraints)
@@ -98,6 +98,8 @@ function startTracking() {
 
     trackerTask = tracking.track('#video', tracker);
 
+    $swag.fadeIn();
+
     tracker.on('track', (event) => {
         if (event.data.length) {
 
@@ -126,12 +128,18 @@ function playAnimation() {
             $elefant.attr('src', buffer[count_frame]);
             count_frame++;
 
+            if (count_frame == 165){
+                startTracking();
+                /*count_frame = 224;*/
+            }
+
         } else {
-            count_frame = 0;
+            /*count_frame = 0;*/
+            clearInterval(count_frameId);
         }
     }, 1000 / fps);
 
-    setTimeout(() => {
+    /*setTimeout(() => {
         clearInterval(count_frameId);
         console.log(count_frame);
         $elefant.addClass('rotate');
@@ -140,7 +148,7 @@ function playAnimation() {
         }else{
             startTracking();
         }
-    }, 5000);
+    }, 5000);*/
 }
 
 function draw(video, context, width, height) {
@@ -217,12 +225,12 @@ const context_rgb = canvas_rgb.getContext('2d');
 const context_alpha = canvas_alpha.getContext('2d');
 const context_frame = canvas_frame.getContext('2d');
 
-canvas_rgb.width = 600;
-canvas_rgb.height = 600;
-canvas_alpha.width = 600;
-canvas_alpha.height = 600;
-canvas_frame.width = 600;
-canvas_frame.height = 600;
+canvas_rgb.width = 500;
+canvas_rgb.height = 480;
+canvas_alpha.width = 500;
+canvas_alpha.height = 480;
+canvas_frame.width = 500;
+canvas_frame.height = 480;
 
 function compileRGBA(raw_rgb, raw_alpha) {
 

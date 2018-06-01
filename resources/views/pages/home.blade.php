@@ -14,7 +14,7 @@
                             <canvas id="canvas" width="640" height="480"></canvas>
                         </div>
                         <div class="elefant" id="e_screen">
-                            <img src="#" alt="" id="elefant" class="rotate">
+                            <img src="#" alt="" id="elefant" class="rotate {{(isset($isSecond)) ? 'ht100' : ''}}">
                             <div class="game-objects">
                                 <img src="/img/pixel.png" alt="swag" class="swag">
                             </div>
@@ -38,7 +38,11 @@
     <div class="pr pr-left"></div>
     <div class="pr pr-right"></div>
 
-    @include('sequences.elefant')
+    @if (isset($isSecond))
+        @include('sequences.second')
+    @else
+        @include('sequences.elefant')
+    @endif
 @endsection
 
 @section('overlay')
@@ -85,7 +89,11 @@
     <script src="/libs/html2canvas/html2canvas.min.js"></script>
     <script src="/libs/tracking/tracking-min.js"></script>
     <script src="/libs/tracking/face-min.js"></script>
-    <script src="/js/main.js"></script>
+    @if (isset($isSecond))
+        <script src="/js/second.js"></script>
+    @else
+        <script src="/js/main.js"></script>
+    @endif
     <script>
         $(document).ready(function () {
             $('#uploadBase64Image').click(function (e) {

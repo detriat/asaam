@@ -1062,9 +1062,9 @@ button:focus{
 .elefant img{
     position: absolute;
 	max-width: 100%;
-	max-height: 85%;
-	bottom: 0;
-	right: 0;
+	height: 120%;
+	bottom: -10px;
+	right: -10px;
 }
 
 .terms p {
@@ -1167,7 +1167,9 @@ button:focus{
 
 .swag{
 	position: absolute;
-	top: 100%;
+	display: none;
+	-webkit-transition: position 0.1s linear;
+	transition: position 0.1s linear;
 }
 
 .wheel {
@@ -1208,8 +1210,8 @@ button:focus{
 .rotate {
 	-webkit-animation-name: rotate;
 	animation-name: rotate;
-	-webkit-animation-duration: 3000ms;
-	animation-duration: 3000ms;
+	-webkit-animation-duration: 2500ms;
+	animation-duration: 2500ms;
 	-webkit-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
@@ -1224,8 +1226,8 @@ button:focus{
 	}
 
 	25%{
-		-webkit-transform:rotate(-1deg);
-		transform:rotate(-1deg);
+		-webkit-transform:rotate(-2deg);
+		transform:rotate(-2deg);
 	}
 
 	50% {
@@ -1234,8 +1236,8 @@ button:focus{
 	}
 
 	75% {
-		-webkit-transform:rotate(1deg);
-		transform:rotate(1deg);
+		-webkit-transform:rotate(2deg);
+		transform:rotate(2deg);
 	}
 
 	100% {
@@ -1251,8 +1253,8 @@ button:focus{
 	}
 
 	25%{
-		-webkit-transform:rotate(-1deg);
-		transform:rotate(-1deg);
+		-webkit-transform:rotate(-2deg);
+		transform:rotate(-2deg);
 	}
 
 	50% {
@@ -1261,8 +1263,8 @@ button:focus{
 	}
 
 	75% {
-		-webkit-transform:rotate(1deg);
-		transform:rotate(1deg);
+		-webkit-transform:rotate(2deg);
+		transform:rotate(2deg);
 	}
 
 	100% {
@@ -1282,4 +1284,8 @@ button:focus{
 	-webkit-transform: scale(-1, 1);
 	-ms-transform: scale(-1, 1);
 	transform: scale(-1, 1);
+}
+
+#elefant.ht100{
+	height: 100%;
 }

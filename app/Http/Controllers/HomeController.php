@@ -39,6 +39,17 @@ class HomeController extends Controller
         return view('pages.home', $data);
     }
 
+    public function second(){
+
+        $data = array();
+
+        $data['title']  = 'Главная';
+        $data['isHome'] = true;
+        $data['isSecond'] = true;
+
+        return view('pages.home', $data);
+    }
+
     public function termsOfAction(){
 
         $data = array();
