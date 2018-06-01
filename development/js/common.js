@@ -63,6 +63,19 @@ $(document).ready(function(){
     if ($(window).width() > 800) {
         $("section").css({height: bh});
     }
+	
+	setTimeout(function() {
+		var title = $("#title").offset().left;
+		$(".title").css({left: title});
+	}, 100);
+	$("#title").hover(function() {
+		if ($(this).is(":hover")) {
+			$(".title").css({zIndex: "99999", opacity: "1"});
+		} else {
+			$(".title").css({zIndex: "-1", opacity: "0"});
+		}
+	});
+	$("body:not(:has(.tracking))").attr("class", "index-2");
 });
 
 $(window).resize(function () {

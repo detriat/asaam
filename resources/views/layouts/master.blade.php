@@ -71,6 +71,15 @@
 		<img id="preloader" src="/img/preloader.gif" alt="" />
 	</div>
 	<section>
+		<div class="title">
+			<h3>ДЛЯ УЧАСТИЯ:</h3>
+			<ol>
+				<li>Сделай селфи в этом приложении</li>
+				<li>Размести селфи на странице Facebook, VK или Instagram</li>
+				<li>Подпишись на нашу страничку и следи за розыгрышем!</li>
+			</ol>
+			<i><small>*В акции участвуют только пользователи с открытыми аккаунтами в выбранной соцсети, выполнившие все условия акции.</small></i>
+		</div>
 		<div class="header">
 			<div class="hd hd-left"></div>
 			<div class="hd hd-right"></div>
@@ -80,16 +89,7 @@
 						<div class="row">
 							<ul class="nav-1">
 								<li>
-									<a href="{{action('HomeController@termsOfAction')}}" title="Условия акции">Условия</a>
-									<div class="title">
-										<h3>ДЛЯ УЧАСТИЯ:</h3>
-										<ol>
-											<li>Сделай селфи в этом приложении</li>
-											<li>Размести селфи на странице Facebook, VK или Instagram</li>
-											<li>Подпишись на нашу страничку и следи за розыгрышем!</li>
-										</ol>
-										<i><small>*В акции участвуют только пользователи с открытыми аккаунтами в выбранной соцсети, выполнившие все условия акции.</small></i>
-									</div>
+									<a id="title" href="{{action('HomeController@termsOfAction')}}" title="">Условия</a>
 								</li>
 								<li><a href="{{action('HomeController@userAgreement')}}" title="">Пользовательское соглашение</a></li>
 							</ul>
@@ -102,7 +102,7 @@
 						<button class="burger">☰</button>
 						<div class="menu">
 							<ul class="nav-mobile">
-								<li><a href="{{action('HomeController@termsOfAction')}}" title="Условия акции">Условия</a></li>
+								<li><a href="{{action('HomeController@termsOfAction')}}" title="">Условия</a></li>
 								<li><a href="{{action('HomeController@userAgreement')}}" title="">Пользовательское соглашение</a></li>
 								<li><a href="{{action('HomeController@winners')}}" title="" class="icon icon-2">Победители</a></li>
 								<li><a href="{{action('HomeController@prizes')}}" title="" class="icon icon-1">Призы</a></li>

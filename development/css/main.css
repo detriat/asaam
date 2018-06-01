@@ -58,6 +58,8 @@ section {
 	left: 0;
 	width: 100%;
 	height: 1080px;
+	min-height: 100vh;
+	max-height: 1125px;
 	overflow: hidden;
 }
 
@@ -152,12 +154,13 @@ section {
 	width: 1920px;
 	height: 55%;
 	min-width: 100%;
-	background: url(../img/ft.png) center top no-repeat;
+	background: url(../img/ft.png) center bottom no-repeat;
 	background-size: 100%;
 }
 
 .main {
 	background: url(../img/container.png) center no-repeat;
+	background-size: auto 100%;
 }
 
 #container {
@@ -275,15 +278,17 @@ section {
 }
 .publication .image {
 	position: relative;
+	display: inline-block;
 }
 .publication .image:before {
 	content: '';
 	position: absolute;
-	top: -105px;
+	top: -25%;
 	right: 0;
-	width: 929px;
-	height: 656px;
-	background: url(../img/image-before.png) center no-repeat;
+	width: 150%;
+    height: 150%;
+    background: url(../img/image-before.png) center no-repeat;
+    background-size: 100% 100%;
 }
 .publication img {
 	position: relative;
@@ -293,10 +298,11 @@ section {
 	content: '';
 	position: absolute;
 	bottom: -10px;
-    left: -80px;
-	width: 321px;
-	height: 163px;
-	background: url(../img/image-after.png) center no-repeat;
+	left: -15%;
+    width: 60%;
+    height: 40%;
+    background: url(../img/image-after.png) center no-repeat;
+    background-size: 100% 100%;
 	z-index: 1;
 }
 
@@ -537,7 +543,7 @@ a:hover{
 	z-index: 99;
 }
 .child-page-content .container{
-    padding: 65px;
+    padding: 65px 95px;
 	background: #fff;
 }
 
@@ -1075,12 +1081,9 @@ button:focus{
 	text-align: center;
 }
 
-.nav-1 li:first-child {
-	position: relative;
-}
 .title {
 	position: absolute;
-	top: 65px;
+	top: 95px;
 	left: 0;
 	opacity: 0;
 	z-index: -1;
@@ -1099,10 +1102,6 @@ button:focus{
 .title i {
     display: inline-block;
 	width: 100%;
-}
-.nav-1 li:first-child:hover .title {
-	opacity: 1;
-	z-index: 1;
 }
 
 .position-canvas__img{

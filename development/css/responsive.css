@@ -40,6 +40,8 @@
 		position: relative;
 		display: inline-block;
 		float: right;
+		height: 100%!important;
+		line-height: 50%!important;
 		padding: 0;
 		background: none;
 		border: 0;
@@ -68,6 +70,8 @@
 	}
 	.nav-mobile a {
 		color: #292929;
+		height: 100%!important;
+		line-height: 50%!important;
 	}
 	.help {
     	z-index: 99;
@@ -88,6 +92,10 @@
 	}
 }
 @media screen and (max-width: 900px) {
+	body {
+		background: #1c552d url(../img/bg.png) repeat-y;
+		background-size: 100%;
+	}
 	.hd {
 		height: 150px;
 		background-size: 80px!important;
@@ -100,6 +108,7 @@
 	}	
 	section {
 		height: auto;
+		max-height: 9999px;
 	}	
 	.buttons .btn {
 		margin-bottom: 15px;
@@ -137,12 +146,15 @@
 		z-index: 99;
 	}
 	.child-page-content .container {
-		padding: 30px;
+		padding: 30px 15px;
 	}
 	.child-page-content__text{
 		overflow-x: visible;
 		overflow-y: visible;
 		max-height: 9999px;
+	}
+	.scroll-line {
+		padding: 0;
 	}
 	.prize-item {
 		text-align: center;
