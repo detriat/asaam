@@ -33,6 +33,15 @@ const distance = {
     big: 180
 };
 
+ // 0 - кадр анимации с которого начнёться игра. 1 кадр на котором закончится
+//  где 0, 1 это индексы массива
+const animation_areas = {
+    right_top: [144, 192],
+    right_bottom: [144, 192],
+    left_bottom: [72, 144],
+    left_top: [0, 72]
+};
+
 const fps = 24;
 let count_frameId;
 let count_frame = 0;
@@ -61,8 +70,9 @@ function init() {
 
 
     $video.on('loadedmetadata', () => {
+        $elefant.attr('src', buffer[0]);
         drawVideoToCanvas();
-        setTimeout(() => playAnimation());
+        startTracking();
     });
 
     navigator.mediaDevices.getUserMedia(constraints)
@@ -85,6 +95,8 @@ function getImageURL() {
     return c.toDataURL('image/jpeg', 1.0);
 }
 
+
+let square_center_x, square_center_y, lucky_square, stopped = 0, trackerTask_status = true;
 //включает трекинг лица
 function startTracking() {
 
@@ -93,42 +105,74 @@ function startTracking() {
     tracker.setStepSize(2);
     tracker.setEdgesDensity(0.1);
 
-    const $swag = $('.swag');
     let rect;
+
+    let center_x = $video.width() / 2;
+    let center_y = $video.height() / 2;
 
     trackerTask = tracking.track('#video', tracker);
 
-    $swag.fadeIn();
-
     tracker.on('track', (event) => {
-        if (event.data.length) {
+
+        if (event.data.length && trackerTask_status) {
+
+            trackerTask_status = false;
 
             rect = event.data[0];
+            setTimeout(() => {
+                trackerTask.stop();
+                console.log('stop tracking');
+            }, 0);
 
-            $swag.css({
-                top: rect.y * x - 20 * x + 'px',
-                left: rect.x * x + 'px',
-                width: rect.width * x + 'px',
-                height: rect.height * x + 'px'
-            });
+            setTimeout(() => {
 
+                rect = event.data[0];
+                square_center_x = rect.x + rect.width / 2;
+                square_center_y = rect.y + rect.height / 2;
+
+                lucky_square = (square_center_x > center_x - 50)
+                    && (square_center_x < center_x + 50)
+                    && (square_center_y > center_y - 50)
+                    && (square_center_y < center_y + 50);
+
+
+                //Координаты отображаются зеркально!
+                if (square_center_x < center_x && square_center_y < center_y) {
+                    //Правый верхний угол
+                    playAnimation(animation_areas.right_top);
+
+                } else if (square_center_x > center_x && square_center_y < center_y) {
+                    //Левый верхний угол
+                    playAnimation(animation_areas.left_top);
+
+                } else if (square_center_x < center_x && square_center_y > center_y) {
+                    //Правый нижний угол
+                    playAnimation(animation_areas.right_bottom);
+
+                } else if (square_center_x > center_x && square_center_y > center_y) {
+                    //Левый нижний угол
+                    playAnimation(animation_areas.left_bottom);
+                }
+
+                console.log('start animation');
+
+            }, 100);
         }
     });
-
-    /*setTimeout(() => {
-     trackerTask.stop();
-     playAnimation();
-     }, 5000);*/
-
 }
 
-function playAnimation() {
+function playAnimation(areas) {
+
+    count_frame = areas[0];
     count_frameId = setInterval(() => {
-        if (count_frame < buffer.length) {
+        if (count_frame < areas[1]) {
             $elefant.attr('src', buffer[count_frame]);
             count_frame++;
         } else {
-            count_frame = 0;
+            count_frameId = clearInterval(count_frameId);
+            console.log('stop Animation');
+            trackerTask_status = true;
+            trackerTask.run();
         }
     }, 1000 / fps);
 
@@ -208,11 +252,11 @@ const context_rgb = canvas_rgb.getContext('2d');
 const context_alpha = canvas_alpha.getContext('2d');
 const context_frame = canvas_frame.getContext('2d');
 
-canvas_rgb.width = 500;
+canvas_rgb.width = 640;
 canvas_rgb.height = 480;
-canvas_alpha.width = 500;
+canvas_alpha.width = 640;
 canvas_alpha.height = 480;
-canvas_frame.width = 500;
+canvas_frame.width = 640;
 canvas_frame.height = 480;
 
 function compileRGBA(raw_rgb, raw_alpha) {

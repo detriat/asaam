@@ -10,7 +10,7 @@
                 <div class="col-md-9 pull-xs-none">
                     <div id="container">
                         <div class="tracking">
-                            <video id="video" width="320" height="240" autoplay controls playsinline></video>
+                            <video id="video" width="320" height="240" autoplay controls loop crossOrigin="anonymous" webkit-playsinline></video>
                             <canvas id="canvas" width="640" height="480"></canvas>
                         </div>
                         <div class="elefant" id="e_screen">
