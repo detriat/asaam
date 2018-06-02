@@ -20,12 +20,23 @@ let video_w = 320;
 let video_h = 240;
 
 if ($(window).width() <= 768){
+
+    video_h = video_w * 4 / 3;
+
     $canvas.attr({
         width: video_w,
         height: video_h
     });
     x = 1;
 }
+
+$video.attr({
+    width: video_w,
+    height: video_h,
+    autoplay: true,
+    muted: true,
+    preload: true
+});
 
 const distance = {
     small: 300,
@@ -51,16 +62,6 @@ let buffer = [];
 /*for Iphone*/
 const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
-$video.attr({
-    width: video_w,
-    height: video_h,
-    autoplay: true,
-    muted: true,
-    preload: true,
-    controls: true
-});
-
-
 function init() {
     const constraints = {
         video: true,
@@ -70,8 +71,13 @@ function init() {
 
 
     $video.on('loadedmetadata', () => {
+        $video[0].play();
         $elefant.attr('src', buffer[0]);
-        drawVideoToCanvas();
+
+        if ($(window).width() > 768){
+            drawVideoToCanvas();
+        }
+
         startTracking();
     });
 
@@ -113,7 +119,7 @@ function startTracking() {
     trackerTask = tracking.track('#video', tracker);
 
     tracker.on('track', (event) => {
-
+console.log(event.data);
         if (event.data.length && trackerTask_status) {
 
             trackerTask_status = false;
@@ -154,15 +160,13 @@ function startTracking() {
                     playAnimation(animation_areas.left_bottom);
                 }
 
-                console.log('start animation');
-
             }, 100);
         }
     });
 }
 
 function playAnimation(areas) {
-
+    console.log('start animation');
     count_frame = areas[0];
     count_frameId = setInterval(() => {
         if (count_frame < areas[1]) {

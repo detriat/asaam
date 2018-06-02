@@ -1119,7 +1119,7 @@ button:focus{
 
 #video{
     transform: scale(-1,1);
-	visibility: hidden;
+	/*visibility: hidden;*/
 }
 
 .game-objects{
