@@ -47,9 +47,13 @@ const distance = {
  // 0 - кадр анимации с которого начнёться игра. 1 кадр на котором закончится
 //  где 0, 1 это индексы массива
 const animation_areas = {
-    right_top: [144, 192],
+    /*right_top: [144, 192],
     right_bottom: [144, 192],
-    left_bottom: [72, 144],
+    left_bottom: [72, 144],*/
+
+    right_top: [0, 72],
+    right_bottom: [0, 72],
+    left_bottom: [0, 72],
     left_top: [0, 72]
 };
 

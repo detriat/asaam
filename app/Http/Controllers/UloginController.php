@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Redirect;
 class UloginController extends Controller
 {
     // Login user through social network.
-    public function login(Request $request, $id_image)
+    public function login(Request $request, $token, $id_image)
     {
         // Get information about user.
-        $data = file_get_contents('http://ulogin.ru/token.php?token=' . $request->get('token') .
+        $data = file_get_contents('http://ulogin.ru/token.php?token=' . $token .
             '&host=' . $_SERVER['HTTP_HOST']);
         $user = json_decode($data, true);
         // Check exist email.
 
+        $json = [];
+        
         if (isset($user['email']) && !empty($user['email'])) {
             // Find user in DB.
             $userData = User::where('email', $user['email'])->first();
@@ -28,7 +30,10 @@ class UloginController extends Controller
             // Check exist user.
             if (!is_null($userData)) {
 
-                return Redirect::back()->withErrors(['Такой пользователь уже учаустует в розыграше.']);
+                //return Redirect::back()->withErrors(['Такой пользователь уже учаустует в розыграше.']);
+                $json['error'] = 'Такой пользователь уже учаустует в розыграше.';
+
+                return response()->json($json);
 
             } else {
                 // Make registration new user.
@@ -51,10 +56,14 @@ class UloginController extends Controller
                 // Make login user.
                 Auth::loginUsingId($newUser->id, true);
 
-                return redirect()->back()->with('network', $user['network']);
+                //return redirect()->back()->with('network', $user['network']);
+                $json['network'] = $user['network'];
+                return response()->json($json);
             }
         }
 
-        return Redirect::back()->withErrors(['Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!']);
+        //return Redirect::back()->withErrors(['Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!']);
+        $json['error'] = 'Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!';
+        return response()->json($json);
     }
 }

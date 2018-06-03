@@ -27,7 +27,7 @@ Route::get('/socialite/{provider}', 'Auth\LoginController@socialite');
 Route::get('/socialite/{provider}/callback', 'Auth\LoginController@socialiteCallback');
 
 /*AutoRegister*/
-Route::post('ulogin/{id_image}', 'UloginController@login')->where('id_image', '[0-9]+');
+Route::post('ulogin/{token}/{id_image}', 'UloginController@login')->where('id_image', '[0-9]+');
 
 
 Auth::routes();

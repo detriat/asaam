@@ -60,19 +60,6 @@ $(document).ready(function(){
     });
 
 
-    $(document).on('click', '.ulogin-button-facebook', function(){
-       console.log('click faceBook');
-    });
-
-    $(document).on('click', '.ulogin-button-vkontakte', function(){
-        console.log('click vk');
-    });
-
-    $(document).on('click', '.ulogin-button-vkontakte', function(){
-        console.log('click instagram');
-    });
-
-
     $(".header li a, .burger").css({height: hh, lineHeight: hh + "px"});
     if ($(window).width() > 800) {
         $("section").css({height: bh});
@@ -143,13 +130,5 @@ function pageComplete() {
 
 }
 
-$.fn.displayFlex = function () {
-    $(this).css('display', 'flex');
-};
 
-function showWarningNotice(message) {
 
-    $('#warningNotice .confirm-title').text(message);
-    $('#warningNotice').displayFlex();
-
-} 

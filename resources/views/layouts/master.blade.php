@@ -151,6 +151,17 @@
 	@endif
 
 	@yield('overlay')
+	<div class="overlay" id="warningNotice">
+		<div class="window">
+			<div class="window-confirm">
+				<div class="confirm-title"></div>
+				<div class="buttons confirm-btns">
+					<a href="#warningNotice" class="btn btn-1 confirm-btn confirmation-confirm"
+					   data-action="read-notice">Хорошо</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 <!--[if lt IE 9]>
@@ -170,7 +181,18 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
     });
+    function showWarningNotice(message) {
+
+        $('#warningNotice .confirm-title').text(message);
+        $('#warningNotice').displayFlex();
+    }
+
+    $.fn.displayFlex = function () {
+        $(this).css('display', 'flex');
+    };
+
 </script>
 
 @hasSection ('extra-scripts')
