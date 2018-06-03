@@ -566,7 +566,7 @@ a:hover{
     font-family: 'Tahoma';
     font-weight: 400;
     margin: 50px auto;
-	z-index: 99;
+	z-index: 99999;
 }
 .child-page-content .container{
     padding: 65px 95px;
@@ -1157,7 +1157,7 @@ button:focus{
 	top: 0;
 	left: 0;
 	width: 640px;
-	height: 320px;
+	height: 480px;
 	z-index: 99;
 	-webkit-transform: scale(-1,1);
 	-ms-transform: scale(-1,1);
@@ -1288,4 +1288,9 @@ button:focus{
 #elefant.ht100{
 	height: 100%;
 	right: -50px;
+}
+
+.face-square{
+	position: absolute;
+	z-index: 10;
 }

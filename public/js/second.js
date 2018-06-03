@@ -70,7 +70,7 @@ function init() {
     };
 
 
-    $video.on('loadedmetadata', () => {
+    $video.on('loadedmetadata', function(){
         $video[0].play();
         $elefant.attr('src', buffer[0]);
 
@@ -82,10 +82,12 @@ function init() {
     });
 
     navigator.mediaDevices.getUserMedia(constraints)
-        .then(stream => $video[0].srcObject = stream)
-        .catch(error => {
+        .then(function (stream){
+            $video[0].srcObject = stream;
+        })
+        .catch(function (error){
             console.error('Unable to access the camera/webcam.', error);
-            showWarningNotice('Мы не получили доступ к вашей камере!');
+            showWarningNotice('Мы не получили доступ к вашей камере! Возможно Вам следует обновить Ваш браузер новой версии.');
         });
 }
 
@@ -101,7 +103,7 @@ function getImageURL() {
     return c.toDataURL('image/jpeg', 1.0);
 }
 
-
+const $face_square = $('.face-square');
 let square_center_x, square_center_y, lucky_square, stopped = 0, trackerTask_status = true;
 //включает трекинг лица
 function startTracking() {
@@ -119,7 +121,6 @@ function startTracking() {
     trackerTask = tracking.track('#video', tracker);
 
     tracker.on('track', (event) => {
-console.log(event.data);
         if (event.data.length && trackerTask_status) {
 
             trackerTask_status = false;
@@ -133,6 +134,15 @@ console.log(event.data);
             setTimeout(() => {
 
                 rect = event.data[0];
+
+                $face_square.css({
+                    top: rect.y * x,
+                    left: rect.x * x,
+                    width: rect.width * x,
+                    height: rect.height * x,
+                    border: '1px solid red'
+                });
+
                 square_center_x = rect.x + rect.width / 2;
                 square_center_y = rect.y + rect.height / 2;
 

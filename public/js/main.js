@@ -20,6 +20,9 @@ let video_w = 320;
 let video_h = 240;
 
 if ($(window).width() <= 768){
+
+    video_h = video_w * 4 / 3;
+
     $canvas.attr({
         width: video_w,
         height: video_h
@@ -47,8 +50,7 @@ $video.attr({
     height: video_h,
     autoplay: true,
     muted: true,
-    preload: true,
-    controls: true
+    preload: true
 });
 
 
@@ -60,14 +62,16 @@ function init() {
     };
 
 
-    $video.on('loadedmetadata', () => {
+    $video.on('loadedmetadata', function(){
         drawVideoToCanvas();
         setTimeout(() => playAnimation());
     });
 
     navigator.mediaDevices.getUserMedia(constraints)
-        .then(stream => $video[0].srcObject = stream)
-        .catch(error => {
+        .then(function(stream){
+            $video[0].srcObject = stream
+        })
+        .catch(function (error) {
             console.error('Unable to access the camera/webcam.', error);
             showWarningNotice('Мы не получили доступ к вашей камере!');
         });
@@ -85,6 +89,7 @@ function getImageURL() {
     return c.toDataURL('image/jpeg', 1.0);
 }
 
+
 //включает трекинг лица
 function startTracking() {
 
@@ -94,6 +99,7 @@ function startTracking() {
     tracker.setEdgesDensity(0.1);
 
     const $swag = $('.swag');
+    const $fase_square = $('.face-square');
     let rect;
 
     trackerTask = tracking.track('#video', tracker);
@@ -110,6 +116,13 @@ function startTracking() {
                 left: rect.x * x + 'px',
                 width: rect.width * x + 'px',
                 height: rect.height * x + 'px'
+            });
+            $fase_square.css({
+                top: rect.y * x,
+                left: rect.x * x,
+                width: rect.width * x,
+                height: rect.height * x,
+                border: '1px solid red'
             });
 
         }

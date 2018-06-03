@@ -10,13 +10,14 @@
                 <div class="col-md-9 pull-xs-none">
                     <div id="container">
                         <div class="tracking">
-                            <video id="video" width="320" height="240" autoplay loop preload crossOrigin="anonymous" webkit-playsinline></video>
+                            <video id="video" autoplay playsinline width="320" height="240"></video>
                             <canvas id="canvas" width="640" height="480"></canvas>
                         </div>
                         <div class="elefant" id="e_screen">
                             <img src="#" alt="" id="elefant" class="rotate {{(isset($isSecond)) ? 'ht100' : ''}}">
                             <div class="game-objects">
                                 <img src="/img/pixel.png" alt="swag" class="swag">
+                                <div class="face-square"></div>
                             </div>
                         </div>
                         <div id="results"></div>
