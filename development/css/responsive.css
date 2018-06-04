@@ -160,6 +160,10 @@
 	.prize-item__info {
 		display: block;
 	}
+	
+	.terms table {
+		width: 150%;
+	}
 }
 @media screen and (max-width: 768px) {
     section {
