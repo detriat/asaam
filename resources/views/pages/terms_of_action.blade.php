@@ -46,9 +46,9 @@
 				<div class="responsive-table">
 					<table>	
 						<tr>
-							<th style="width: 10%;">Дата</th>
-							<th style="width: 20%;">Этапы</th>
-							<th style="width: 30%;">Кол-во призов</th>
+							<th style="width: 15%;">Дата</th>
+							<th style="width: 25%;">Этапы</th>
+							<th style="width: 50%;">Кол-во призов</th>
 							<th style="width: 10%;">Кол-во победителей</th>
 						</tr>
 						<tr>

@@ -60,7 +60,7 @@ $(document).ready(function(){
     });
 
 
-    $(".header li a, .burger").css({height: hh, lineHeight: hh + "px"});
+    $(".header li a, .burger, .logo").css({height: hh, lineHeight: hh + "px"});
     if ($(window).width() > 800) {
         $("section").css({height: bh});
     }

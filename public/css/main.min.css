@@ -128,10 +128,13 @@ section {
 	background: url(../img/hd-right.png) 95% top no-repeat;
 }
 .index-2 .hd-right {
-	top: 180px;
-	background: url(../img/slogan.png) 95% top no-repeat;
+	top: 80px;
+    background: url(../img/slogan.png) 100% top no-repeat;
 }
 
+.logo img {
+	vertical-align: middle;
+}
 .burger, .menu {
 	display: none;
 }
