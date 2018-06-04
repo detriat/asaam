@@ -107,4 +107,12 @@ class HomeController extends Controller
 
         return view('pages.publication', $data);
     }
+
+    public function sequencesDesktop(){
+        return view('sequences.second');
+    }
+
+    public function sequencesMobile(){
+        return view('sequences.mobile');
+    }
 }

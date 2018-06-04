@@ -19,6 +19,9 @@ Route::get('/winners', 'HomeController@winners');
 Route::get('/prizes', 'HomeController@prizes');
 Route::get('/publication/{id}', 'HomeController@publication')->where('id', '[0-9]+');
 
+Route::get('/sequences_desktop', 'HomeController@sequencesDesktop');
+Route::get('/sequences_mobile', 'HomeController@sequencesMobile');
+
 /*images*/
 Route::post('/images/uploadBase64Image', 'ImageEditor@uploadBase64Image');
 

@@ -1,6 +1,4 @@
 const $video = $('#video');
-const $animationFrames = $('#animations img');
-const $animationAlphaFrames = $('#animations_a img');
 const $elefant = $('#elefant');
 const audio = new Audio('/media/shutter.mp3');
 const $results = $('#results');
@@ -47,13 +45,9 @@ const distance = {
  // 0 - кадр анимации с которого начнёться игра. 1 кадр на котором закончится
 //  где 0, 1 это индексы массива
 const animation_areas = {
-    /*right_top: [144, 192],
-    right_bottom: [144, 192],
-    left_bottom: [72, 144],*/
-
-    right_top: [0, 72],
-    right_bottom: [0, 72],
-    left_bottom: [0, 72],
+    right_top: [144, 216],
+    right_bottom: [144, 216],
+    left_bottom: [72, 144],
     left_top: [0, 72]
 };
 
@@ -270,12 +264,12 @@ const context_rgb = canvas_rgb.getContext('2d');
 const context_alpha = canvas_alpha.getContext('2d');
 const context_frame = canvas_frame.getContext('2d');
 
-canvas_rgb.width = 640;
-canvas_rgb.height = 480;
-canvas_alpha.width = 640;
-canvas_alpha.height = 480;
-canvas_frame.width = 640;
-canvas_frame.height = 480;
+canvas_rgb.width = video_w * x;
+canvas_rgb.height = video_h * x;
+canvas_alpha.width = video_w * x;
+canvas_alpha.height = video_h * x;
+canvas_frame.width = video_w * x;
+canvas_frame.height = video_h * x;
 
 function compileRGBA(raw_rgb, raw_alpha) {
 
@@ -331,18 +325,32 @@ function createAnimationBuffer() {
     let frame_rgb, frame_a;
     let f = 0;
 
-    const frameId = setInterval(() => {
-        if (f < $animationFrames.length) {
-            frame_rgb = $animationFrames.eq(f).attr('src');
-            frame_a = $animationAlphaFrames.eq(f).attr('src');
+    let $animationFrames = $('#animations img');
+    let $animationAlphaFrames = $('#animations_a img');
 
-            loadRGBA(frame_rgb, frame_a);
-            f++;
-        } else {
-            $('.preloader').hide();
-            $('.page-content').fadeIn();
-            clearInterval(frameId);
+    const timerId = setInterval(() => {
+        if ($animationFrames.length == 0 && $animationAlphaFrames.length == 0){
+            $animationFrames = $('#animations img');
+            $animationAlphaFrames = $('#animations_a img');
+        }else{
+            clearInterval(timerId);
+
+            const frameId = setInterval(() => {
+                if (f < $animationFrames.length) {
+                    frame_rgb = $animationFrames.eq(f).attr('src');
+                    frame_a = $animationAlphaFrames.eq(f).attr('src');
+
+                    loadRGBA(frame_rgb, frame_a);
+                    f++;
+                } else {
+                    $('.preloader').hide();
+                    $('.page-content').fadeIn();
+                    console.log(buffer);
+                    clearInterval(frameId);
+                }
+            }, 1000 / fps);
+
         }
-    }, 1000 / fps);
+    }, 10);
 }
 

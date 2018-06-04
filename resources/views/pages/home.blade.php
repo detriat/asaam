@@ -38,10 +38,8 @@
     </div>
     <div class="pr pr-left"></div>
     <div class="pr pr-right"></div>
-
-    @if (isset($isSecond))
-        @include('sequences.second')
-    @else
+    <div id="anim" style="display: none"></div>
+    @if (!isset($isSecond))
         @include('sequences.elefant')
     @endif
 @endsection
@@ -85,6 +83,18 @@
     @endif
     <script>
         $(document).ready(function () {
+
+            const second = {{isset($isSecond)}};
+
+            if (second){
+
+                if ($(window).width() > 768){
+                    $('#anim').load('/sequences_desktop');
+                }else{
+                    $('#anim').load('/sequences_mobile');
+                }
+
+            }
             $('#uploadBase64Image').click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();
