@@ -40,8 +40,6 @@
 		position: relative;
 		display: inline-block;
 		float: right;
-		height: 100%!important;
-		line-height: 50%!important;
 		padding: 0;
 		background: none;
 		border: 0;
@@ -168,44 +166,30 @@
         height: auto;
         min-height: 100vh;
     }
-	#container {
+	#container, #video {
 		width: 320px !important;
-		height: 426px !important;
+		height: 243px !important;
+		object-fit: cover;
 	}
 	.window-confirm {
 		max-width: 300px;
 	}
 	.game-objects{
 		width: 320px;
-		height: 426px;
+		height: 243px;
 	}
 
 	#canvas{
 		display: none;
+		height: 243px !important;
 	}
 
 	#elefant.ht100{
 		right: -10px;
 		bottom: -10px;
 	}
-}
-@media screen and (max-width: 600px) {
-	#container {
-		height: 410px;
-	}
-}
-@media screen and (max-width: 500px) {
-	#container {
-		height: 289px;
-	}
-}
-@media screen and (max-width: 400px) {
-	#container {
-		height: 264px;
-	}
-}
-@media screen and (max-width: 350px) {
-	#container {
-		height: 222px;
+	
+	.step-1 .btn-1:before {
+		display: none;
 	}
 }
