@@ -71,7 +71,7 @@ $(document).ready(function(){
 	}, 100);
 	$("#title").hover(function() {
 		if ($(this).is(":hover")) {
-			$(".title").css({zIndex: "99999", opacity: "1"});
+			$(".title").css({zIndex: "999999", opacity: "1"});
 		} else {
 			$(".title").css({zIndex: "-1", opacity: "0"});
 		}
