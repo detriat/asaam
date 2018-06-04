@@ -8,7 +8,7 @@ body, html {
 	background: #1c552d url(../img/bg.png);
 	background-size: cover;
 	color: #fff;
-	font-family: "Tahoma";
+	font-family: Tahoma, Arial, Helvetica, sans-serif;;
 }
 html {
 	font-size: 18px;
