@@ -13,11 +13,11 @@
 <div id="animations_a" style="display: none">
     @for ($i = 0; $i < 217; $i++)
         @if ($i < 10)
-            <img src="/img/elefant/alpha_3/alpha_0000{{$i}}.jpg" alt="" class="frame{{$i}}">
+            <img src="/img/elefant/alpha_3/Alpha_0000{{$i}}.jpg" alt="" class="frame{{$i}}">
         @elseif ($i < 100)
-            <img src="/img/elefant/alpha_3/alpha_000{{$i}}.jpg" alt="" class="frame{{$i}}">
+            <img src="/img/elefant/alpha_3/Alpha_000{{$i}}.jpg" alt="" class="frame{{$i}}">
         @else
-            <img src="/img/elefant/alpha_3/alpha_00{{$i}}.jpg" alt="" class="frame{{$i}}">
+            <img src="/img/elefant/alpha_3/Alpha_00{{$i}}.jpg" alt="" class="frame{{$i}}">
         @endif
     @endfor
 </div>

@@ -45,6 +45,7 @@
                     }else if (network === 'vkontakte'){
 
                         // VK Code
+                        showWarningNotice('Поздравляем, вы стали участником!');
 
                     }else if (network === 'instagram'){
 
@@ -58,7 +59,6 @@
                 }else{
                     showWarningNotice(res['error']);
                 }
-
             })
                 .error((xhr) => console.log(xhr));
 

@@ -53,7 +53,7 @@ class UloginController extends Controller
                     'status'          => true,
                     'ip'              => $request->ip(),
                     'uid'             => $user['uid'],
-                    'post_id'         => ($user['network']) ? $this->vkWall($user['uid'], $request->url()) : null
+                    'post_id'         => ($user['network'] == 'vkontakte') ? $this->vkWall($user['uid'], 'https://assam.pc-master.kz/publication/'.$id_image) : null
                 ]);
 
                 // Make login user.
@@ -78,13 +78,13 @@ class UloginController extends Controller
         $app_ID = '6500195';
         $token = '07933ed49a6d8c76f9236913c0ad8dd72d58fd71475bd0dcc46afb0080d74f6804d4264ae656644ef7a22';
 
-        $message = 'Я сделал сэлфи со слоном что бы выиграть крутые призы. Попробуй и ты! <br/>#чайАССАМ #селфизапризы';
+        $message = 'Я сделал сэлфи со слоном что бы выиграть крутые призы. Попробуй и ты! #чайАССАМ #селфизапризы';
 
-        $string_query = 'https://api.vk.com/method/wall.post?owner_id='.$user_id.'&attachments='.$link.'&message='.urldecode($message).'&access_token='.$token.'&v=5.78';
+        $string_query = 'https://api.vk.com/method/wall.post?owner_id='.$user_id.'&attachments='.$link.'&message='.urlencode($message).'&access_token='.$token.'&v=5.78';
 
         $query = file_get_contents($string_query);
+        $query = json_decode($query);
 
-
-        return $query['post_id'];
+        return $query->response->post_id;
     }
 }
