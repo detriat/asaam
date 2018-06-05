@@ -5,7 +5,6 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 
 AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
     $model->setTitle('Пользователи');
-    $model->disableDeleting();
 
     $model->onDisplay(function () {
 

@@ -1,5 +1,5 @@
 <ul class="socials" id="uLogin"
-    data-ulogin="display=buttons;fields=first_name,last_name,email,photo,country; providers=facebook,vkontakte,instagram; redirect_uri={{--{{ urlencode('https://' . $_SERVER['HTTP_HOST'] . '/ulogin/' . $id_image) }}--}};callback=uLoginCallback;mobilebuttons=0;">
+    data-ulogin="display=buttons;fields=first_name,last_name,email,photo,country; providers=facebook,vkontakte,instagram; redirect_uri=;callback=uLoginCallback;mobilebuttons=0;">
     <li class="social fb" data-uloginbutton="facebook">Разместить на facebook</li>
     <li class="social vk" data-uloginbutton="vkontakte">Разместить на vk.com</li>
     <li class="social in" data-uloginbutton="instagram">
@@ -7,9 +7,6 @@
     </li>
 </ul>
 
-<div class="click_vk" style="visibility: hidden">
-    <div id="vk_share_button">vk</div>
-</div>
 @section('extra-scripts')
     <script src="//ulogin.ru/js/ulogin.js"></script>
     <script>
@@ -18,6 +15,7 @@
             const action = '/ulogin/'+token+'/{{$id_image}}';
 
             $.post(action, {}, (res) => {
+                console.log(res);
                 if (res['network']){
                     const network = res['network'];
 

@@ -25,7 +25,9 @@ class User extends Authenticatable
         'network_profile',
         'password',
         'status',
-        'ip'
+        'ip',
+        'uid',
+        'post_id'
     ];
 
     /**

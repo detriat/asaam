@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class UloginController extends Controller
 {
+
     // Login user through social network.
     public function login(Request $request, $token, $id_image)
     {
@@ -50,7 +51,9 @@ class UloginController extends Controller
                     'network_profile' => $user['identity'],
                     'password'        => Hash::make(str_random(8)),
                     'status'          => true,
-                    'ip'              => $request->ip()
+                    'ip'              => $request->ip(),
+                    'uid'             => $user['uid'],
+                    'post_id'         => ($user['network']) ? $this->vkWall($user['uid'], $request->url()) : null
                 ]);
 
                 // Make login user.
@@ -65,5 +68,23 @@ class UloginController extends Controller
         //return Redirect::back()->withErrors(['Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!']);
         $json['error'] = 'Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!';
         return response()->json($json);
+    }
+
+    public function vkWall($user_id, $link){
+
+        header('Content-Type: text/html; charset=windows-1251');
+        header('Access-Control-Allow-Origin: *');
+
+        $app_ID = '6500195';
+        $token = '07933ed49a6d8c76f9236913c0ad8dd72d58fd71475bd0dcc46afb0080d74f6804d4264ae656644ef7a22';
+
+        $message = 'Я сделал сэлфи со слоном что бы выиграть крутые призы. Попробуй и ты! <br/>#чайАССАМ #селфизапризы';
+
+        $string_query = 'https://api.vk.com/method/wall.post?owner_id='.$user_id.'&attachments='.$link.'&message='.urldecode($message).'&access_token='.$token.'&v=5.78';
+
+        $query = file_get_contents($string_query);
+
+
+        return $query['post_id'];
     }
 }

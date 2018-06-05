@@ -28,4 +28,8 @@ Route::post('/images/uploadBase64Image', 'ImageEditor@uploadBase64Image');
 /*AutoRegister*/
 Route::post('ulogin/{token}/{id_image}', 'UloginController@login')->where('id_image', '[0-9]+');
 
+/*Posts*/
+
+Route::get('/socials/vkWall', 'UloginController@vkWall');
+
 
