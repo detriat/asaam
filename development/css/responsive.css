@@ -65,11 +65,13 @@
 	}
 	.nav-mobile li {
 		width: 100%;
+		height: 30px;
+		line-height: 30px;
 	}
 	.nav-mobile a {
 		color: #292929;
 		height: 100%!important;
-		line-height: 50%!important;
+		line-height: 200%!important;
 	}
 	.help {
     	z-index: 99;

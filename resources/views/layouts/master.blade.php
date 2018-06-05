@@ -30,15 +30,102 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: #1c552d url(/img/bg.png);
-			background-size: cover;
+			overflow-x: hidden;
+			overflow-y: auto;
 			z-index: 99999;
 		}
-		#preloader {
+		.preloader::-webkit-scrollbar {
+			width: 0;
+		}
+		.preloader .social {
+			text-align: center;
+		}
+		.preloader .social a {
+			margin: 0 35px;
+			padding-left: 45px;
+		}
+		.preloader .child-page-content .container {
+			background: none;
+			color: #fff;
+		}
+		.preloader .title-page {
+			color: #fff;
+		}
+		.preloader h2 {
+			color: #f5b63b;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		.preloader h2 img {
+			margin-bottom: 30px;
+		}
+		.preloader .child-page-content {
+			min-height: 1356px;
+			margin: 0;
+			padding: 50px 0;
+			line-height: 30px!important;
+			background: url(/img/preloader-bg.jpg) top;
+			background-size: cover;
+		}
+		.preloader .child-page-content p {
+			line-height: 30px!important;
+		}
+		.preloader .child-page-content__text {
+			overflow-x: hidden;
+			overflow-y: hidden;
+			max-height: 9999px;
+		}
+		.preloader ul {
+			padding-left: 50px!important;
+		}
+		.preloader .item {
+			margin-bottom: 30px;
+			list-style: none;
+			position: relative;
+		}
+		.preloader .item:before {
+			content: '';
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			top: -5px;
+			left: -50px;
+			width: 36px;
+			height: 36px;
+		}
+		.preloader .item-1:before {
+			background: url(/img/icon-web-cam.png) center no-repeat;
+		}
+		.preloader .item-2:before {
+			background: url(/img/icon-take-picture.png) center no-repeat;
+		}
+		.preloader .item-3:before {
+			background: url(/img/icon-share.png) center no-repeat;
+		}
+		.preloader ul ul li {
+			color: #f5b63b;
+			list-style-type: disc;
+		}
+		.preloader ul ul li span {
+			color: #fff;
+		}
+		@media screen and (max-width: 768px) {
+			.preloader .child-page-content, .social {
+				height: auto!important;
+			}
+			.preloader ul ul {
+				padding-left: 20px!important;
+				margin-left: -50px;
+				margin-top: 5px;
+			}
+			.social {
+				padding-left: 0!important;
+				text-align: left!important;
+			}
+			.social a {
+				margin-bottom: 10px!important;
+			}
+			.preloader .title-page {
+				margin-bottom: 15px!important;
+			}
 		}
 	</style>
 
@@ -68,7 +155,47 @@
 </head>
 <body class="index-1">
 	<div class="preloader">
-		<img id="preloader" src="/img/preloader.gif" alt="" />
+		<div class="child-page-content">
+			<div class="container">
+				<h2>
+					<img src="/img/logo.png" alt="" /><br/>
+					Пожалуйста подождите, идет загрузка...
+				</h2>
+				<h1 class="title-page">Условия акции</h1>
+				<div class="child-page-content__text terms">
+					<p>
+						Участниками акции становятся пользователи, которые перешли на страницу приложения promo.assamtea.kz (рабочее название) и выполнили условия акции: 
+					</p>
+					<ul>
+						<li class="item item-1">Разрешили подключение web камеры своего устройства к приложению</li>
+						<li class="item item-2">Сделали сэлфи снимок: 
+							<ul>
+								<li><span>Разрешить доступ к web камере вашего устройства</span></li>
+								<li><span>Подождать пока загрузится анимация</span></li>
+								<li><span>Нажать на «Сделать снимок»</span></li>
+								<li><span>Нажать на «Далее» если считаете, что снимок вышел удачным</span></li>
+								<li><span>Нажать на «Сделать еще раз» если хотите попробовать еще один снимок</span></li>
+							</ul>
+						</li>
+						<li class="item item-3">Разместить на своей странице пост из promo страницы выбрав один из трех предложенных вариантов: 
+							<ul>
+								<li><span>vk.com</span></li>
+								<li><span>facebook.com</span></li>
+								<li><span>для Instagram пользователю необходимо скачать на своё устройство обработанную фотографию и опубликовать ее в своём Instagram с хештегом #селфизапризы #чайАССАМ</span></li>
+							</ul>
+						</li>
+					</ul>
+					<p>
+						Чтобы принять участие в розыгрыше подпишитесь на страницы чая АССАМ в любой социальной сети:
+					</p>
+					<div class="social text-xs-center">
+						<a href="" title="" class="in">@assam.kazakhstan</a>
+						<a href="" title="" class="fb">@Assam.Kazakhstan</a>
+						<a href="" title="" class="vk">Assam Kazakhstan</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<section>
 		<div class="title">
