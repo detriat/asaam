@@ -12,6 +12,7 @@
     <meta property="og:image" content="{{action('HomeController@index')}}/{{$image}}">
     <meta property="og:image:width" content="640">
     <meta property="og:image:height" content="480">
+    <meta property="fb:app_id" content="157954035054756">
 @endsection
 
 
@@ -20,7 +21,7 @@
 @endsection
 
 @section('content')
-    @include('auth.share_images')
+    {{--@include('auth.share_images')--}}
 		<div class="publication publication-content">
 			<div class="container">
 				<h1>отличный снимок!</h1>

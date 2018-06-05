@@ -1,9 +1,3 @@
-{{--<div class="text-center margin-bottom-20" id="uLogin"
-     data-ulogin="display=panel;theme=flat;fields=first_name,last_name,email,photo,country;
-                             providers=facebook,vkontakte,instagram;hidden=other;
-                             redirect_uri={{ urlencode('https://' . $_SERVER['HTTP_HOST'] . '/ulogin/' . $id_image) }}">
-</div>--}}
-
 <ul class="socials" id="uLogin"
     data-ulogin="display=buttons;fields=first_name,last_name,email,photo,country; providers=facebook,vkontakte,instagram; redirect_uri={{--{{ urlencode('https://' . $_SERVER['HTTP_HOST'] . '/ulogin/' . $id_image) }}--}};callback=uLoginCallback;mobilebuttons=0;">
     <li class="social fb" data-uloginbutton="facebook">Разместить на facebook</li>
@@ -13,6 +7,9 @@
     </li>
 </ul>
 
+<div class="click_vk" style="visibility: hidden">
+    <div id="vk_share_button">vk</div>
+</div>
 @section('extra-scripts')
     <script src="//ulogin.ru/js/ulogin.js"></script>
     <script>
@@ -25,9 +22,32 @@
                     const network = res['network'];
 
                     if (network === 'facebook'){
-                        $('.pluso-facebook').trigger('click');
+                        /*$('.pluso-facebook').trigger('click');*/
+                        $.ajaxSetup({ cache: false });
+                        $.getScript('https://connect.facebook.net/en_US/sdk.js', () => {
+                            FB.init({
+                                appId: '157954035054756',
+                                version: 'v3.0'
+                            });
+
+                            FB.ui(
+                                {
+                                    method: 'share_open_graph',
+                                    action_type: 'og.likes',
+                                    hashtag: '#селфизапризы#чайАССАМ',
+                                    quote: 'Я сделал сэлфи со слоном что бы выиграть крутые призы. Попробуй и ты!',
+                                    action_properties: JSON.stringify({
+                                        object:'{{action('HomeController@publication', ['id' => $id_image])}}',
+                                    })
+                                },(response) => {
+                                    // Debug response (optional)
+                                    console.log(response);
+                                });
+                        });
                     }else if (network === 'vkontakte'){
-                        $('.pluso-vkontakte').trigger('click');
+
+                        // VK Code
+
                     }else if (network === 'instagram'){
 
                         $('.instagram-download-link').attr('download', '');
@@ -42,7 +62,7 @@
                 }
 
             })
-            .error((xhr) => console.log(xhr));
+                .error((xhr) => console.log(xhr));
 
         }
     </script>
