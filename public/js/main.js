@@ -308,6 +308,7 @@ function createAnimationBuffer() {
             f++;
         } else {
             $('.preloader').hide();
+			$('body').removeAttr('style');
             $('.page-content').fadeIn();
             clearInterval(frameId);
         }

@@ -5,7 +5,6 @@ if ( typeof createAnimationBuffer != 'undefined'){
     $(window).load(() => {
         pageComplete();
         createAnimationBuffer();
-		$('body').removeAttr('style');
     });
 }else{
     $(window).ready(() => {
