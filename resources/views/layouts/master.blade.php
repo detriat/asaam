@@ -186,10 +186,13 @@
 					<p>
 						Чтобы принять участие в розыгрыше подпишитесь на страницы чая АССАМ в любой социальной сети:
 					</p>
-					<div class="social text-xs-center">
+					<div class="social">
 						<a href="" title="" class="in">@assam.kazakhstan</a>
 						<a href="" title="" class="fb">@Assam.Kazakhstan</a>
 						<a href="" title="" class="vk">Assam Kazakhstan</a>
+					</div>
+					<div style="margin-top: 60px; text-align: center;">
+						<img src="/img/small-elefant.png" alt="" />
 					</div>
 				</div>
 			</div>
