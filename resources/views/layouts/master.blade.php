@@ -153,7 +153,7 @@
     </noscript>
 
 </head>
-<body class="index-1">
+<body class="index-1" style="overflow: hidden;">
 	<div class="preloader">
 		<div class="child-page-content">
 			<div class="container">
@@ -164,14 +164,12 @@
 				<h1 class="title-page">Условия акции</h1>
 				<div class="child-page-content__text terms">
 					<p>
-						Участниками акции становятся пользователи, которые перешли на страницу приложения promo.assamtea.kz (рабочее название) и выполнили условия акции: 
+						Участниками акции становятся пользователи, которые перешли на страницу приложения promo.assamtea.kz и выполнили условия акции: 
 					</p>
 					<ul>
 						<li class="item item-1">Разрешили подключение web камеры своего устройства к приложению</li>
 						<li class="item item-2">Сделали сэлфи снимок: 
 							<ul>
-								<li><span>Разрешить доступ к web камере вашего устройства</span></li>
-								<li><span>Подождать пока загрузится анимация</span></li>
 								<li><span>Нажать на «Сделать снимок»</span></li>
 								<li><span>Нажать на «Далее» если считаете, что снимок вышел удачным</span></li>
 								<li><span>Нажать на «Сделать еще раз» если хотите попробовать еще один снимок</span></li>
