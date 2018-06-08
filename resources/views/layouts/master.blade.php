@@ -152,8 +152,18 @@
         <link rel="stylesheet" href="/css/main.min.css">
     </noscript>
 
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120458217-1"></script>;
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-120458217-1');
+	</script>
+	
 </head>
-<body class="index-1">
+<body class="index-1" style="overflow: hidden;">
 	<div class="preloader">
 		<div class="child-page-content">
 			<div class="container">
@@ -164,14 +174,12 @@
 				<h1 class="title-page">Условия акции</h1>
 				<div class="child-page-content__text terms">
 					<p>
-						Участниками акции становятся пользователи, которые перешли на страницу приложения promo.assamtea.kz (рабочее название) и выполнили условия акции: 
+						Участниками акции становятся пользователи, которые перешли на страницу приложения promo.assamtea.kz и выполнили условия акции: 
 					</p>
 					<ul>
 						<li class="item item-1">Разрешили подключение web камеры своего устройства к приложению</li>
 						<li class="item item-2">Сделали сэлфи снимок: 
 							<ul>
-								<li><span>Разрешить доступ к web камере вашего устройства</span></li>
-								<li><span>Подождать пока загрузится анимация</span></li>
 								<li><span>Нажать на «Сделать снимок»</span></li>
 								<li><span>Нажать на «Далее» если считаете, что снимок вышел удачным</span></li>
 								<li><span>Нажать на «Сделать еще раз» если хотите попробовать еще один снимок</span></li>
@@ -188,10 +196,13 @@
 					<p>
 						Чтобы принять участие в розыгрыше подпишитесь на страницы чая АССАМ в любой социальной сети:
 					</p>
-					<div class="social text-xs-center">
+					<div class="social">
 						<a href="" title="" class="in">@assam.kazakhstan</a>
 						<a href="" title="" class="fb">@Assam.Kazakhstan</a>
 						<a href="" title="" class="vk">Assam Kazakhstan</a>
+					</div>
+					<div style="margin-top: 60px; text-align: center;">
+						<img src="/img/small-elefant.png" alt="" />
 					</div>
 				</div>
 			</div>

@@ -312,7 +312,6 @@ function createAnimationBuffer() {
                     clearInterval(frameId);
                 }
             }, 1000 / fps);
-
         }
     }, 10);
 }

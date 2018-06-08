@@ -11,6 +11,7 @@ if ( typeof createAnimationBuffer != 'undefined'){
 
         pageComplete();
         $('.preloader').hide();
+		$('body').removeAttr('style');
         $('.page-content').fadeIn();
     });
 }
