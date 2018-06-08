@@ -108,7 +108,19 @@
 		.preloader ul ul li span {
 			color: #fff;
 		}
+		.preloader .container {
+			position: relative;
+		}
+		.gif-elefant {
+			position: absolute;
+			top: 30px;
+			right: 0;
+			width: 320px;
+		}
 		@media screen and (max-width: 768px) {
+			.preloader .child-page-content {
+				padding-top: 0;
+			}
 			.preloader .child-page-content, .social {
 				height: auto!important;
 			}
@@ -126,6 +138,10 @@
 			}
 			.preloader .title-page {
 				margin-bottom: 15px!important;
+			}
+			.gif-elefant {
+			    position: relative;
+				top: 0;
 			}
 		}
 	</style>
@@ -167,8 +183,8 @@
 <body class="index-1" style="overflow: hidden;">
 	<div class="preloader">
 		<div class="child-page-content">
-			<div class="container" style="position: relative;">
-				<img src="/img/preloader.gif" alt="" style="position: absolute; top: 30px; right: 0; width: 197px; height: 150px;" />
+			<div class="container">
+				<img src="/img/small-elefant.gif" alt="" class="gif-elefant" />
 				<h2>
 					<img src="/img/logo.png" alt="" /><br/>
 					Пожалуйста подождите, идет загрузка...
