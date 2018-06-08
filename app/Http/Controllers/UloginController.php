@@ -13,17 +13,15 @@ use Illuminate\Support\Facades\Redirect;
 class UloginController extends Controller
 {
 
-    // Login user through social network.
-    public function login(Request $request, $token, $id_image)
+    public function getUserData($token)
     {
         // Get information about user.
         $data = file_get_contents('http://ulogin.ru/token.php?token=' . $token .
             '&host=' . $_SERVER['HTTP_HOST']);
         $user = json_decode($data, true);
-        // Check exist email.
 
         $json = [];
-        
+
         if (isset($user['email']) && !empty($user['email'])) {
             // Find user in DB.
             $userData = User::where('email', $user['email'])->first();
@@ -31,42 +29,59 @@ class UloginController extends Controller
             // Check exist user.
             if (!is_null($userData)) {
 
-                //return Redirect::back()->withErrors(['Такой пользователь уже учаустует в розыграше.']);
                 $json['error'] = 'Такой пользователь уже учаустует в розыграше.';
 
                 return response()->json($json);
 
-            } else {
-                // Make registration new user.
-
-                // Create new user in DB.
-                $newUser = User::create([
-                    'first_name'      => $user['first_name'],
-                    'last_name'       => $user['last_name'],
-                    'city'            => (isset($user['original_city'])) ? $user['original_city']  : $user['country'],
-                    'email'           => $user['email'],
-                    'photo'           => $user['photo'],
-                    'id_image'        => (int)$id_image,
-                    'network'         => $user['network'],
-                    'network_profile' => $user['identity'],
-                    'password'        => Hash::make(str_random(8)),
-                    'status'          => true,
-                    'ip'              => $request->ip(),
-                    'uid'             => $user['uid'],
-                    'post_id'         => ($user['network'] == 'vkontakte') ? $this->vkWall($user['uid'], 'https://assam.pc-master.kz/publication/'.$id_image) : null
-                ]);
-
-                // Make login user.
-                Auth::loginUsingId($newUser->id, true);
-
-                //return redirect()->back()->with('network', $user['network']);
-                $json['network'] = $user['network'];
-                return response()->json($json);
             }
+        }else{
+            $json['error'] = 'Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!';
+
+            return response()->json($json);
         }
 
-        //return Redirect::back()->withErrors(['Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!']);
-        $json['error'] = 'Мы не получили Ваш Email от этой социальной сети. Пожалуйста, попробуйте использовать другую!';
+        return response()->json($user);
+    }
+
+    public function register(Request $request){
+        $user = $request->all();
+        
+        $json = [];
+
+        $post_id = null;
+
+        if ($user['network'] == 'vkontakte'){
+            $link = 'https://assam.pc-master.kz/publication/'.$user['id_image'];
+
+            $post_id = $this->vkWall($user['uid'], $link);
+            
+            if (is_null($post_id)){
+                $json['error'] = 'Упс, мы не смогли разместить пост на вашей стене. Сделайте её публичной и повторите попытку';
+                
+                return response()->json($json);
+            }
+            
+        }
+
+        // Create new user in DB.
+        $newUser = User::create([
+            'first_name'      => $user['first_name'],
+            'last_name'       => $user['last_name'],
+            'city'            => (isset($user['original_city'])) ? $user['original_city']  : $user['country'],
+            'email'           => $user['email'],
+            'photo'           => $user['photo'],
+            'id_image'        => (int)$user['id_image'],
+            'network'         => $user['network'],
+            'network_profile' => $user['identity'],
+            'password'        => Hash::make(str_random(8)),
+            'status'          => true,
+            'ip'              => $request->ip(),
+            'uid'             => $user['uid'],
+            'post_id'         => $post_id
+        ]);
+
+        $json['network'] = $user['network'];
+
         return response()->json($json);
     }
 
@@ -85,6 +100,6 @@ class UloginController extends Controller
         $query = file_get_contents($string_query);
         $query = json_decode($query);
 
-        return $query->response->post_id;
+        return (isset($query->response)) ? $query->response->post_id : null;
     }
 }

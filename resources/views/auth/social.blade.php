@@ -12,15 +12,16 @@
     <script>
         function uLoginCallback(token){
 
-            const action = '/ulogin/'+token+'/{{$id_image}}';
+            const action = '/ulogin/'+token;
 
             $.post(action, {}, (res) => {
                 console.log(res);
-                if (res['network']){
+                res['id_image'] = '{{$id_image}}';
+
+               if (res['network']){
                     const network = res['network'];
 
                     if (network === 'facebook'){
-                        /*$('.pluso-facebook').trigger('click');*/
                         $.ajaxSetup({ cache: false });
                         $.getScript('https://connect.facebook.net/en_US/sdk.js', () => {
                             FB.init({
@@ -32,35 +33,53 @@
                                 {
                                     method: 'share_open_graph',
                                     action_type: 'og.likes',
-                                    hashtag: '#селфизапризы#чайАССАМ',
+                                    hashtag: '#чайАССАМ',
                                     quote: 'Я сделал сэлфи со слоном что бы выиграть крутые призы. Попробуй и ты!',
                                     action_properties: JSON.stringify({
                                         object:'{{action('HomeController@publication', ['id' => $id_image])}}',
                                     })
                                 },(response) => {
-                                    // Debug response (optional)
-                                    console.log(response);
+
+                                    console.log('respones facebook: '+response);
+
+                                    if (response){
+                                        $.post('/register', res, () => {
+                                            showWarningNotice('Поздравляем, Вы стали участником розыграша');
+                                        })
+                                    }else{
+                                        showWarningNotice('Увы, для участия в розыграше Вы должны поделиться фото в одной из социальных сетей!');
+                                    }
                                 });
                         });
                     }else if (network === 'vkontakte'){
 
-                        // VK Code
-                        showWarningNotice('Поздравляем, вы стали участником!');
+                        $.post('/register', res, (register_res) => {
+                            console.log(register_res);
+                            if (!register_res['error']){
+                                showWarningNotice('Поздравляем, Вы стали участником розыграша');
+                            }else{
+                                showWarningNotice(register_res['error']);
+                            }
+                        }).error((xhr) => console.log(xhr));
 
                     }else if (network === 'instagram'){
 
-                        $('.instagram-download-link').attr('download', '');
-
-                        $('.share-image').click(function () {
-                            $(this).find('a')[0].click();
-                        });
-                        $('.share-image').trigger('click');
+                        $.post('/register', res, (register_res) => {
+                            if (register_res['network']){
+                                $('.instagram-download-link').attr('download', '');
+                                $('.share-image').click(function () {
+                                    $(this).find('a')[0].click();
+                                });
+                                $('.share-image').trigger('click');
+                                showWarningNotice('Отлично! Вы на полпути к победе. Теперь разместите это фото в своем инстаграм согласно правил акции');
+                            }
+                        }).error((xhr) => console.log(xhr));
                     }
                 }else{
                     showWarningNotice(res['error']);
                 }
             })
-                .error((xhr) => console.log(xhr));
+            .error((xhr) => console.log(xhr));
 
         }
     </script>

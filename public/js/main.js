@@ -1,6 +1,4 @@
 const $video = $('#video');
-const $animationFrames = $('#animations img');
-const $animationAlphaFrames = $('#animations_a img');
 const $elefant = $('#elefant');
 const audio = new Audio('/media/shutter.mp3');
 const $results = $('#results');
@@ -18,6 +16,8 @@ let x = 2; //множитель для трекинга
 
 let video_w = 320;
 let video_h = 240;
+
+let stop_frame = 150;
 
 if ($(window).width() <= 768){
 
@@ -42,8 +42,7 @@ let count_frame = 0;
 let trackerTask;
 let buffer = [];
 
-/*for Iphone*/
-const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+
 
 $video.attr({
     width: video_w,
@@ -63,8 +62,10 @@ function init() {
 
 
     $video.on('loadedmetadata', function(){
-        drawVideoToCanvas();
-        setTimeout(() => playAnimation());
+        if ($(window).width() > 768){
+            drawVideoToCanvas();
+        }
+        playAnimation();
     });
 
     navigator.mediaDevices.getUserMedia(constraints)
@@ -89,7 +90,8 @@ function getImageURL() {
     return c.toDataURL('image/jpeg', 1.0);
 }
 
-
+const $swag = $('.swag');
+let status_trackerTask = true;
 //включает трекинг лица
 function startTracking() {
 
@@ -98,8 +100,6 @@ function startTracking() {
     tracker.setStepSize(2);
     tracker.setEdgesDensity(0.1);
 
-    const $swag = $('.swag');
-    const $fase_square = $('.face-square');
     let rect;
 
     trackerTask = tracking.track('#video', tracker);
@@ -117,51 +117,41 @@ function startTracking() {
                 width: rect.width * x + 'px',
                 height: rect.height * x + 'px'
             });
-            $fase_square.css({
-                top: rect.y * x,
-                left: rect.x * x,
-                width: rect.width * x,
-                height: rect.height * x,
-                border: '1px solid red'
-            });
-
         }
     });
-
-    /*setTimeout(() => {
-     trackerTask.stop();
-     playAnimation();
-     }, 5000);*/
 
 }
 
 function playAnimation() {
-    count_frameId = setInterval(() => {
-        if (count_frame < buffer.length) {
-            $elefant.attr('src', buffer[count_frame]);
-            count_frame++;
 
-            if (count_frame == 165){
+    count_frameId = setInterval(() => {
+
+        if (count_frame < buffer.length) {
+
+            $elefant.attr('src', buffer[++count_frame]);
+
+            if (count_frame === 141){
                 startTracking();
-                /*count_frame = 224;*/
             }
 
-        } else {
-            /*count_frame = 0;*/
-            clearInterval(count_frameId);
+            if (count_frame === stop_frame){
+                count_frameId = clearInterval(count_frameId);
+                stop_frame += 5;
+
+                /*status_trackerTask = false;
+                trackerTask.stop();*/
+
+                setTimeout(() => {
+                    playAnimation();
+                }, 3000);
+
+            }
+
+
         }
+
     }, 1000 / fps);
 
-    /*setTimeout(() => {
-        clearInterval(count_frameId);
-        console.log(count_frame);
-        $elefant.addClass('rotate');
-        if (trackerTask){
-            trackerTask.run();
-        }else{
-            startTracking();
-        }
-    }, 5000);*/
 }
 
 function draw(video, context, width, height) {
@@ -238,12 +228,12 @@ const context_rgb = canvas_rgb.getContext('2d');
 const context_alpha = canvas_alpha.getContext('2d');
 const context_frame = canvas_frame.getContext('2d');
 
-canvas_rgb.width = 500;
-canvas_rgb.height = 480;
-canvas_alpha.width = 500;
-canvas_alpha.height = 480;
-canvas_frame.width = 500;
-canvas_frame.height = 480;
+canvas_rgb.width = ($(window).width <= 768) ? 350 : video_w * x;
+canvas_rgb.height = video_h * x;
+canvas_alpha.width = ($(window).width <= 768) ? 350 : video_w * x;
+canvas_alpha.height = video_h * x;
+canvas_frame.width = ($(window).width <= 768) ? 350 : video_w * x;
+canvas_frame.height = video_h * x;
 
 function compileRGBA(raw_rgb, raw_alpha) {
 
@@ -299,18 +289,30 @@ function createAnimationBuffer() {
     let frame_rgb, frame_a;
     let f = 0;
 
-    const frameId = setInterval(() => {
-        if (f < $animationFrames.length) {
-            frame_rgb = $animationFrames.eq(f).attr('src');
-            frame_a = $animationAlphaFrames.eq(f).attr('src');
+    let $animationFrames = $('#animations img');
+    let $animationAlphaFrames = $('#animations_a img');
 
-            loadRGBA(frame_rgb, frame_a);
-            f++;
-        } else {
-            $('.preloader').hide();
-            $('.page-content').fadeIn();
-            clearInterval(frameId);
+    const timerId = setInterval(() => {
+        if ($animationFrames.length == 0 && $animationAlphaFrames.length == 0){
+            $animationFrames = $('#animations img');
+            $animationAlphaFrames = $('#animations_a img');
+        }else{
+            clearInterval(timerId);
+
+            const frameId = setInterval(() => {
+                if (f < $animationFrames.length) {
+                    frame_rgb = $animationFrames.eq(f).attr('src');
+                    frame_a = $animationAlphaFrames.eq(f).attr('src');
+
+                    loadRGBA(frame_rgb, frame_a);
+                    f++;
+                } else {
+                    $('.preloader').hide();
+                    $('.page-content').fadeIn();
+                    clearInterval(frameId);
+                }
+            }, 1000 / fps);
+
         }
-    }, 1000 / fps);
+    }, 10);
 }
-

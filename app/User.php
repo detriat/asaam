@@ -50,4 +50,9 @@ class User extends Authenticatable
     public function isBanned($user_ip){
         return User::where('ip', $user_ip)->where('status', 0)->get();
     }
+
+    public function scopeBanned($users, $status){
+        return $users->where('status', $status);
+    }
+
 }

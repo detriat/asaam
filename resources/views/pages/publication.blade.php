@@ -5,7 +5,7 @@
 
 @section('extra-meta')
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Асаам дарит подарки за улыбки">
+    <meta property="og:title" content="Ассам дарит подарки за улыбки">
     <meta property="og:description" content="Я сделал сэлфи со слоном что бы выиграть крутые призы! Попробуй и ты! #чайАССАМ  #селфизапризы">
     <meta property="og:url" content="{{action('HomeController@index')}}/publication/{{$id_image}}">
     <meta property="og:locale" content="ru_RU">
@@ -42,4 +42,3 @@
 		</div>
 		
 @endsection
-

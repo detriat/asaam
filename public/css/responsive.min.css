@@ -176,7 +176,7 @@
     }
 	#container, #video {
 		width: 320px !important;
-		height: 243px !important;
+		height: 426px !important;
 		object-fit: cover;
 	}
 	.window-confirm {
@@ -184,19 +184,26 @@
 	}
 	.game-objects{
 		width: 320px;
-		height: 243px;
+		height: 426px;
 	}
 
 	#canvas{
 		display: none;
-		height: 243px !important;
 	}
 
 	#elefant.ht100{
-		right: -10px;
+		right: 25px;
 		bottom: -10px;
 	}
-	
+
+	.elefant img{
+		right: 25px;
+	}
+
+	.elefant{
+		width: 350px;
+	}
+
 	.step-1 .btn-1:before {
 		display: none;
 	}

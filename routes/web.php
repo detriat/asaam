@@ -13,6 +13,9 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/second', 'HomeController@second');
+
+/*Route::get('/example-3', 'HomeController@example');*/
+
 Route::get('/terms-of-action', 'HomeController@termsOfAction');
 Route::get('/user-agreement', 'HomeController@userAgreement');
 Route::get('/winners', 'HomeController@winners');
@@ -22,14 +25,18 @@ Route::get('/publication/{id}', 'HomeController@publication')->where('id', '[0-9
 Route::get('/sequences_desktop', 'HomeController@sequencesDesktop');
 Route::get('/sequences_mobile', 'HomeController@sequencesMobile');
 
+Route::get('/sequences_desktop_0', 'HomeController@sequencesDesktopEyes');
+Route::get('/sequences_mobile_0', 'HomeController@sequencesMobileEyes');
+
 /*images*/
 Route::post('/images/uploadBase64Image', 'ImageEditor@uploadBase64Image');
 
 /*AutoRegister*/
-Route::post('ulogin/{token}/{id_image}', 'UloginController@login')->where('id_image', '[0-9]+');
+Route::post('ulogin/{token}', 'UloginController@getUserData');
+Route::post('/register', 'UloginController@register');
 
 /*Posts*/
 
-Route::get('/socials/vkWall', 'UloginController@vkWall');
+
 
 

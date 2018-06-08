@@ -1,5 +1,6 @@
 const $video = $('#video');
 const $elefant = $('#elefant');
+const $confetti = $('#confetti');
 const audio = new Audio('/media/shutter.mp3');
 const $results = $('#results');
 const $preloader = $('.preloader');
@@ -45,10 +46,9 @@ const distance = {
  // 0 - кадр анимации с которого начнёться игра. 1 кадр на котором закончится
 //  где 0, 1 это индексы массива
 const animation_areas = {
-    right_top: [144, 216],
-    right_bottom: [144, 216],
-    left_bottom: [72, 144],
-    left_top: [0, 72]
+    top: [0, 72],
+    center: [72, 144],
+    bottom: [144, 216]
 };
 
 const fps = 24;
@@ -56,9 +56,6 @@ let count_frameId;
 let count_frame = 0;
 let trackerTask;
 let buffer = [];
-
-/*for Iphone*/
-const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
 function init() {
     const constraints = {
@@ -102,7 +99,7 @@ function getImageURL() {
 }
 
 const $face_square = $('.face-square');
-let square_center_x, square_center_y, lucky_square, stopped = 0, trackerTask_status = true;
+let square_center_x, square_center_y, stopped = 0, trackerTask_status = true, loopTimer;
 //включает трекинг лица
 function startTracking() {
 
@@ -111,10 +108,9 @@ function startTracking() {
     tracker.setStepSize(2);
     tracker.setEdgesDensity(0.1);
 
-    let rect;
+    let rect, top, bottom, center, temp_segment;
 
-    let center_x = $video.width() / 2;
-    let center_y = $video.height() / 2;
+    const segment = $video.height() / 3;
 
     trackerTask = tracking.track('#video', tracker);
 
@@ -126,46 +122,57 @@ function startTracking() {
             rect = event.data[0];
             setTimeout(() => {
                 trackerTask.stop();
-                console.log('stop tracking');
             }, 0);
 
             setTimeout(() => {
 
                 rect = event.data[0];
 
-                $face_square.css({
-                    top: rect.y * x,
-                    left: rect.x * x,
-                    width: rect.width * x,
-                    height: rect.height * x,
-                    border: '1px solid red'
-                });
 
                 square_center_x = rect.x + rect.width / 2;
                 square_center_y = rect.y + rect.height / 2;
 
-                lucky_square = (square_center_x > center_x - 50)
-                    && (square_center_x < center_x + 50)
-                    && (square_center_y > center_y - 50)
-                    && (square_center_y < center_y + 50);
+                top     = square_center_y < segment;
+                center  = (square_center_y > segment) && (square_center_y < segment * 2);
+                bottom  = square_center_y > segment * 2;
 
 
-                //Координаты отображаются зеркально!
-                if (square_center_x < center_x && square_center_y < center_y) {
-                    //Правый верхний угол
-                    playAnimation(animation_areas.right_top);
+                if (top){
 
-                } else if (square_center_x > center_x && square_center_y < center_y) {
-                    //Левый верхний угол
-                    playAnimation(animation_areas.left_top);
+                    if (temp_segment === 'top'){
 
-                } else if (square_center_x < center_x && square_center_y > center_y) {
-                    //Правый нижний угол
-                    playAnimation(animation_areas.right_bottom);
+                        loopAnimation();
 
-                } else if (square_center_x > center_x && square_center_y > center_y) {
-                    //Левый нижний угол
-                    playAnimation(animation_areas.left_bottom);
+                    }else{
+                        playAnimation(animation_areas.top)
+                    }
+
+                    temp_segment = 'top';
+                }
+                if (center){
+
+                    if (temp_segment === 'center'){
+
+                        loopAnimation();
+
+                    }else{
+                        playAnimation(animation_areas.center)
+                    }
+
+                    temp_segment = 'center';
+
+                }
+                if (bottom){
+
+                    if (temp_segment === 'bottom'){
+
+                        loopAnimation();
+
+                    }else{
+                        playAnimation(animation_areas.bottom)
+                    }
+
+                    temp_segment = 'bottom';
                 }
 
             }, 100);
@@ -174,21 +181,59 @@ function startTracking() {
 }
 
 function playAnimation(areas) {
-    console.log('start animation');
+
+    let check_confetti = false;
     count_frame = areas[0];
     count_frameId = setInterval(() => {
-        if (count_frame < areas[1]) {
+        if (count_frame < areas[1] - 24) {
+
+            if (count_frame === 105 && !check_confetti){
+                check_confetti = true;
+                $confetti.show();
+            }
+
+            if (check_confetti && count_frame + 112 < buffer.length){
+                $confetti.attr('src', buffer[count_frame + 112])
+            }
+
             $elefant.attr('src', buffer[count_frame]);
             count_frame++;
         } else {
+            $confetti.hide();
             count_frameId = clearInterval(count_frameId);
-            console.log('stop Animation');
             trackerTask_status = true;
             trackerTask.run();
         }
     }, 1000 / fps);
 
 }
+
+function loopAnimation() {
+
+    const current_frame = count_frame;
+    let loop_status = false;
+
+    console.log(current_frame);
+
+     loopTimer = setInterval(() => {
+
+        if (count_frame > current_frame - 12 && !loop_status){
+            $elefant.attr('src', buffer[--count_frame]);
+        }else{
+            loop_status = true;
+            $elefant.attr('src', buffer[++count_frame]);
+            if (count_frame === current_frame){
+                clearInterval(loopTimer);
+                trackerTask_status = true;
+                trackerTask.run();
+            }
+        }
+
+
+     }, 1000 / fps);
+
+}
+
 
 function draw(video, context, width, height) {
     context.clearRect(0, 0, width, height);
@@ -264,11 +309,11 @@ const context_rgb = canvas_rgb.getContext('2d');
 const context_alpha = canvas_alpha.getContext('2d');
 const context_frame = canvas_frame.getContext('2d');
 
-canvas_rgb.width = video_w * x;
+canvas_rgb.width = ($(window).width <= 768) ? 350 : video_w * x;
 canvas_rgb.height = video_h * x;
-canvas_alpha.width = video_w * x;
+canvas_alpha.width = ($(window).width <= 768) ? 350 : video_w * x;
 canvas_alpha.height = video_h * x;
-canvas_frame.width = video_w * x;
+canvas_frame.width = ($(window).width <= 768) ? 350 : video_w * x;
 canvas_frame.height = video_h * x;
 
 function compileRGBA(raw_rgb, raw_alpha) {
@@ -345,7 +390,6 @@ function createAnimationBuffer() {
                 } else {
                     $('.preloader').hide();
                     $('.page-content').fadeIn();
-                    console.log(buffer);
                     clearInterval(frameId);
                 }
             }, 1000 / fps);

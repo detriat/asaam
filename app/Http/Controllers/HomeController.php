@@ -35,6 +35,7 @@ class HomeController extends Controller
 
         $data['title']  = 'Главная';
         $data['isHome'] = true;
+        $data['isSecond'] = true;
 
         return view('pages.home', $data);
     }
@@ -45,9 +46,19 @@ class HomeController extends Controller
 
         $data['title']  = 'Главная';
         $data['isHome'] = true;
-        $data['isSecond'] = true;
 
         return view('pages.home', $data);
+    }
+
+    public function example(){
+
+        $data = array();
+
+        $data['title']  = 'Главная';
+        $data['isHome'] = true;
+        $data['isSecond'] = true;
+
+        return view('pages.example3', $data);
     }
 
     public function termsOfAction(){
@@ -115,4 +126,13 @@ class HomeController extends Controller
     public function sequencesMobile(){
         return view('sequences.mobile');
     }
+
+    public function sequencesDesktopEyes(){
+        return view('sequences.elefant');
+    }
+
+    public function sequencesMobileEyes(){
+        return view('sequences.mobile_0');
+    }
+
 }

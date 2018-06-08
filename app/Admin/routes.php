@@ -15,3 +15,4 @@ Route::get('winners', ['as' => 'admin.winners', function () {
     $content = 'Победители';
     return AdminSection::view($content, 'Победители');
 }]);*/
+

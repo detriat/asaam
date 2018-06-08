@@ -37,7 +37,7 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
         ]);
         
         $display->paginate(15);
-        
+
         return $display;
     });
 
@@ -50,7 +50,7 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
             AdminFormElement::text('network', 'Социальная сеть')->required('Это поле не может быть пустым'),
             AdminFormElement::text('network_profile', 'Ссылка на профиль в социальной сети')->required('Это поле не может быть пустым'),
             AdminFormElement::text('ip', 'IP пользователя')->required('Это поле не может быть пустым'),
-            AdminFormElement::select('status', 'Статус')->setOptions([
+            AdminFormElement::select('status', 'Роль')->setOptions([
                 0 => 'Забанен',
                 1 => 'Активен'
             ])->required('Это поле не может быть пустым'),

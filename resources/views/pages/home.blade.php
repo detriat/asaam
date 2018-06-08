@@ -15,6 +15,7 @@
                         </div>
                         <div class="elefant" id="e_screen">
                             <img src="#" alt="" id="elefant" class="rotate {{(isset($isSecond)) ? 'ht100' : ''}}">
+                            <img src="#" id="confetti">
                             <div class="game-objects">
                                 <img src="/img/pixel.png" alt="swag" class="swag">
                                 <div class="face-square"></div>
@@ -39,9 +40,6 @@
     <div class="pr pr-left"></div>
     <div class="pr pr-right"></div>
     <div id="anim" style="display: none"></div>
-    @if (!isset($isSecond))
-        @include('sequences.elefant')
-    @endif
 @endsection
 
 @section('overlay')
@@ -84,7 +82,7 @@
     <script>
         $(document).ready(function () {
 
-            const second = {{isset($isSecond)}};
+            const second = {{(isset($isSecond)) ? 'true' : 'false'}};
 
             if (second){
 
@@ -94,7 +92,14 @@
                     $('#anim').load('/sequences_mobile');
                 }
 
+            }else{
+                if ($(window).width() > 768){
+                    $('#anim').load('/sequences_desktop_0');
+                }else{
+                    $('#anim').load('/sequences_mobile_0');
+                }
             }
+
             $('#uploadBase64Image').click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();
