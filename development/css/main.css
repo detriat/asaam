@@ -220,16 +220,6 @@ section {
 .step-1 .btn-1 {
 	position: relative;
 }
-.step-1 .btn-1:before {
-	content: '';
-	position: absolute;
-	bottom: 70%;
-	right: 0;
-	width: 73px;
-	height: 107px;
-	background: url(../img/btn-1-before.png) center no-repeat;
-	z-index: -1;
-}
 .btn-2 {
 	background: linear-gradient(to bottom, #f9b700, #7e6802);
 	color: #fff;

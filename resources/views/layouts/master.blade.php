@@ -74,6 +74,7 @@
 			overflow-x: hidden;
 			overflow-y: hidden;
 			max-height: 9999px;
+			font-size: 18px;
 		}
 		.preloader ul {
 			padding-left: 50px!important;
@@ -86,7 +87,7 @@
 		.preloader .item:before {
 			content: '';
 			position: absolute;
-			top: -5px;
+			top: 0;
 			left: -50px;
 			width: 36px;
 			height: 36px;
@@ -153,7 +154,7 @@
     </noscript>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120458217-1"></script>;
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120458217-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
@@ -166,26 +167,18 @@
 <body class="index-1" style="overflow: hidden;">
 	<div class="preloader">
 		<div class="child-page-content">
-			<div class="container">
+			<div class="container" style="position: relative;">
+				<img src="/img/preloader.gif" alt="" style="position: absolute; top: 30px; right: 0; width: 197px; height: 150px;" />
 				<h2>
 					<img src="/img/logo.png" alt="" /><br/>
 					Пожалуйста подождите, идет загрузка...
 				</h2>
 				<h1 class="title-page">Условия акции</h1>
 				<div class="child-page-content__text terms">
-					<p>
-						Участниками акции становятся пользователи, которые перешли на страницу приложения promo.assamtea.kz и выполнили условия акции: 
-					</p>
 					<ul>
-						<li class="item item-1">Разрешили подключение web камеры своего устройства к приложению</li>
-						<li class="item item-2">Сделали сэлфи снимок: 
-							<ul>
-								<li><span>Нажать на «Сделать снимок»</span></li>
-								<li><span>Нажать на «Далее» если считаете, что снимок вышел удачным</span></li>
-								<li><span>Нажать на «Сделать еще раз» если хотите попробовать еще один снимок</span></li>
-							</ul>
-						</li>
-						<li class="item item-3">Разместить на своей странице пост из promo страницы выбрав один из трех предложенных вариантов: 
+						<li class="item item-1">Разрешите подключение web камеры своего устройства к приложению</li>
+						<li class="item item-2">Сделайте сэлфи снимок</li>
+						<li class="item item-3">Разместите на своей странице пост из promo страницы выбрав один из трех предложенных вариантов: 
 							<ul>
 								<li><span>vk.com</span></li>
 								<li><span>facebook.com</span></li>
@@ -197,12 +190,9 @@
 						Чтобы принять участие в розыгрыше подпишитесь на страницы чая АССАМ в любой социальной сети:
 					</p>
 					<div class="social">
-						<a href="" title="" class="in">@assam.kazakhstan</a>
-						<a href="" title="" class="fb">@Assam.Kazakhstan</a>
-						<a href="" title="" class="vk">Assam Kazakhstan</a>
-					</div>
-					<div style="margin-top: 60px; text-align: center;">
-						<img src="/img/small-elefant.png" alt="" />
+						<a href="https://instagram.com/@assam.kazakhstan" title="" class="in">@assam.kazakhstan</a>
+						<a href="https://facebook.com/@Assam.Kazakhstan" title="" class="fb">@Assam.Kazakhstan</a>
+						<a href="https://vk.com/" title="" class="vk">Assam Kazakhstan</a>
 					</div>
 				</div>
 			</div>

@@ -30,7 +30,7 @@
     <div class="buttons">
         <div class="step-1">
             <button class="btn btn-1 snapshot-btn" onclick="take_snapshot()">Сделать снимок</button>
-            <button class="btn btn-2 snapshot-btn">Что еще умеет слон?</button>
+            <!--button class="btn btn-2 snapshot-btn">Что еще умеет слон?</button-->
         </div>
         <div class="step-2 snapshot-form">
             <button class="btn btn-1 continue-stream" onclick="clearResults()">Сделать ещё раз</button>
