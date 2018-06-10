@@ -129,11 +129,11 @@
 				margin-left: -50px;
 				margin-top: 5px;
 			}
-			.social {
+			.preloader .social {
 				padding-left: 0!important;
 				text-align: left!important;
 			}
-			.social a {
+			.preloader .social a {
 				margin-bottom: 10px!important;
 			}
 			.preloader .title-page {
