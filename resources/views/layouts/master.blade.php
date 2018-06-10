@@ -74,7 +74,7 @@
 			overflow-x: hidden;
 			overflow-y: hidden;
 			max-height: 9999px;
-			font-size: 18px;
+			font-size: 20px;
 		}
 		.preloader ul {
 			padding-left: 50px!important;
@@ -104,6 +104,7 @@
 		.preloader ul ul li {
 			color: #f5b63b;
 			list-style-type: disc;
+			padding-right: 10px;
 		}
 		.preloader ul ul li span {
 			color: #fff;
@@ -118,6 +119,10 @@
 			width: 320px;
 		}
 		@media screen and (max-width: 768px) {
+			.gif-elefant {
+				display: block;
+				margin: auto;
+			}
 			.preloader .child-page-content {
 				padding-top: 0;
 			}
