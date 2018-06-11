@@ -259,7 +259,7 @@ section {
 .publication {
 	position: relative;
 	top: 40px;
-	z-index: 9999;
+	z-index: 999;
 }
 .publication h1 {
 	font-family: "DS Izmir";
