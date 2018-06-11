@@ -51,7 +51,7 @@ class UloginController extends Controller
         $post_id = null;
 
         if ($user['network'] == 'vkontakte'){
-            $link = 'https://assam.pc-master.kz/publication/'.$user['id_image'];
+            $link = 'https://promo.assamtea.kz/publication/'.$user['id_image'];
 
             $post_id = $this->vkWall($user['uid'], $link);
             
@@ -81,7 +81,7 @@ class UloginController extends Controller
         ]);
 
         $json['network'] = $user['network'];
-
+        $json['profile'] = $user['profile'];
         return response()->json($json);
     }
 
@@ -90,8 +90,10 @@ class UloginController extends Controller
         header('Content-Type: text/html; charset=windows-1251');
         header('Access-Control-Allow-Origin: *');
 
-        $app_ID = '6500195';
-        $token = '07933ed49a6d8c76f9236913c0ad8dd72d58fd71475bd0dcc46afb0080d74f6804d4264ae656644ef7a22';
+        $app_ID = '6601801';
+        /*$app_ID = '6500195';*/
+        /*$token = '07933ed49a6d8c76f9236913c0ad8dd72d58fd71475bd0dcc46afb0080d74f6804d4264ae656644ef7a22';*/
+        $token = '636715a942e5948a6d85d6281d076ca356d2784d81c4b7b584d220316f5796b77a8b117665f633df994a6';
 
         $message = 'Я сделал сэлфи со слоном что бы выиграть крутые призы. Попробуй и ты! #чайАССАМ #селфизапризы';
 

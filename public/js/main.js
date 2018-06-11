@@ -307,7 +307,6 @@ function createAnimationBuffer() {
                     loadRGBA(frame_rgb, frame_a);
                     f++;
                 } else {
-                    $('body').removeAttr('style');
                     $('.preloader').hide();
                     $('.page-content').fadeIn();
                     clearInterval(frameId);

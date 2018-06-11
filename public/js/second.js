@@ -183,13 +183,17 @@ function startTracking() {
 function playAnimation(areas) {
 
     let check_confetti = false;
+    const size_monitor = $(window).width();
     count_frame = areas[0];
     count_frameId = setInterval(() => {
         if (count_frame < areas[1] - 24) {
 
             if (count_frame === 105 && !check_confetti){
                 check_confetti = true;
-                $confetti.show();
+
+                if (size_monitor <= 768){
+                    $confetti.show();
+                }
             }
 
             if (check_confetti && count_frame + 112 < buffer.length){
@@ -309,11 +313,11 @@ const context_rgb = canvas_rgb.getContext('2d');
 const context_alpha = canvas_alpha.getContext('2d');
 const context_frame = canvas_frame.getContext('2d');
 
-canvas_rgb.width = ($(window).width <= 768) ? 350 : video_w * x;
+canvas_rgb.width = video_w * x;
 canvas_rgb.height = video_h * x;
-canvas_alpha.width = ($(window).width <= 768) ? 350 : video_w * x;
+canvas_alpha.width = video_w * x;
 canvas_alpha.height = video_h * x;
-canvas_frame.width = ($(window).width <= 768) ? 350 : video_w * x;
+canvas_frame.width = video_w * x;
 canvas_frame.height = video_h * x;
 
 function compileRGBA(raw_rgb, raw_alpha) {
@@ -389,7 +393,6 @@ function createAnimationBuffer() {
                     f++;
                 } else {
                     $('.preloader').hide();
-                    $('body').removeAttr('style');
                     $('.page-content').fadeIn();
                     clearInterval(frameId);
                 }

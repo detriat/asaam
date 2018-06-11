@@ -57,6 +57,9 @@
                             console.log(register_res);
                             if (!register_res['error']){
                                 showWarningNotice('Поздравляем, Вы стали участником розыграша');
+                                setTimeout(() => {
+                                    window.location.href = res['profile'];
+                                }, 1500)
                             }else{
                                 showWarningNotice(register_res['error']);
                             }

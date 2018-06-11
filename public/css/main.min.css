@@ -164,7 +164,7 @@ section {
 	-ms-transform: translateX(-50%);
 	transform: translateX(-50%);
 	width: 1920px;
-	height: 55%;
+	height: 60%;
 	min-width: 100%;
 	background: url(../img/ft.png) center bottom no-repeat;
 	background-size: 100%;
@@ -308,17 +308,6 @@ section {
 .publication img {
 	position: relative;
 	width: 100%;
-}
-.publication .image:after {
-	content: '';
-	position: absolute;
-	bottom: -10px;
-	left: -15%;
-    width: 60%;
-    height: 40%;
-    background: url(../img/image-after.png) center no-repeat;
-    background-size: 100% 100%;
-	z-index: 1;
 }
 
 .social {
@@ -1295,4 +1284,8 @@ button:focus{
 	width: 100%;
 	z-index: 999;
 	display: none;
+}
+
+#ulogin_receiver_container{
+	z-index: 99999;
 }
